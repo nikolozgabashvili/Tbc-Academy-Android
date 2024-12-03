@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="et_hint_geo">შეიყვანე დადებითი რიცხვი</string>
+    <string name="et_hint_en">enter positive number</string>
+    <string name="error_text_en">please enter valid number</string>
+    <string name="error_text_geo">გთხოვთ შეიყვანოთ ვალიდური რიცხვი</string>
+    <string name="language_geo">ქართული</string>
+    <string name="language_eng">English</string>
+    <string name="process">process</string>
 </resources>
