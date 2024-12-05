@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="profile_info">Profile Info</string>
+    <string name="email_hint">email</string>
+    <string name="first_name_hint">first name</string>
+    <string name="last_name_hint">last name</string>
+    <string name="username_hint">username</string>
+    <string name="age_hint">age</string>
+    <string name="save">Save</string>
+    <string name="clear">clear</string>
+    <string name="Again">Again</string>
 </resources>
