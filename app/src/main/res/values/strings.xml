@@ -9,4 +9,16 @@
     <string name="save">Save</string>
     <string name="clear">clear</string>
     <string name="Again">Again</string>
+    <string name="empty_field_error">field shouldn\'t be empty</string>
+    <string name="only_numbers_error">field should only contain numbers</string>
+    <string name="age_limit_error">age should be more than 0</string>
+    <string name="only_letters_error">field should only contain letters</string>
+    <string name="field_length_error">field should contain at least 2 characters</string>
+    <string name="email_validation_error">please enter valid email</string>
+    <string name="invalid_field_error">invalid input</string>
+    <string name="display_age">age: %1$s</string>
+    <string name="display_fullName">fullName: %1$s</string>
+    <string name="display_userName">username: %1$s</string>
+    <string name="display_email">email: %1$s</string>
+    <string name="username_field_length_error">username must contain at least 10 characters</string>
 </resources>
