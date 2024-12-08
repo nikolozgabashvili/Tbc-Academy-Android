@@ -4,4 +4,16 @@
     <string name="email_validation_error">please enter valid email</string>
     <string name="only_letters_error">name must contain only letters</string>
     <string name="field_length_error">name should be at least 2 characters long</string>
+    <string name="hint_get_user">find user User </string>
+    <string name="hint_enter_full_name">Enter Full Name</string>
+    <string name="get_user_info">Get User Info</string>
+    <string name="hint_enter_email">enter email</string>
+    <string name="add_user">Add User</string>
+    <string name="go_back">Go Back</string>
+    <string name="user_already_exists">user Already exists</string>
+    <string name="user_added_successfully">user added successfully</string>
+    <string name="users_count">Users : %1$s</string>
+    <string name="user_not_found">User not found</string>
+    <string name="full_name_with_value">full name: %1$s</string>
+    <string name="email_with_value">Email: %1$s</string>
 </resources>
