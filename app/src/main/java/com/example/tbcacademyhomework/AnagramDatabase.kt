@@ -6,8 +6,9 @@ class AnagramDatabase {
     private val anagramMap = mutableMapOf<String, List<String>>()
 
     fun addAnagram(anagram: String) {
-        anagrams.add(anagram)
-        anagramMap[formatAnagram(anagram)] = getListForAnagram(anagram) + anagram
+        val lowerAnagram = anagram.lowercase()
+        anagrams.add(lowerAnagram)
+        anagramMap[formatAnagram(lowerAnagram)] = getListForAnagram(lowerAnagram) + lowerAnagram
     }
 
     private fun getListForAnagram(anagram: String): List<String> {
