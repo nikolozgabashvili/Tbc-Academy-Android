@@ -37,6 +37,17 @@ class MainActivity : AppCompatActivity() {
         binding.btnOutput.setOnClickListener {
             displayAnagrams()
         }
+        binding.btnClear.setOnClickListener {
+            clearScreen()
+        }
+
+    }
+
+    private fun clearScreen() {
+        binding.etAnagramInput.text?.clear()
+        binding.tvAnagramInputError.visibility = View.GONE
+        binding.tvAnagrams.text = null
+        anagramDatabase.clearDatabase()
 
     }
 

@@ -33,5 +33,10 @@ class AnagramDatabase {
         return strBuilder.toString()
     }
 
+    fun clearDatabase() {
+        anagrams.clear()
+        anagramMap.clear()
+    }
+
 
 }
