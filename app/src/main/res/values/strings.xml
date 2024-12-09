@@ -7,4 +7,6 @@
     <string name="anagram_added_successfully">anagram added successfully</string>
     <string name="field_must_not_be_empty">field must not be empty</string>
     <string name="clear">clear</string>
+    <string name="saved_information_cleared">saved information cleared</string>
+    <string name="anagrams">Anagrams</string>
 </resources>

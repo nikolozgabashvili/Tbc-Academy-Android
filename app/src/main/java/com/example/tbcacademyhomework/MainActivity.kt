@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnClear.setOnClickListener {
             clearScreen()
+            makeToast(getString(R.string.saved_information_cleared))
         }
 
     }
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayAnagrams() {
         binding.tvAnagramInputError.visibility =
-            View.GONE //setting visibility gone in case it was still visible until this point
+            View.GONE //setting visibility gone in case it was still visible
         val anagrams = anagramDatabase.getAnagrams()
         binding.tvAnagrams.text = anagrams
     }
@@ -73,9 +74,7 @@ class MainActivity : AppCompatActivity() {
                 binding.etAnagramInput.text?.clear()
                 makeToast(getString(R.string.anagram_added_successfully))
             }
-
         }
-
     }
 
     private fun makeToast(toastMessage: String) {

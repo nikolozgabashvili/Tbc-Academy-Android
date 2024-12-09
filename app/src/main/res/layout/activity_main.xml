@@ -30,14 +30,20 @@
             android:textColor="@color/text_error"
             android:textSize="11sp"
             android:visibility="gone"
-            tools:text="error"
-            tools:visibility="visible" />
+            tools:text="error" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/anagrams"
+            android:textSize="26sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAnagrams"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="8dp" />
 
         <Space
             android:layout_width="match_parent"
