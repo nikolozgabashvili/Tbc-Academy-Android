@@ -4,4 +4,5 @@
     <dimen name="corner_radius_medium">50dp</dimen>
     <dimen name="corner_radius_small">20dp</dimen>
     <dimen name="corner_radius_extra_small">10dp</dimen>
+    <dimen name="base_padding">28dp</dimen>
 </resources>

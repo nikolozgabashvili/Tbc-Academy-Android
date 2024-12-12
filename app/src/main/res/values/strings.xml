@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="price">Price</string>
+    <string name="location_name">Andes Mountain</string>
+    <string name="location">South, America</string>
+    <string name="overview">Overview</string>
+    <string name="details">Details</string>
+    <string name="time">10 hours</string>
+    <string name="temperature">20 °C</string>
+    <string name="rating">3.8</string>
+    <string name="book_now">Book Now</string>
+    <string name="description">"This vast mountain range is renowned for its remarkable diversity in terms of topography and climate. It features towering peaks, active volcanoes, deep canyons, expansive plateaus, and lush valleys. The Andes are also home to many people. bla bla bla "</string>
+    <string name="price_value">$400</string>
 </resources>

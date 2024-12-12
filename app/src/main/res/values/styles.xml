@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="rounded_imageview_25" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25dp</item>
+    </style>
+
     <style name="PrimaryButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/primary_button_background</item>
-        <item name="android:textColor">@color/primary_button_text_color</item>
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
-
-    <style name="SecondaryButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/secondary_button_background</item>
-        <item name="android:textColor">@color/secondary_button_text_color</item>
-    </style>
-
-
-    <style name="TertiaryButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/tertiary_button_background</item>
-        <item name="android:textColor">@color/tertiary_button_text_color</item>
-    </style>
 </resources>
