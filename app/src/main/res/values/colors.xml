@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="gray">#CC000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="app_background">#E2E2E2</color>
     <color name="text_error">#FF5454</color>
 
@@ -9,12 +11,8 @@
     <color name="primary_button_text_color">#FFFFFF</color>
 
 
-    <color name="secondary_button_color">#6E6F6F</color>
-    <color name="secondary_button_text_color">#FFFFFF</color>
-
-
-    <color name="tertiary_button_color">#E0E0E0</color>
-    <color name="tertiary_button_text_color">#000000</color>
+    <color name="secondary_button_color">@color/white</color>
+    <color name="secondary_button_text_color">@color/black</color>
 
 
 </resources>

@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">TbcAcademyHomework</string>
+
+    <string name="next">Next</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="register">Register</string>
+    <string name="example_username">\@pawel_czerwinski</string>
+    <string name="example_name">Pawel Czerwinski</string>
+    <string name="sign_up">sign up</string>
+    <string name="username">username</string>
+    <string name="terms_and_privacy_policy">By signing up, you agree to Photo’s Terms of Service and Privacy Policy.</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="app_name">tbc academy app</string>
+    <string name="photo">photo</string>
+    <string name="empty_field_error">fields must not be empty</string>
+    <string name="invalid_email_error">please enter valid email address</string>
+    <string name="password_field_length_error">password must be at least 8 characters long</string>
+    <string name="login_error">error occurred while logging in </string>
+    <string name="failed_to_update_username">Failed to update username</string>
+    <string name="failed_to_create_user">failed to create user</string>
+    <string name="display_username">username: %1$s</string>
+    <string name="display_email">email: %1$s</string>
+    <string name="privacy_policy_click">clicked privacy policy</string>
+    <string name="terms_of_service_clicked">clicked terms of service</string>
 </resources>

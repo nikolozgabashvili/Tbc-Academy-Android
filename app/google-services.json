@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "364259599771",
+    "project_id": "tbc-simple-login-app",
+    "storage_bucket": "tbc-simple-login-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364259599771:android:0b96a75f28887c055a2d3e",
+        "android_client_info": {
+          "package_name": "com.example.tbcacademyhomework"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYuZHDQeM7djUDltfADiDNl854lQZM_Fc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
