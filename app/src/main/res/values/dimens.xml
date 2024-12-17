@@ -4,4 +4,56 @@
     <dimen name="corner_radius_medium">50dp</dimen>
     <dimen name="corner_radius_small">20dp</dimen>
     <dimen name="corner_radius_extra_small">10dp</dimen>
+
+    <dimen name="size1">1dp</dimen>
+    <dimen name="size2">2dp</dimen>
+    <dimen name="size3">3dp</dimen>
+    <dimen name="size4">4dp</dimen>
+    <dimen name="size5">5dp</dimen>
+    <dimen name="size6">6dp</dimen>
+    <dimen name="size8">8dp</dimen>
+    <dimen name="size10">10dp</dimen>
+    <dimen name="size12">12dp</dimen>
+    <dimen name="size14">14dp</dimen>
+    <dimen name="size16">16dp</dimen>
+    <dimen name="size18">18dp</dimen>
+    <dimen name="size20">20dp</dimen>
+    <dimen name="size22">22dp</dimen>
+    <dimen name="size24">24dp</dimen>
+    <dimen name="size26">26dp</dimen>
+    <dimen name="size28">28dp</dimen>
+    <dimen name="size30">30dp</dimen>
+    <dimen name="size32">32dp</dimen>
+    <dimen name="size34">34dp</dimen>
+    <dimen name="size36">36dp</dimen>
+    <dimen name="size38">38dp</dimen>
+    <dimen name="size40">40dp</dimen>
+    <dimen name="size42">42dp</dimen>
+    <dimen name="size44">44dp</dimen>
+    <dimen name="size46">46dp</dimen>
+    <dimen name="size48">48dp</dimen>
+    <dimen name="size50">50dp</dimen>
+
+    <dimen name="textSize1">1sp</dimen>
+    <dimen name="textSize2">2sp</dimen>
+    <dimen name="textSize3">3sp</dimen>
+    <dimen name="textSize4">4sp</dimen>
+    <dimen name="textSize5">5sp</dimen>
+    <dimen name="textSize6">6sp</dimen>
+    <dimen name="textSize7">7sp</dimen>
+    <dimen name="textSize8">8sp</dimen>
+    <dimen name="textSize9">9sp</dimen>
+    <dimen name="textSize10">10sp</dimen>
+    <dimen name="textSize12">12sp</dimen>
+    <dimen name="textSize14">14sp</dimen>
+    <dimen name="textSize16">16sp</dimen>
+    <dimen name="textSize18">18sp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="textSize22">22sp</dimen>
+    <dimen name="textSize24">24sp</dimen>
+    <dimen name="textSize26">26sp</dimen>
+    <dimen name="textSize28">28sp</dimen>
+    <dimen name="textSize30">30sp</dimen>
+
+
 </resources>
