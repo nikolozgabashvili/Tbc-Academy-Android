@@ -9,12 +9,4 @@
     <color name="primary_button_text_color">#FFFFFF</color>
 
 
-    <color name="secondary_button_color">#6E6F6F</color>
-    <color name="secondary_button_text_color">#FFFFFF</color>
-
-
-    <color name="tertiary_button_color">#E0E0E0</color>
-    <color name="tertiary_button_text_color">#000000</color>
-
-
 </resources>

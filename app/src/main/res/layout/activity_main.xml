@@ -1,12 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/app_background"
     tools:context=".MainActivity">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        app:srcCompat="@drawable/bg_app"
+        android:scaleType="fitXY"
+        android:layout_height="match_parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size40"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin"
+                android:background="@drawable/bg_outlined"
+                android:hint="@string/first_name"
+                android:inputType="text"
+                android:paddingHorizontal="@dimen/size10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFirstnameError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size2"
+                android:textColor="@color/text_error"
+                android:textSize="@dimen/textSize10"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etLastName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size40"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin"
+                android:background="@drawable/bg_outlined"
+                android:hint="@string/last_name"
+                android:inputType="text"
+                android:paddingHorizontal="@dimen/size10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLastnameError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size2"
+                android:textColor="@color/text_error"
+                android:textSize="@dimen/textSize10"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etAge"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size40"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin"
+                android:background="@drawable/bg_outlined"
+                android:hint="@string/age"
+                android:inputType="number"
+                android:paddingHorizontal="@dimen/size10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAgeError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size2"
+                android:textColor="@color/text_error"
+                android:textSize="@dimen/textSize10"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size40"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin"
+                android:background="@drawable/bg_outlined"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:paddingHorizontal="@dimen/size10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmailError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size2"
+                android:textColor="@color/text_error"
+                android:textSize="@dimen/textSize10"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRegisteredUsers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize20"
+                tools:text="registered users: 10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRemovedUsers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize20"
+                tools:text="removed users: 10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size20"
+                android:textSize="@dimen/textSize20"
+                tools:text="Success" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAdd"
+                style="@style/PrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size50"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginTop="@dimen/size20"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:text="@string/add_user" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRemove"
+                style="@style/PrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size50"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:text="@string/remove_user"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUpdate"
+                style="@style/PrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size50"
+                android:layout_marginHorizontal="@dimen/base_margin"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:text="@string/update_user" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
