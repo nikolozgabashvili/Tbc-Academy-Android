@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun removeUser() {
         val email = binding.etEmail.text.toString()
-        val emailValidationResult = validateName(email)
+        val emailValidationResult = validateEmail(email)
         binding.tvEmailError.setError(emailValidationResult, this)
         if (emailValidationResult.isError()) return
         val userRemoveResult = userDatabase.removeUser(email)
