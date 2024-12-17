@@ -10,10 +10,10 @@ fun TextView.setError(response: Response, context: Context) {
         response.message?.let {
             this.text =
                 context.getString(it)
-            this.visibility = View.VISIBLE
+            this.isVisible(true)
         }
     } else {
-        this.visibility = View.GONE
+        this.isVisible(false)
     }
 }
 
