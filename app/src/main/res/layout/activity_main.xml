@@ -9,9 +9,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
-        app:srcCompat="@drawable/bg_app"
+        android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:layout_height="match_parent" />
+        app:srcCompat="@drawable/bg_app" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -159,8 +159,7 @@
                 android:layout_height="@dimen/size50"
                 android:layout_marginHorizontal="@dimen/base_margin"
                 android:layout_marginBottom="@dimen/base_margin"
-                android:text="@string/remove_user"
-                />
+                android:text="@string/remove_user" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnUpdate"
