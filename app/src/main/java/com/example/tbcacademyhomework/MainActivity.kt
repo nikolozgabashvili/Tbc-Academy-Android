@@ -16,12 +16,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         handleEdgeToEdge()
 
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, WelcomeFragment()).commit()
+
 
     }
 
     private fun handleEdgeToEdge() {
         enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
             val bottomPadding = if (imeInsets.bottom == 0) systemBars.bottom else imeInsets.bottom

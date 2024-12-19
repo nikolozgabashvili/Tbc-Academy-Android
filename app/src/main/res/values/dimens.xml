@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="corner_radius_large">100dp</dimen>
-    <dimen name="corner_radius_medium">50dp</dimen>
-    <dimen name="corner_radius_small">20dp</dimen>
-    <dimen name="corner_radius_extra_small">10dp</dimen>
+
+    <dimen name="base_margin">30dp</dimen>
 
     <dimen name="size1">1dp</dimen>
     <dimen name="size2">2dp</dimen>
@@ -33,6 +31,7 @@
     <dimen name="size46">46dp</dimen>
     <dimen name="size48">48dp</dimen>
     <dimen name="size50">50dp</dimen>
+    <dimen name="size58">58dp</dimen>
 
     <dimen name="textSize1">1sp</dimen>
     <dimen name="textSize2">2sp</dimen>
@@ -54,6 +53,8 @@
     <dimen name="textSize26">26sp</dimen>
     <dimen name="textSize28">28sp</dimen>
     <dimen name="textSize30">30sp</dimen>
+    <dimen name="textSize34">34sp</dimen>
+    <dimen name="textSize38">38sp</dimen>
 
 
 </resources>

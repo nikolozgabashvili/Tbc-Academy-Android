@@ -2,19 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_background">#E2E2E2</color>
-    <color name="text_error">#FF5454</color>
-
-    <color name="primary_button_color">#050505</color>
-    <color name="primary_button_text_color">#FFFFFF</color>
-
-
-    <color name="secondary_button_color">#6E6F6F</color>
-    <color name="secondary_button_text_color">#FFFFFF</color>
-
-
-    <color name="tertiary_button_color">#E0E0E0</color>
-    <color name="tertiary_button_text_color">#000000</color>
-
+    <color name="btn_outline">#D5D5D5</color>
+    <color name="black_light">#101010</color>
+    <color name="gray_dark">#393939</color>
+    <color name="text_gray">#9e9c9d</color>
+    <color name="input_gray">#339E9C9D</color>
 
 </resources>
