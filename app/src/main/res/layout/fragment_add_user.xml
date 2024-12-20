@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddUserFragment">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/base_margin"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_input"
+        android:hint="@string/first_name"
+        android:paddingHorizontal="@dimen/size10" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFirstNameError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_error"
+        android:textSize="@dimen/textSize12"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etLastName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/base_margin"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_input"
+        android:hint="@string/last_name"
+        android:paddingHorizontal="@dimen/size10" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLastNameError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_error"
+        android:textSize="@dimen/textSize12"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/base_margin"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_input"
+        android:hint="@string/email"
+        android:paddingHorizontal="@dimen/size10" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmailError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_error"
+        android:textSize="@dimen/textSize12"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etBirthday"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/base_margin"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_input"
+        android:hint="@string/birthday"
+        android:paddingHorizontal="@dimen/size10" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBirthdayError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_error"
+        android:textSize="@dimen/textSize12"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etAddress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/base_margin"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_input"
+        android:hint="@string/address"
+        android:paddingHorizontal="@dimen/size10" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddressError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_error"
+        android:textSize="@dimen/textSize12"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/base_margin"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_input"
+        android:hint="@string/description"
+        android:paddingHorizontal="@dimen/size10" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAdd"
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size10"
+        android:layout_marginTop="@dimen/size20"
+        android:text="@string/add"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

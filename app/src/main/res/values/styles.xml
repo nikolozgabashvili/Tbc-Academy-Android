@@ -6,15 +6,4 @@
         <item name="android:textColor">@color/primary_button_text_color</item>
     </style>
 
-
-    <style name="SecondaryButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/secondary_button_background</item>
-        <item name="android:textColor">@color/secondary_button_text_color</item>
-    </style>
-
-
-    <style name="TertiaryButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/tertiary_button_background</item>
-        <item name="android:textColor">@color/tertiary_button_text_color</item>
-    </style>
 </resources>
