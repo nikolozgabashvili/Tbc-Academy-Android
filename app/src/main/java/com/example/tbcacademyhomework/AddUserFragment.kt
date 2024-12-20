@@ -9,6 +9,8 @@ import androidx.core.widget.doOnTextChanged
 import com.example.tbcacademyhomework.SearchUserFragment.Companion.BUNDLE_KEY
 import com.example.tbcacademyhomework.SearchUserFragment.Companion.DESC_KEY
 import com.example.tbcacademyhomework.databinding.FragmentAddUserBinding
+import kotlin.math.absoluteValue
+import kotlin.random.Random
 
 
 class AddUserFragment : Fragment() {
@@ -53,6 +55,9 @@ class AddUserFragment : Fragment() {
             etBirthday.doOnTextChanged { _, _, _, _ ->
                 tvBirthdayError.isVisible(false)
             }
+            etDescription.doOnTextChanged { _, _, _, _ ->
+                tvDescError.isVisible(false)
+            }
         }
 
     }
@@ -79,6 +84,7 @@ class AddUserFragment : Fragment() {
             tvLastNameError.setError(lastNameNameValidation, requireContext())
             tvBirthdayError.setError(birthdayValidationResult, requireContext())
             tvAddressError.setError(addressValidationResult, requireContext())
+            tvDescError.setError(descriptionValidationResult, requireContext())
 
             if (emailValidationResult.isSuccess()
                 && firstNameValidation.isSuccess()
@@ -89,7 +95,7 @@ class AddUserFragment : Fragment() {
             ) {
                 val userAddResult = UserDatabase.addUser(
                     User(
-                        id = 0,
+                        id = Random.nextInt().absoluteValue,
                         firstName = firstName,
                         lastName = lastName,
                         email = email,

@@ -53,17 +53,19 @@ class SearchUserFragment : Fragment() {
         if (text.isBlank()) {
             binding.userDesc.text = ""
             binding.btnAddUser.isVisible(false)
-        }
-        val user = UserDatabase.getUser(text)
-
-        if (user == null) {
-            binding.userDesc.text = getString(R.string.user_not_found)
-            binding.btnAddUser.isVisible(true)
         } else {
-            binding.btnAddUser.isVisible(false)
-            println(user)
-            binding.userDesc.text = user.display()
+            val user = UserDatabase.getUser(text)
+
+            if (user == null) {
+                binding.userDesc.text = getString(R.string.user_not_found)
+                binding.btnAddUser.isVisible(true)
+            } else {
+                binding.btnAddUser.isVisible(false)
+                println(user)
+                binding.userDesc.text = user.display()
+            }
         }
+
     }
 
 

@@ -10,6 +10,7 @@
         android:id="@+id/etFirstName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size50"
+        android:inputType="text"
         android:layout_marginHorizontal="@dimen/base_margin"
         android:layout_marginTop="@dimen/size10"
         android:background="@drawable/bg_input"
@@ -20,6 +21,7 @@
         android:id="@+id/tvFirstNameError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/base_margin"
         android:textColor="@color/text_error"
         android:textSize="@dimen/textSize12"
         android:visibility="gone" />
@@ -28,6 +30,7 @@
         android:id="@+id/etLastName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size50"
+        android:inputType="text"
         android:layout_marginHorizontal="@dimen/base_margin"
         android:layout_marginTop="@dimen/size10"
         android:background="@drawable/bg_input"
@@ -38,6 +41,7 @@
         android:id="@+id/tvLastNameError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/base_margin"
         android:textColor="@color/text_error"
         android:textSize="@dimen/textSize12"
         android:visibility="gone" />
@@ -47,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size50"
         android:layout_marginHorizontal="@dimen/base_margin"
+        android:inputType="textEmailAddress"
         android:layout_marginTop="@dimen/size10"
         android:background="@drawable/bg_input"
         android:hint="@string/email"
@@ -56,6 +61,7 @@
         android:id="@+id/tvEmailError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/base_margin"
         android:textColor="@color/text_error"
         android:textSize="@dimen/textSize12"
         android:visibility="gone" />
@@ -66,6 +72,7 @@
         android:layout_height="@dimen/size50"
         android:layout_marginHorizontal="@dimen/base_margin"
         android:layout_marginTop="@dimen/size10"
+        android:inputType="number"
         android:background="@drawable/bg_input"
         android:hint="@string/birthday"
         android:paddingHorizontal="@dimen/size10" />
@@ -74,6 +81,7 @@
         android:id="@+id/tvBirthdayError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/base_margin"
         android:textColor="@color/text_error"
         android:textSize="@dimen/textSize12"
         android:visibility="gone" />
@@ -82,6 +90,7 @@
         android:id="@+id/etAddress"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size50"
+        android:inputType="text"
         android:layout_marginHorizontal="@dimen/base_margin"
         android:layout_marginTop="@dimen/size10"
         android:background="@drawable/bg_input"
@@ -92,6 +101,7 @@
         android:id="@+id/tvAddressError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/base_margin"
         android:textColor="@color/text_error"
         android:textSize="@dimen/textSize12"
         android:visibility="gone" />
@@ -101,10 +111,20 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size50"
         android:layout_marginHorizontal="@dimen/base_margin"
+        android:inputType="text"
         android:layout_marginTop="@dimen/size10"
         android:background="@drawable/bg_input"
         android:hint="@string/description"
         android:paddingHorizontal="@dimen/size10" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/base_margin"
+        android:textColor="@color/text_error"
+        android:textSize="@dimen/textSize12"
+        android:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAdd"

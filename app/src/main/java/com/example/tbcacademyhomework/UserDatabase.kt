@@ -63,7 +63,7 @@ object UserDatabase {
     fun getUser(field: String): User? {
         val user = with(users) {
             find {
-                field.lowercase() == it.firstName.lowercase() || field.lowercase() == it.lastName.lowercase() || field.lowercase() == it.email.lowercase() || field.lowercase() == it.birthday.toLong()
+                field.lowercase() == it.firstName.lowercase() || field.lowercase() == it.lastName.lowercase() || field.lowercase() == it.address || field.lowercase() == it.email.lowercase() || field.lowercase() == it.birthday.toLong()
                     .toFormattedDate()
                     .lowercase() || field.lowercase() == it.desc?.lowercase()
             }
