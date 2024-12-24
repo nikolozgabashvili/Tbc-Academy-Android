@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_margin="@dimen/size24"
+        android:layout_marginVertical="@dimen/size24"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatImageView
