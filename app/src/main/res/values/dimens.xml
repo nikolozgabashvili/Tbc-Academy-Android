@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="corner_radius_large">100dp</dimen>
-    <dimen name="corner_radius_medium">50dp</dimen>
-    <dimen name="corner_radius_small">20dp</dimen>
-    <dimen name="corner_radius_extra_small">10dp</dimen>
+
 
     <dimen name="size1">1dp</dimen>
     <dimen name="size2">2dp</dimen>
