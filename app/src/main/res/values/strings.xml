@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="category_all">ALL</string>
+    <string name="category_party">🎉  Party</string>
+    <string name="category_camping">🏕️  Camping</string>
+    <string name="category_category1">🖊️  Category</string>
+    <string name="category_category2">Category2</string>
+    <string name="category_category3">Category3</string>
+
 </resources>

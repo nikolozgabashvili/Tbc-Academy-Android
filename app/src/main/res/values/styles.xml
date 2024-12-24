@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="category_selected">
+        <item name="android:background">@drawable/bg_category_selected</item>
+        <item name="android:theme">@style/category_selected_textview</item>
+
+    </style>
+
+    <style name="category">
+        <item name="android:background">@drawable/bg_category</item>
+        <item name="android:theme">@style/category_textview</item>
+    </style>
+
+    <style name="category_selected_textview">
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:fontFamily">@font/sf_pro_display</item>
+    </style>
+    <style name="category_textview">
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:fontFamily">@font/sf_pro_display</item>
+    </style>
+
+
+
 
 </resources>
