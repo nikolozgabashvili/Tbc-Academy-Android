@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.ItemCategoryBinding
 
-class CategoryAdapter(private val categories: List<Category>) :
+class CategoryAdapter(private val categories: List<CategoryType>) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     var selectedCategory = CategoryType.ALL
@@ -36,8 +36,8 @@ class CategoryAdapter(private val categories: List<Category>) :
         fun bind(position: Int) {
             val category = categories[position]
             with(binding) {
-                val isSelected = category.type == selectedCategory
-                tvCategory.text = category.displayName
+                val isSelected = category == selectedCategory
+                tvCategory.text = root.context.getString(category.displayName)
                 root.setBackgroundResource(
                     if (isSelected) R.drawable.bg_category_selected
                     else R.drawable.bg_category
@@ -48,10 +48,10 @@ class CategoryAdapter(private val categories: List<Category>) :
                     )
                 )
                 root.setOnClickListener {
-                    if (selectedCategory != category.type) {
-                        notifyItemChanged(categories.indexOfFirst { it.type == category.type })
-                        notifyItemChanged(categories.indexOfFirst { it.type == selectedCategory })
-                        selectedCategory = category.type
+                    if (selectedCategory != category) {
+                        notifyItemChanged(categories.indexOfFirst { it == category })
+                        notifyItemChanged(categories.indexOfFirst { it == selectedCategory })
+                        selectedCategory = category
                         listener?.invoke(selectedCategory)
                     }
 

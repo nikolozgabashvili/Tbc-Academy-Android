@@ -41,11 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpCategoriesRecycler() {
-        val categoryList = CategoryType.entries.map {
-            Category(
-                type = it, displayName = getString(it.displayName)
-            )
-        }
+        val categoryList = CategoryType.entries
         categoryAdapter = CategoryAdapter(categoryList)
         binding.rvCategory.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
