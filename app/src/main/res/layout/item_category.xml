@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/size52"
+    android:layout_marginHorizontal="@dimen/size10"
+    android:background="@drawable/bg_category"
+    tools:ignore="UselessParent">
 
-    <FrameLayout
-        android:id="@+id/frameCategory"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/size52"
-        android:layout_marginHorizontal="@dimen/size10"
-        android:background="@drawable/bg_category"
-        tools:ignore="UselessParent">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="@dimen/size24"
-            android:textColor="@color/text_gray"
-            tools:text="🎉  Party" />
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/size24"
+        android:textColor="@color/text_gray"
+        tools:text="🎉  Party" />
 </FrameLayout>
+
 

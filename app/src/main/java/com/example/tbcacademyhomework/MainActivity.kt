@@ -35,14 +35,6 @@ class MainActivity : AppCompatActivity() {
     private fun setUpProductRecycler() {
         val products = productDatabase.products
         val gridLayoutManager = GridLayoutManager(this, 2)
-//        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-//            override fun getSpanSize(position: Int): Int {
-//                return if (position < 2) {
-//                    1
-//                } else 2
-//            }
-//
-//        }
         productAdapter = ProductAdapter(products)
         binding.rvProduct.layoutManager = gridLayoutManager
         binding.rvProduct.adapter = productAdapter
@@ -62,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         categoryAdapter.onClickListener {
             val newList = productDatabase.getProductsByCategory(it)
             productAdapter.updateList(newList)
-
         }
 
     }

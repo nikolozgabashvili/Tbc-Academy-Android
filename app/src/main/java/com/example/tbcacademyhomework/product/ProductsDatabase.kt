@@ -27,19 +27,31 @@ class ProductsDatabase {
         Product(
             image = R.drawable.product4,
             title = "product 4",
-            price = "$100",
+            price = "$120",
             categoryType = CategoryType.PARTY
         ),
         Product(
             image = R.drawable.product3,
             title = "other product",
+            price = "$130",
+            categoryType = CategoryType.CAMPING
+        ),
+        Product(
+            image = R.drawable.product1,
+            title = "product product",
             price = "$100",
             categoryType = CategoryType.CAMPING
         ),
         Product(
-            image = R.drawable.product4,
-            title = "produuuct 4",
-            price = "$100",
+            image = R.drawable.product2,
+            title = "random product ",
+            price = "$200",
+            categoryType = CategoryType.CATEGORY2
+        ),
+        Product(
+            image = R.drawable.product3,
+            title = "kai product",
+            price = "$300",
             categoryType = CategoryType.CATEGORY1
         )
     )
