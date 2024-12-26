@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/size10"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/size20"
+    app:cardElevation="@dimen/size1"
+    app:strokeColor="@color/card_stroke_color"
+    app:strokeWidth="@dimen/size1">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rBtnSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size20"
+            android:layout_marginTop="@dimen/size12"
+            android:clickable="false"
+            app:buttonTint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size18"
+            app:layout_constraintStart_toEndOf="@id/rBtnSelect"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_house" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSendTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size18"
+            android:layout_marginTop="@dimen/size18"
+            android:text="@string/send_to"
+            android:textColor="@color/text_neutral2"
+            android:textSize="@dimen/textSize12"
+            app:fontFamily="sans-serif-light"
+            app:layout_constraintStart_toEndOf="@id/ivLocation"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddressName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size18"
+            android:layout_marginTop="@dimen/size3"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize14"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintEnd_toStartOf="@+id/tvEdit"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/ivLocation"
+            app:layout_constraintTop_toBottomOf="@id/tvSendTo"
+            tools:text="My home" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size18"
+            android:layout_marginEnd="@dimen/size22"
+            android:enabled="false"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/edit"
+            android:textColor="@color/text_red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@id/tvSendTo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size18"
+            android:layout_marginBottom="@dimen/size20"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:maxLines="2"
+            android:textColor="@color/text_neutral4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvEdit"
+            app:layout_constraintStart_toStartOf="@+id/ivLocation"
+            app:layout_constraintTop_toBottomOf="@id/tvAddressName"
+            tools:text="SBI Building, street 3, Software Park" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

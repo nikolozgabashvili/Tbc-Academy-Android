@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="edit"><u>Edit</u></string>
+    <string name="send_to">SEND TO</string>
+    <string name="add_new_address">Add new address</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="add_address">Add address</string>
+    <string name="empty_field_error">field must not me empty</string>
 </resources>

@@ -4,7 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_background">#E2E2E2</color>
     <color name="text_error">#FF5454</color>
-
+    <color name="text_neutral2">#23262F</color>
+    <color name="text_neutral4">#777E90</color>
+    <color name="card_stroke_color">#F4F4F4</color>
+    <color name="card_stroke_color_darker">#646464</color>
+    <color name="text_red">#F80000</color>
+    <color name="btn_gray">#343434</color>
 
 
 </resources>
