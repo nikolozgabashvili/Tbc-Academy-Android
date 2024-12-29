@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.tbcacademyhomework
 
 import android.os.Build
@@ -17,7 +15,7 @@ import com.example.tbcacademyhomework.order.StatusAdapter
 import com.example.tbcacademyhomework.order.StatusDatabase
 import java.util.UUID
 
-
+@Suppress("DEPRECATION")
 class OrderListFragment : Fragment() {
     private var _binding: FragmentOrderListBinding? = null
     private val binding get() = _binding!!
