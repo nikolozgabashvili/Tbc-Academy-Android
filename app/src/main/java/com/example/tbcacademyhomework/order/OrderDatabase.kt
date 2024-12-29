@@ -1,7 +1,6 @@
 package com.example.tbcacademyhomework.order
 
 import java.util.Calendar
-import java.util.Locale
 import java.util.UUID
 
 class OrderDatabase {
@@ -16,28 +15,28 @@ class OrderDatabase {
         ),
         Order(
             orderNumber = 1023,
-            trackingNumber = "IK23452354",
-            quantity = 2,
+            trackingNumber = "IM23455354",
+            quantity = 1,
             subtotal = 12,
             orderTime = calendar.apply { set(2024, 11, 20) }.timeInMillis,
         ),
         Order(
             orderNumber = 1023,
-            trackingNumber = "IK23452354",
-            quantity = 2,
+            trackingNumber = "IK23443354",
+            quantity = 3,
             subtotal = 43,
             orderTime = calendar.apply { set(2024, 11, 19) }.timeInMillis,
         ),
         Order(
             orderNumber = 1023,
-            trackingNumber = "IK23452354",
+            trackingNumber = "IK23123354",
             quantity = 2,
             subtotal = 12,
             orderTime = calendar.apply { set(2024, 11, 12) }.timeInMillis,
         ),
         Order(
-            orderNumber = 1023,
-            trackingNumber = "IK23452354",
+            orderNumber = 103,
+            trackingNumber = "IK243254",
             quantity = 2,
             subtotal = 26,
             orderTime = calendar.apply { set(2024, 10, 30) }.timeInMillis,
@@ -45,7 +44,28 @@ class OrderDatabase {
         Order(
             orderNumber = 1023,
             trackingNumber = "IK23452354",
+            quantity = 1,
+            subtotal = 45,
+            orderTime = calendar.apply { set(2024, 11, 20) }.timeInMillis,
+        ),
+        Order(
+            orderNumber = 1023,
+            trackingNumber = "IK23123354",
             quantity = 2,
+            subtotal = 12,
+            orderTime = calendar.apply { set(2024, 11, 12) }.timeInMillis,
+        ),
+        Order(
+            orderNumber = 103,
+            trackingNumber = "IK243254",
+            quantity = 2,
+            subtotal = 26,
+            orderTime = calendar.apply { set(2024, 10, 30) }.timeInMillis,
+        ),
+        Order(
+            orderNumber = 1023,
+            trackingNumber = "IK23452354",
+            quantity = 1,
             subtotal = 45,
             orderTime = calendar.apply { set(2024, 11, 20) }.timeInMillis,
         ),

@@ -13,6 +13,8 @@ import com.example.tbcacademyhomework.databinding.FragmentOrderListBinding
 import com.example.tbcacademyhomework.order.OrderAdapter
 import com.example.tbcacademyhomework.order.OrderDatabase
 import com.example.tbcacademyhomework.order.OrderStatus
+import com.example.tbcacademyhomework.order.StatusAdapter
+import com.example.tbcacademyhomework.order.StatusDatabase
 import java.util.UUID
 
 
@@ -22,6 +24,8 @@ class OrderListFragment : Fragment() {
 
     private val orderDatabase by lazy { OrderDatabase() }
     private val orderAdapter by lazy { OrderAdapter() }
+    private val statusAdapter by lazy { StatusAdapter() }
+    private val statusDatabase by lazy { StatusDatabase() }
     private var activeFilter: OrderStatus = OrderStatus.PENDING
 
 
@@ -30,18 +34,32 @@ class OrderListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentOrderListBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initFilterButtons()
         initRecycler()
+        initStatusRecycler()
         setupResultListener()
 
 
+    }
+
+    private fun initStatusRecycler() {
+        with(binding) {
+            rvStatus.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            rvStatus.adapter = statusAdapter
+
+            statusAdapter.onClick { orderId ->
+                statusDatabase.getStatusById(orderId)?.let { status ->
+                    activeFilter = status
+                    updateUi()
+                }
+            }
+        }
     }
 
     private fun setupResultListener() {
@@ -69,39 +87,9 @@ class OrderListFragment : Fragment() {
         }
     }
 
-    private fun initFilterButtons() {
-        with(binding) {
-
-            btnPending.setOnClickListener {
-                if (activeFilter != OrderStatus.PENDING) {
-                    activeFilter = OrderStatus.PENDING
-                    updateUi()
-                }
-            }
-
-            btnDelivered.setOnClickListener {
-                if (activeFilter != OrderStatus.DELIVERED) {
-                    activeFilter = OrderStatus.DELIVERED
-                    updateUi()
-                }
-            }
-
-            btnCancelled.setOnClickListener {
-                if (activeFilter != OrderStatus.CANCELLED) {
-                    activeFilter = OrderStatus.CANCELLED
-                    updateUi()
-                }
-            }
-        }
-    }
-
     private fun updateUi() {
-        with(binding) {
-            btnPending.isSelected(activeFilter == OrderStatus.PENDING)
-            btnCancelled.isSelected(activeFilter == OrderStatus.CANCELLED)
-            btnDelivered.isSelected(activeFilter == OrderStatus.DELIVERED)
-            orderAdapter.submitList(orderDatabase.getOrdersByStatus(activeFilter))
-        }
+        statusAdapter.submitList(statusDatabase.getStatuses(activeFilter))
+        orderAdapter.submitList(orderDatabase.getOrdersByStatus(activeFilter))
 
     }
 
@@ -112,7 +100,6 @@ class OrderListFragment : Fragment() {
 
         orderAdapter.onDetailsClick { orderId ->
             navigateToDetails(orderId)
-
         }
     }
 
@@ -125,10 +112,10 @@ class OrderListFragment : Fragment() {
 
             parentFragmentManager.beginTransaction().replace(
                 R.id.fragmentContainer, OrderDetailsFragment.newInstance(
-                    orderId,
-                    orderNumber,
-                    trackingNumber,
-                    orderStatus
+                    orderId = orderId,
+                    orderNumber = orderNumber,
+                    trackingNumber = trackingNumber,
+                    status = orderStatus
                 )
             ).addToBackStack(null).commit()
 
