@@ -62,4 +62,8 @@ class OrderDatabase {
     fun getOrdersByStatus(status: OrderStatus): List<Order> {
         return orders.filter { it.status == status }
     }
+
+    fun getById(id: UUID): Order? {
+        return orders.find { it.id == id }
+    }
 }
