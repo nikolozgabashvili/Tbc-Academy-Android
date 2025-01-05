@@ -4,7 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_background">#E2E2E2</color>
     <color name="text_error">#FF5454</color>
-
+    <color name="neutrals7">#F4F5F6</color>
+    <color name="neutrals8">#FCFCFD</color>
+    <color name="chat_self">#E6E8EC</color>
+    <color name="text_gray">#66000000</color>
+    <color name="divider">#40000000</color>
+    <color name="input">#F4F5F6</color>
 
 
 </resources>

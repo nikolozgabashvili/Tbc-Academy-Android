@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTailStart"
+        android:layout_width="@dimen/size46"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size4"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/frameMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_tail_start" />
+
+    <FrameLayout
+
+        android:id="@+id/frameMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size16"
+        android:layout_marginTop="@dimen/size40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/size50"
+            android:background="@drawable/bg_chat_other"
+            android:gravity="center_vertical"
+            android:paddingVertical="@dimen/size15"
+            android:paddingStart="@dimen/size20"
+            android:paddingEnd="@dimen/size25"
+            android:textColor="@color/black"
+            tools:text="Hi! I have a question about my order" />
+    </FrameLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size8"
+        android:layout_marginTop="@dimen/size7"
+        android:layout_marginBottom="@dimen/size40"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/textSize12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frameMessage"
+        tools:text="Today, 7:02pm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

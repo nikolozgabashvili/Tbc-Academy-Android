@@ -1,11 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBack"
+        android:layout_width="@dimen/size36"
+        android:layout_height="@dimen/size36"
+        android:layout_marginStart="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/size36"
+        app:cardElevation="@dimen/size10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:src="@drawable/ic_back" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivUser"
+        android:layout_width="@dimen/size36"
+        android:layout_height="@dimen/size36"
+        android:layout_marginStart="@dimen/size34"
+        android:background="@drawable/bg_user"
+        android:padding="@dimen/size4"
+        android:src="@drawable/ic_user"
+        app:layout_constraintBottom_toBottomOf="@id/cardBack"
+        app:layout_constraintStart_toEndOf="@id/cardBack"
+        app:layout_constraintTop_toTopOf="@id/cardBack" />
+
+    <View
+        android:layout_width="@dimen/size12"
+        android:layout_height="@dimen/size10"
+        android:background="@drawable/shape_status"
+        app:layout_constraintBottom_toBottomOf="@id/ivUser"
+        app:layout_constraintEnd_toEndOf="@id/ivUser" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size12"
+        android:text="@string/admin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize16"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvUserStatus"
+        app:layout_constraintStart_toEndOf="@id/ivUser"
+        app:layout_constraintTop_toTopOf="@id/ivUser"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUserStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/online"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize12"
+        app:layout_constraintBottom_toBottomOf="@id/ivUser"
+        app:layout_constraintStart_toStartOf="@id/tvUserName"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size30"
+        app:layout_constraintBottom_toBottomOf="@id/cardBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cardBack"
+        app:srcCompat="@drawable/sharp_more_vert_24" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size1"
+        android:layout_marginTop="@dimen/size31"
+        app:dividerColor="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/ivUser" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/size10"
+        android:paddingHorizontal="@dimen/size10"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/neutrals8"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size30"
+            android:layout_marginTop="@dimen/size20"
+            android:layout_marginEnd="@dimen/size20"
+            android:layout_marginBottom="@dimen/size40"
+            android:layout_weight="1"
+            android:background="@drawable/bg_input"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/input_hint"
+            android:minHeight="@dimen/size45"
+            android:paddingHorizontal="@dimen/size10"
+            android:paddingVertical="@dimen/size15"
+            android:textSize="@dimen/textSize12" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="@dimen/size45"
+            android:layout_height="@dimen/size45"
+
+            android:layout_marginTop="@dimen/size20"
+            android:layout_marginEnd="@dimen/size10"
+            android:layout_marginBottom="@dimen/size40"
+            android:background="@drawable/bg_send_btn"
+            android:src="@drawable/ic_send" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
