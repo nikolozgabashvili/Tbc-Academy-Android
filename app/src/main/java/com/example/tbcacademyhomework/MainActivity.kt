@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        handleEdgeToEdge()
         setContentView(binding.root)
 
         setupMessagesRecycler()
@@ -63,5 +64,19 @@ class MainActivity : AppCompatActivity() {
         messagesAdapter.submitList(messagesDatabase.getMessages())
     }
 
-
+    private fun handleEdgeToEdge() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val bottomPadding = if (imeInsets.bottom == 0) systemBars.bottom else imeInsets.bottom
+            view.updatePadding(
+                left = systemBars.left,
+                top = systemBars.top,
+                right = systemBars.right,
+                bottom = bottomPadding
+            )
+            insets
+        }
+    }
 }
