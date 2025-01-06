@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/size50"
+    android:layout_height="@dimen/size50"
+    android:layout_margin="@dimen/size2"
+    android:background="@color/black"
+    android:padding="@dimen/size2"
+    android:scaleType="fitCenter"
+    tools:src="@drawable/img_player1">
+
+</androidx.appcompat.widget.AppCompatImageButton>
