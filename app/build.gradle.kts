@@ -1,9 +1,9 @@
-import com.android.utils.TraceUtils.simpleId
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    id(libs.plugins.safeArgs.get().pluginId)
 }
 
 android {
