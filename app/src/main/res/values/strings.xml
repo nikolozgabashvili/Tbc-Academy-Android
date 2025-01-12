@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="my_orders">My Orders</string>
+    <string name="active">Active</string>
+    <string name="completed">Completed</string>
+    <string name="divider">|</string>
+    <string name="price">$%1$s</string>
+    <string name="qty">Qty = %1$s</string>
+    <string name="in_delivery">In Delivery</string>
+    <string name="track_order">Track Order</string>
+    <string name="leave_review">Leave Review</string>
+    <string name="buy_again">Buy Again</string>
+    <string name="how_is_your_order">How is your order?</string>
+    <string name="please_give_your_rating_amp_also_your_review"><![CDATA[Please give your rating & also your review]]></string>
+    <string name="write_review_here">write review here</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="blue_gray">Blue Gray</string>
+    <string name="black">Black</string>
+    <string name="brown">Brown</string>
+    <string name="leave_a_review">Leave a Review</string>
 </resources>

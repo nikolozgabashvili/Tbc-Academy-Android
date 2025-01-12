@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottomsheet_shape">
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="@dimen/size40"
+        android:layout_height="@dimen/size3"
+        android:layout_marginTop="@dimen/size10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:text="@string/leave_a_review"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/titleDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size2"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        app:layout_constraintTop_toBottomOf="@id/tvReview" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginVertical="@dimen/size20"
+        android:background="@drawable/bg_order_item_bottomsheet"
+        android:padding="@dimen/size10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleDivider">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivProduct"
+            android:layout_width="@dimen/size100"
+            android:layout_height="@dimen/size100"
+            android:background="@drawable/bg_order_img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/img_product4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size20"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize16"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/vProductColor"
+            app:layout_constraintStart_toEndOf="@id/ivProduct"
+            app:layout_constraintTop_toTopOf="@id/ivProduct"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:text="Modern wingback" />
+
+
+        <View
+            android:id="@+id/vProductColor"
+            android:layout_width="@dimen/size16"
+            android:layout_height="@dimen/size16"
+            android:background="@drawable/bg_round"
+            app:layout_constraintBottom_toTopOf="@id/tvStatus"
+            app:layout_constraintStart_toEndOf="@id/ivProduct"
+            app:layout_constraintStart_toStartOf="@id/tvProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvProductName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvColorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size6"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintBottom_toBottomOf="@id/vProductColor"
+            app:layout_constraintStart_toEndOf="@id/vProductColor"
+            app:layout_constraintTop_toTopOf="@id/vProductColor"
+            tools:text="Black" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDivider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size6"
+            android:text="@string/divider"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintBottom_toBottomOf="@id/tvColorName"
+            app:layout_constraintStart_toEndOf="@id/tvColorName"
+            app:layout_constraintTop_toTopOf="@id/tvColorName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size6"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintBottom_toBottomOf="@id/tvDivider"
+            app:layout_constraintStart_toEndOf="@id/tvDivider"
+            app:layout_constraintTop_toTopOf="@id/tvDivider"
+            tools:text="Qty = 2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_order_status"
+            android:paddingHorizontal="@dimen/size10"
+            android:paddingVertical="@dimen/size4"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize10"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvPrice"
+            app:layout_constraintStart_toEndOf="@id/ivProduct"
+            app:layout_constraintStart_toStartOf="@id/vProductColor"
+            app:layout_constraintTop_toBottomOf="@id/vProductColor"
+            tools:text="Completed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivProduct"
+            app:layout_constraintStart_toStartOf="@id/tvStatus"
+            app:layout_constraintTop_toBottomOf="@id/tvStatus"
+            tools:text="$280.00" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/itemDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size2"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        app:layout_constraintTop_toBottomOf="@id/vItem" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:text="@string/how_is_your_order"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemDivider" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:text="@string/please_give_your_rating_amp_also_your_review"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv1" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/CustomRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:backgroundTint="@color/white"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv2" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etReview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        android:background="@drawable/bg_input_outlined"
+        android:drawableEnd="@drawable/image"
+        android:hint="@string/write_review_here"
+        android:paddingHorizontal="@dimen/size20"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/inputDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size2"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        app:layout_constraintTop_toBottomOf="@id/etReview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancel"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        android:background="@drawable/bg_btn_dark"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/btnSubmit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputDivider" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size50"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        android:background="@drawable/bg_btn_light"
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnCancel"
+        app:layout_constraintTop_toBottomOf="@id/inputDivider" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size20"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSubmit" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

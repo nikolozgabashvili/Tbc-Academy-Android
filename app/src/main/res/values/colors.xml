@@ -2,8 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_background">#E2E2E2</color>
+    <color name="hint">#A2A2A2</color>
+    <color name="app_background">#181a20</color>
     <color name="text_error">#FF5454</color>
+    <color name="blue_gray">#60798c</color>
+    <color name="blue_gray_darker">#1f222a</color>
+    <color name="blue_gray_lighter">#35383F</color>
+    <color name="brown">#785746</color>
+
 
 
 
