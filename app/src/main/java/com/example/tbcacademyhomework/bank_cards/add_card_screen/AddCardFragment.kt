@@ -57,8 +57,7 @@ class AddCardFragment : BaseFragment<FragmentAddCardBinding>(FragmentAddCardBind
                 val input = text.toString().replace("/", "")
                 val formatted = when {
                     input.length <= 2 -> input
-                    input.length <= 4 -> "${input.substring(0, 2)}/${input.substring(2)}"
-                    else -> "${input.substring(0, 2)}/${input.substring(2, 4)}"
+                    else -> "${input.substring(0, 2)}/${input.substring(2)}"
                 }
                 if (formatted != text.toString()) {
                     etExpireDate.setText(formatted)
