@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/black">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCardIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/size48"
+            android:layout_marginTop="@dimen/size22"
+            android:layout_marginEnd="@dimen/size20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_visa" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardNumber1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size16"
+            android:layout_marginTop="@dimen/size45"
+            android:fontFamily="@font/mulish_light"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCardIcon"
+            tools:text="1234" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardNumber2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size16"
+            android:fontFamily="@font/mulish_light"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20"
+            app:layout_constraintBottom_toBottomOf="@id/tvCardNumber1"
+            app:layout_constraintStart_toEndOf="@id/tvCardNumber1"
+            app:layout_constraintTop_toTopOf="@id/tvCardNumber1"
+            tools:text="5678" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardNumber3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size16"
+            android:fontFamily="@font/mulish_light"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20"
+            app:layout_constraintBottom_toBottomOf="@id/tvCardNumber2"
+            app:layout_constraintStart_toEndOf="@id/tvCardNumber2"
+            app:layout_constraintTop_toTopOf="@id/tvCardNumber2"
+            tools:text="5678" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardNumber4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size16"
+            android:fontFamily="@font/mulish_light"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20"
+            app:layout_constraintBottom_toBottomOf="@id/tvCardNumber3"
+            app:layout_constraintStart_toEndOf="@id/tvCardNumber3"
+            app:layout_constraintTop_toTopOf="@id/tvCardNumber3"
+            tools:text="5678" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardHolderNameKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size16"
+            android:layout_marginTop="@dimen/size22"
+            android:fontFamily="@font/mulish_extra_bold"
+            android:text="@string/cardholder_name"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCardNumber1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardHolderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size5"
+            android:fontFamily="@font/mulish_semi_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize11"
+            app:layout_constraintStart_toStartOf="@id/tvCardHolderNameKey"
+            app:layout_constraintTop_toBottomOf="@id/tvCardHolderNameKey"
+            tools:text="@string/cardholder_name" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvValidDateKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size16"
+            android:fontFamily="@font/mulish_extra_bold"
+            android:text="@string/valid_thru"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCardNumber1"
+            app:layout_constraintTop_toTopOf="@id/tvCardHolderNameKey" />
+
+        <Space
+            android:layout_width="@dimen/size32"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@id/tvCardNumber4"
+            app:layout_constraintTop_toTopOf="@id/tvCardNumber4" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size26"
+            app:layout_constraintStart_toStartOf="@id/tvCardHolderName"
+            app:layout_constraintTop_toBottomOf="@id/tvCardHolderName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvValidDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size5"
+            android:fontFamily="@font/mulish_semi_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize11"
+            app:layout_constraintEnd_toEndOf="@id/tvValidDateKey"
+            app:layout_constraintTop_toBottomOf="@id/tvValidDateKey"
+            tools:text="@string/cardholder_name" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>

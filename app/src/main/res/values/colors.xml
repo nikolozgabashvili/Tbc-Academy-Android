@@ -4,7 +4,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_background">#E2E2E2</color>
     <color name="text_error">#FF5454</color>
-
+    <color name="mastercard_top">#F2994A</color>
+    <color name="mastercard_bot">#F2C94C</color>
+    <color name="visa_top">#57ADF4</color>
+    <color name="visa_bot">#09A3C5</color>
+    <color name="red">#ED0006</color>
+    <color name="input">#FCFCFC</color>
+    <color name="input_header">#7A869A99</color>
+    <color name="input_text">#172B4D</color>
+    <color name="button_primary">#343434</color>
 
 
 </resources>

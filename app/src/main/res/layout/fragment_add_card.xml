@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/size24"
+    android:scrollbars="none"
+    tools:context=".bank_cards.add_card_screen.AddCardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10">
+
+        <include
+            android:id="@+id/btnBack"
+            layout="@layout/back_btn"
+            android:layout_width="@dimen/size32"
+            android:layout_height="@dimen/size32"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/size8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/size50"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/add_new_card"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.example.tbcacademyhomework.bank_cards.view.BankCardView
+            android:id="@+id/bankCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size40"
+            app:layout_constraintTop_toBottomOf="@id/btnBack" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10"
+            android:checkedButton="@id/rbMastercard"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bankCardView">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbMastercard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mastercard"
+                app:buttonTint="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbVisa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size20"
+                android:text="@string/visa"
+                app:buttonTint="@color/black" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardHolderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10"
+            android:fontFamily="@font/poppins_normal"
+            android:text="@string/cardholder_name"
+            android:textColor="@color/input_header"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etCardHolder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            android:layout_marginTop="@dimen/size11"
+            android:background="@drawable/bg_input"
+            android:inputType="textNoSuggestions"
+            android:hint="@string/cardholder_name"
+            android:paddingHorizontal="@dimen/size16"
+            android:textColor="@color/input_text"
+            android:textSize="@dimen/textSize14"
+            app:layout_constraintTop_toBottomOf="@id/tvCardHolderName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size50"
+            android:fontFamily="@font/poppins_normal"
+            android:text="@string/card_number"
+            android:textColor="@color/input_header"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCardHolder" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etCardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            android:layout_marginTop="@dimen/size11"
+            android:background="@drawable/bg_input"
+            android:hint="@string/card_number_placeholder"
+            android:inputType="textNoSuggestions|number"
+            android:maxLength="16"
+            android:paddingHorizontal="@dimen/size16"
+            android:textColor="@color/input_text"
+            android:textSize="@dimen/textSize14"
+            app:layout_constraintTop_toBottomOf="@id/tvCardNumber" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvExpires"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size50"
+            android:fontFamily="@font/poppins_normal"
+            android:text="@string/expires"
+            android:textColor="@color/input_header"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCardNumber" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etExpireDate"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size42"
+            android:layout_marginTop="@dimen/size11"
+            android:layout_marginEnd="@dimen/size30"
+            android:background="@drawable/bg_input"
+            android:hint="@string/date_placeholder"
+            android:inputType="number"
+            android:maxLength="5"
+            android:paddingHorizontal="@dimen/size16"
+            android:textColor="@color/input_text"
+            android:textSize="@dimen/textSize14"
+            app:layout_constraintEnd_toStartOf="@+id/etCVV"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvExpires" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCvv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size50"
+            android:fontFamily="@font/poppins_normal"
+            android:text="@string/cvv"
+            android:textColor="@color/input_header"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintStart_toStartOf="@id/etCVV"
+            app:layout_constraintTop_toBottomOf="@id/etCardNumber" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etCVV"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size42"
+            android:layout_marginTop="@dimen/size11"
+            android:background="@drawable/bg_input"
+            android:hint="@string/cvv"
+            android:inputType="number"
+            android:maxLength="3"
+            android:paddingHorizontal="@dimen/size16"
+            android:textColor="@color/input_text"
+            android:textSize="@dimen/textSize14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/etExpireDate"
+            app:layout_constraintTop_toBottomOf="@id/tvExpires" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size40"
+            android:background="@drawable/bg_btn_add"
+            android:paddingHorizontal="@dimen/size60"
+            android:text="@string/add_card"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCVV" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size10"
+            app:layout_constraintTop_toBottomOf="@id/btnAddCard" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

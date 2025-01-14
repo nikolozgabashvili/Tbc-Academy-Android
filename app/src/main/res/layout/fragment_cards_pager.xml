@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".bank_cards.cards_pager_screen.CardsPagerFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size20"
+        android:text="@string/payment"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize20"
+        android:textStyle="bold" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size30"
+        android:layout_marginTop="@dimen/size48"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_management"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize18" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="@string/add_new"
+            android:textAllCaps="false"
+            android:textColor="@color/red"
+            android:textSize="@dimen/textSize14" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size40"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/size16"
+        android:paddingEnd="@dimen/size32" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

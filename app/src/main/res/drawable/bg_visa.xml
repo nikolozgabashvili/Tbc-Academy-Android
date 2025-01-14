@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:endColor="@color/visa_bot"
+                android:startColor="@color/visa_top" />
+
+            <corners android:radius="@dimen/size10" />
+        </shape>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/img_visa_bg" />
+    </item>
+</layer-list>
