@@ -2,7 +2,6 @@ package com.example.tbcacademyhomework.bank_cards.cards_pager_screen
 
 import androidx.lifecycle.ViewModel
 import com.example.tbcacademyhomework.bank_cards.BankCard
-import com.example.tbcacademyhomework.bank_cards.BankCardType
 
 class CardsPagerViewModel : ViewModel() {
 

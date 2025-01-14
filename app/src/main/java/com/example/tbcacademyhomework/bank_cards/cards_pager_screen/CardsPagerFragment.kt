@@ -4,7 +4,6 @@ import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -14,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.bank_cards.BankCard
 import com.example.tbcacademyhomework.bank_cards.CardsAdapter
-import com.example.tbcacademyhomework.bank_cards.add_card_screen.AddCardFragment
-import com.example.tbcacademyhomework.bank_cards.delete_card.DeleteCardBottomSheet
 import com.example.tbcacademyhomework.bank_cards.delete_card.DeleteCardBottomSheet.Companion.REMOVE_CARD_KEY
 import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentCardsPagerBinding
@@ -39,6 +36,28 @@ class CardsPagerFragment :
 
     }
 
+    private fun initListeners() {
+        setFragmentResultListener(REQUEST_KEY) { _, bundle ->
+            getCard(bundle)
+        }
+
+        setFragmentResultListener(REMOVE_CARD_REQUEST_KEY) { _, bundle ->
+            removeCard(bundle)
+        }
+
+        binding.btnAddCard.setOnClickListener {
+            navController.navigate(CardsPagerFragmentDirections.actionCardsPagerFragmentToAddCardFragment())
+        }
+
+        viewPagerAdapter.onDataCommitListener {
+            binding.vpCards.apply {
+                post {
+                    currentItem = 0
+                }
+            }
+
+        }
+    }
 
     private fun setupPager() {
 
@@ -68,36 +87,9 @@ class CardsPagerFragment :
 
     }
 
-    private fun initListeners() {
-        setFragmentResultListener(REQUEST_KEY) { _, bundle ->
-            getCard(bundle)
-        }
 
-        setFragmentResultListener(REMOVE_CARD_REQUEST_KEY) { _, bundle ->
-            removeCard(bundle)
-        }
 
-        binding.btnAddCard.setOnClickListener {
-            navController.navigate(CardsPagerFragmentDirections.actionCardsPagerFragmentToAddCardFragment())
-        }
 
-        viewPagerAdapter.onDataCommitListener {
-            binding.vpCards.apply {
-                post {
-                    currentItem = 0
-                }
-            }
-
-        }
-    }
-
-    private fun removeCard(bundle: Bundle) {
-        val cardId = bundle.getString(REMOVE_CARD_KEY)
-        cardId?.let {
-            viewModel.removeCard(it)
-            viewPagerAdapter.submitList(viewModel.getCards())
-        }
-    }
 
     @Suppress("DEPRECATION")
     private fun getCard(bundle: Bundle) {
@@ -114,6 +106,14 @@ class CardsPagerFragment :
         }
     }
 
+    private fun removeCard(bundle: Bundle) {
+        val cardId = bundle.getString(REMOVE_CARD_KEY)
+        cardId?.let {
+            viewModel.removeCard(it)
+            viewPagerAdapter.submitList(viewModel.getCards())
+        }
+    }
+
     private fun openBottomSheet(cardId: String) {
         navController.navigate(
             CardsPagerFragmentDirections.actionCardsPagerFragmentToDeleteCardBottomSheet2(
@@ -126,7 +126,6 @@ class CardsPagerFragment :
         const val REQUEST_KEY = "request_key"
         const val REMOVE_CARD_REQUEST_KEY = "remove_request_key"
         const val CARD_KEY = "bank_card"
-
 
     }
 

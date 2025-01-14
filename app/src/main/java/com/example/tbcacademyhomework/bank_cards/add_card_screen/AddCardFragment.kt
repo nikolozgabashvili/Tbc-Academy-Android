@@ -1,13 +1,11 @@
 package com.example.tbcacademyhomework.bank_cards.add_card_screen
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.bank_cards.BankCard
@@ -22,16 +20,15 @@ class AddCardFragment : BaseFragment<FragmentAddCardBinding>(FragmentAddCardBind
 
     private val viewModel: AddCardViewModel by viewModels()
 
+    private lateinit var navController: NavController
+
     override fun init(savedInstanceState: Bundle?) {
 
+        navController = findNavController()
         initListeners()
         initViews()
 
 
-    }
-
-    private fun initViews() {
-        binding.bankCardView.cardType = BankCardType.MASTERCARD
     }
 
     private fun initListeners() {
@@ -53,7 +50,7 @@ class AddCardFragment : BaseFragment<FragmentAddCardBinding>(FragmentAddCardBind
             }
 
             btnBack.btnBack.setOnClickListener {
-                findNavController().navigateUp()
+                navController.navigateUp()
             }
 
             etExpireDate.doOnTextChanged { text, _, _, _ ->
@@ -70,6 +67,10 @@ class AddCardFragment : BaseFragment<FragmentAddCardBinding>(FragmentAddCardBind
             }
         }
 
+    }
+
+    private fun initViews() {
+        binding.bankCardView.cardType = BankCardType.MASTERCARD
     }
 
     private fun validateCard() {
@@ -97,7 +98,7 @@ class AddCardFragment : BaseFragment<FragmentAddCardBinding>(FragmentAddCardBind
                     )
                 }
                 setFragmentResult(REQUEST_KEY, resulBundle)
-                findNavController().navigateUp()
+                navController.navigateUp()
             } else {
                 Toast.makeText(
                     requireContext(),
