@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     id(libs.plugins.safeArgs.get().pluginId)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -55,5 +56,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.serialization.json)
+
+    implementation(libs.glide)
+
+
 
 }

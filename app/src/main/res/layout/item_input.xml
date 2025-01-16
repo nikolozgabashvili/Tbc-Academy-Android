@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/size10"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etInput"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/size10"
+            android:layout_height="@dimen/size40"
+            android:layout_weight="1"
+            android:background="@null"
+            tools:hint="Username" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivInputIcon"
+            android:layout_width="@dimen/size32"
+            android:layout_height="@dimen/size32"
+            tools:srcCompat="@drawable/ic_launcher_background" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size2"
+        android:layout_marginTop="@dimen/size2"
+        app:dividerColor="@color/gray" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

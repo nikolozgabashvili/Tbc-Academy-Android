@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/size10"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/size4">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvChooser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/textSize20"
+        tools:text="text" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size2"
+        android:layout_marginTop="@dimen/size2"
+        app:dividerColor="@color/gray" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

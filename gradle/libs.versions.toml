@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+glide = "4.16.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -16,6 +17,7 @@ kotlinxSerializationJson = "1.7.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "safeArgs" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

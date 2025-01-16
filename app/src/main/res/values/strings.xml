@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="register">Register</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="please_fill_in">please fill in %1$s</string>
+    <string name="registered_successfully">registered successfully</string>
 </resources>

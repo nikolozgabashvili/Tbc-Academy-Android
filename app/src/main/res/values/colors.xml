@@ -4,7 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_background">#E2E2E2</color>
     <color name="text_error">#FF5454</color>
-
+    <color name="gray">#A49E9E</color>
+    <color name="cyan_blue">#4C75ED</color>
+    <color name="light_green">#50c593</color>
 
 
 </resources>

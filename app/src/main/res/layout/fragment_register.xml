@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".RegisterFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInputGroups"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/size20"
+        android:layout_marginEnd="@dimen/size20"
+        android:layout_marginBottom="@dimen/size20"
+        android:background="@drawable/bg_button"
+        android:drawableEnd="@drawable/ic_next"
+        android:paddingHorizontal="@dimen/size12"
+        android:text="@string/register"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
