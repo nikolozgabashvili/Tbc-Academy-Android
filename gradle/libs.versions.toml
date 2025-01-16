@@ -12,9 +12,11 @@ constraintlayout = "2.1.4"
 safeArgs = "2.8.5"
 serialization = "2.0.21"
 navVersion = "2.8.5"
+kotlinxSerializationJson = "1.7.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "safeArgs" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
