@@ -62,7 +62,7 @@ class InputAdapter(
                 root.isEnabled = item.isActive == true
                 Glide.with(root).load(item.icon).into(ivChooserIcon)
                 root.setOnClickListener {
-                    if (item.hint?.lowercase() == "birthday") {
+                    if (item.hint?.lowercase() == BIRTHDAY_HINT) {
                         showDatePicker(root.context, onDateSelected = {
                             tvChooser.text = it
                             inputChanged(
@@ -123,6 +123,7 @@ class InputAdapter(
     companion object {
         private const val CHOOSER_TYPE = 1
         private const val INPUT_TYPE = 2
+        private const val BIRTHDAY_HINT = "birthday"
     }
 }
 
