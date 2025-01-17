@@ -1,4 +1,9 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.util
+
+import com.example.tbcacademyhomework.models.KeyboardType
+import com.example.tbcacademyhomework.models.ResponseDataDto
+import com.example.tbcacademyhomework.models.ResponseDataUi
+import com.example.tbcacademyhomework.models.FieldType
 
 fun ResponseDataDto.toResponseDataUi(): ResponseDataUi {
     val kType = KeyboardType.getType(keyboard)

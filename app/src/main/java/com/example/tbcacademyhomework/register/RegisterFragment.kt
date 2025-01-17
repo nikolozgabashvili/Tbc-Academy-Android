@@ -1,9 +1,11 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.register
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tbcacademyhomework.R
+import com.example.tbcacademyhomework.adapters.InputGroupAdapter
 import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentRegisterBinding
 

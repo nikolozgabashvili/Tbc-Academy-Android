@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.tbcacademyhomework.databinding.ItemInputGroupBinding
+import com.example.tbcacademyhomework.models.InputItemCallback
+import com.example.tbcacademyhomework.models.ResponseDataUi
 
 class InputGroupAdapter(
     private val list: List<List<ResponseDataUi>>,
@@ -24,7 +26,6 @@ class InputGroupAdapter(
                 rvInputs.adapter = adapter
 
             }
-
 
         }
 

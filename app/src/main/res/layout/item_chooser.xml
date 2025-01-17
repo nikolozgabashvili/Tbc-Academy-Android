@@ -8,13 +8,27 @@
     android:orientation="vertical"
     android:paddingVertical="@dimen/size4">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvChooser"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/textSize20"
-        tools:text="text" />
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChooser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/size20"
+            android:gravity="center"
+            android:textSize="@dimen/textSize20"
+            tools:text="text" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivChooserIcon"
+            android:layout_width="@dimen/size32"
+            android:layout_height="@dimen/size32"
+            tools:srcCompat="@drawable/ic_launcher_background" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider"

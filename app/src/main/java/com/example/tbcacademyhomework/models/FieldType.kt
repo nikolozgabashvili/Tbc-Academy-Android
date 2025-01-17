@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.models
 
 enum class FieldType(val type: String) {
     INPUT("input"),

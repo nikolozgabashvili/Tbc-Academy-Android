@@ -1,9 +1,10 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 typealias Response = List<List<ResponseDataDto>>
+
 
 @Serializable
 data class ResponseDataDto(
@@ -18,4 +19,3 @@ data class ResponseDataDto(
     val isActive: Boolean?,
     val icon: String?
 )
-

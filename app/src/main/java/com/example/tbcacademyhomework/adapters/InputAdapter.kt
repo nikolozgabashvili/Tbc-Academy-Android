@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.adapters
 
 
 import android.text.InputType
@@ -11,6 +11,13 @@ import com.bumptech.glide.Glide
 import com.example.tbcacademyhomework.base.BaseViewHolder
 import com.example.tbcacademyhomework.databinding.ItemChooserBinding
 import com.example.tbcacademyhomework.databinding.ItemInputBinding
+import com.example.tbcacademyhomework.models.FieldType
+import com.example.tbcacademyhomework.models.Gender
+import com.example.tbcacademyhomework.models.InputItemCallback
+import com.example.tbcacademyhomework.models.KeyboardType
+import com.example.tbcacademyhomework.models.ResponseDataUi
+import com.example.tbcacademyhomework.util.showDatePicker
+import com.example.tbcacademyhomework.util.showDropdownMenu
 
 class InputAdapter(
     private val list: List<ResponseDataUi>,
@@ -53,7 +60,7 @@ class InputAdapter(
                 tvChooser.hint = item.hint
                 divider.isVisible = adapterPosition < list.lastIndex
                 root.isEnabled = item.isActive == true
-
+                Glide.with(root).load(item.icon).into(ivChooserIcon)
                 root.setOnClickListener {
                     if (item.hint?.lowercase() == "birthday") {
                         showDatePicker(root.context, onDateSelected = {

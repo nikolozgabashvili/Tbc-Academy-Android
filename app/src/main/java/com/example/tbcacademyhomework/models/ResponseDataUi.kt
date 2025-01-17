@@ -1,5 +1,4 @@
-package com.example.tbcacademyhomework
-
+package com.example.tbcacademyhomework.models
 
 data class ResponseDataUi(
     val id: Int?,
