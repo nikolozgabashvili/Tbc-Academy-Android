@@ -1,11 +1,15 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.register
 
 import androidx.lifecycle.ViewModel
+import com.example.tbcacademyhomework.models.InputItemCallback
+import com.example.tbcacademyhomework.models.Response
+import com.example.tbcacademyhomework.util.toResponseDataUiList
 import kotlinx.serialization.json.Json
 
 class RegisterViewModel : ViewModel() {
 
     private val inputResponse = parseData().toResponseDataUiList()
+    private val fieldKeys = inputResponse.flatten().mapNotNull { it.id }
     private val userInputData = mutableMapOf<Int?, String>()
 
     fun updateUserInputData(data: InputItemCallback) {
@@ -13,8 +17,6 @@ class RegisterViewModel : ViewModel() {
     }
 
     fun validateData(): String? {
-        val fieldKeys = inputResponse.flatten().mapNotNull { it.id }
-        println(userInputData)
         fieldKeys.forEach { key ->
             if (inputResponse.flatten()
                     .find { it.id == key }?.required == true && userInputData[key].isNullOrEmpty()
@@ -23,7 +25,6 @@ class RegisterViewModel : ViewModel() {
             }
         }
         return null
-
 
     }
 
