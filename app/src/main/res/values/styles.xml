@@ -26,7 +26,7 @@
         <item name="android:textColorHint">@color/hint</item>
         <item name="android:drawableTint">@color/primary</item>
         <item name="android:drawablePadding">@dimen/size30</item>
-        <item name="android:textSize">@dimen/textSize24</item>
+        <item name="android:textSize">@dimen/textSize18</item>
 
     </style>
 

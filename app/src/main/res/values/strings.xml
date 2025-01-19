@@ -5,4 +5,7 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="success">success</string>
+    <string name="empty_field">field must not be empty</string>
+    <string name="invalid_email">please enter valid email</string>
 </resources>

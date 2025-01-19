@@ -6,8 +6,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentLoginBinding
+import com.example.tbcacademyhomework.network.models.isError
+import com.example.tbcacademyhomework.network.models.isSuccess
+import com.example.tbcacademyhomework.util.toErrorString
 import kotlinx.coroutines.launch
 
 
@@ -31,34 +35,37 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         with(binding) {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
-            loginUser(email, password)
+            val emailValidation = viewModel.checkEmail(email)
+            val passwordValidation = viewModel.checkPassword(password)
+
+            if (emailValidation == null && passwordValidation == null)
+                viewModel.loginUser(email, password)
+            else {
+                etEmail.error = emailValidation.toErrorString(requireContext())
+                etPassword.error = passwordValidation.toErrorString(requireContext())
+            }
         }
 
 
-    }
-
-    private fun loginUser(email: String, password: String) {
-        viewModel.loginUser(email, password)
     }
 
     private fun initObserver() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loginResponse.collect { response ->
-                    if (response != null) {
-                        Toast.makeText(requireContext(), "success", Toast.LENGTH_SHORT).show()
+                    if (response.isSuccess()) {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.success), Toast.LENGTH_SHORT
+                        ).show()
+                    } else if (response.isError()) {
+                        Toast.(requireContext(), response?.errorMessage, Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
         }
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.errorFlow.collect { response ->
-                    Toast.makeText(requireContext(), response.error, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
     }
 
 }

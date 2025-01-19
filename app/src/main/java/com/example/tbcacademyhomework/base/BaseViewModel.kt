@@ -1,42 +1,40 @@
 package com.example.tbcacademyhomework.base
 
 import androidx.lifecycle.ViewModel
-import com.example.tbcacademyhomework.network.models.NetworkError
+import com.example.tbcacademyhomework.network.models.Resource
 import com.example.tbcacademyhomework.network.parseError
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val _errorChannel = Channel<NetworkError>()
-    val errorFlow = _errorChannel.receiveAsFlow()
 
-
-    fun <T> execute(call: suspend () -> Response<T>): Flow<T> {
-        return channelFlow {
+    inline fun <T> execute(crossinline call: suspend () -> Response<T>): Flow<Resource<T>> {
+        return flow {
             try {
                 val result = call()
                 if (result.isSuccessful) {
-                    result.body()?.let {
-                        send(it)
-                    }
+                    emit(Resource.Success(result.body()))
+
                 } else {
                     val error = result.parseError()
-                    error?.let {
-                        _errorChannel.send(error)
-                    }
+                    emit(Resource.Error(error))
                 }
 
             } catch (e: Exception) {
                 e.message?.let {
-                    _errorChannel.send(NetworkError(null, it))
+                    emit(Resource.Error(error = "something went wrong"))
                 }
 
             }
+        }
+    }
 
+    inline fun <T, R> Resource<T>.mapResource(map: (T?) -> R?): Resource<R> {
+        return when (this) {
+            is Resource.Success -> Resource.Success(map(data))
+            is Resource.Error -> Resource.Error(errorMessage)
         }
     }
 

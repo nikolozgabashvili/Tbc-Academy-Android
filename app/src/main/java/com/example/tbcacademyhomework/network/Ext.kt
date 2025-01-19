@@ -4,7 +4,7 @@ import com.example.tbcacademyhomework.network.models.NetworkError
 import kotlinx.serialization.json.Json
 import retrofit2.Response
 
-fun Response<*>.parseError(): NetworkError? {
+fun Response<*>.parseError(): String? {
     return try {
         val json = Json {
             ignoreUnknownKeys = true
@@ -14,7 +14,7 @@ fun Response<*>.parseError(): NetworkError? {
         if (errorBody.isNullOrEmpty()) {
             return null
         }
-        json.decodeFromString<NetworkError>(errorBody).copy(code = code())
+        json.decodeFromString<NetworkError>(errorBody).error
     } catch (e: Exception) {
         println(e)
         null
