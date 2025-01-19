@@ -4,6 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_background">#E2E2E2</color>
     <color name="text_error">#FF5454</color>
+    <color name="primary">#700bef</color>
+    <color name="secondary">#d5b6fb</color>
+    <color name="hint">#b783f8</color>
+
 
 
 
