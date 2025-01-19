@@ -11,6 +11,7 @@ import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentLoginBinding
 import com.example.tbcacademyhomework.network.models.isError
 import com.example.tbcacademyhomework.network.models.isSuccess
+import com.example.tbcacademyhomework.util.showToast
 import com.example.tbcacademyhomework.util.toErrorString
 import kotlinx.coroutines.launch
 
@@ -54,13 +55,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loginResponse.collect { response ->
                     if (response.isSuccess()) {
-                        Toast.makeText(
+                        showToast(
                             requireContext(),
-                            getString(R.string.success), Toast.LENGTH_SHORT
-                        ).show()
+                            getString(R.string.success))
                     } else if (response.isError()) {
-                        Toast.(requireContext(), response?.errorMessage, Toast.LENGTH_SHORT)
-                            .show()
+                        showToast(requireContext(), response?.errorMessage)
                     }
                 }
             }
