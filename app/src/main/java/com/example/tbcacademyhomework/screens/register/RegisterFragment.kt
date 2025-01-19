@@ -30,20 +30,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
     }
 
-    private fun initObservers() {
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.registerResponse.collect { response ->
-                    if (response.isSuccess()) {
-                        showToast(requireContext(), getString(R.string.success))
-                    } else if (response.isError()) {
-                        showToast(requireContext(), response?.errorMessage)
-                    }
-
-                }
-            }
-        }
-    }
 
     private fun validateUserInputs() {
         with(binding) {
@@ -61,6 +47,27 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
 
 
+    }
+
+    private fun clearInputs() {
+        binding.etEmail.setText("")
+        binding.etPassword.setText("")
+    }
+
+    private fun initObservers() {
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.registerResponse.collect { response ->
+                    if (response.isSuccess()) {
+                        clearInputs()
+                        showToast(requireContext(), getString(R.string.success))
+                    } else if (response.isError()) {
+                        showToast(requireContext(), response?.errorMessage)
+                    }
+
+                }
+            }
+        }
     }
 
 

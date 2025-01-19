@@ -1,7 +1,6 @@
 package com.example.tbcacademyhomework.screens.login
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -50,11 +49,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     }
 
+    private fun clearInputs() {
+        binding.etEmail.setText("")
+        binding.etPassword.setText("")
+    }
+
     private fun initObserver() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loginResponse.collect { response ->
                     if (response.isSuccess()) {
+                        clearInputs()
                         showToast(
                             requireContext(),
                             getString(R.string.success))
@@ -66,5 +71,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         }
 
     }
+
+
 
 }
