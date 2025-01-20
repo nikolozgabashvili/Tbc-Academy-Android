@@ -19,7 +19,7 @@ class MessagesAdapter :
         fun bind() {
             val item = getItem(adapterPosition)
             with(binding) {
-                val
+
                 Glide.with(root)
                     .load(item.image)
                     .placeholder(R.drawable.ic_person)
