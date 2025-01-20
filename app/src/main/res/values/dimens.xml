@@ -51,6 +51,9 @@
     <dimen name="textSize26">26sp</dimen>
     <dimen name="textSize28">28sp</dimen>
     <dimen name="textSize30">30sp</dimen>
+    <dimen name="size60">60dp</dimen>
+    <dimen name="size17">17dp</dimen>
+    <dimen name="size25">25dp</dimen>
 
 
 </resources>

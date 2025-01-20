@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivOwner"
+        android:layout_width="@dimen/size60"
+        android:minWidth="@dimen/size60"
+        app:srcCompat="@drawable/ic_person"
+        android:layout_height="@dimen/size60"
+        android:minHeight= "@dimen/size60"
+        android:scaleType="fitXY"
+        android:layout_marginStart="@dimen/size28"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_rounded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOwner"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size16"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/ivLastMessage"
+        app:layout_constraintStart_toEndOf="@id/ivOwner"
+        app:layout_constraintTop_toTopOf="@id/ivOwner" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivLastMessage"
+        android:layout_width="@dimen/size17"
+        android:layout_height="@dimen/size17"
+        app:layout_constraintBottom_toBottomOf="@id/ivOwner"
+        app:layout_constraintStart_toStartOf="@id/tvOwner"
+        app:layout_constraintTop_toBottomOf="@id/tvOwner" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLastMessage"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/ivLastMessage"
+        app:layout_constraintTop_toTopOf="@id/ivLastMessage" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLastTimeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size25"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvOwner" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMessageCount"
+        android:gravity="center"
+        android:background="@drawable/bg_message_count"
+        android:layout_width="wrap_content"
+        android:maxWidth="@dimen/size17"
+        android:maxHeight="@dimen/size17"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/tvLastTimeStamp"
+        app:layout_constraintTop_toTopOf="@id/tvLastMessage" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size1"
+        android:layout_marginTop="@dimen/size8"
+        app:dividerColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ivLastMessage"
+        app:layout_constraintTop_toBottomOf="@id/ivOwner" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
