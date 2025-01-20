@@ -7,23 +7,25 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivOwner"
         android:layout_width="@dimen/size60"
-        android:minWidth="@dimen/size60"
-        app:srcCompat="@drawable/ic_person"
         android:layout_height="@dimen/size60"
-        android:minHeight= "@dimen/size60"
-        android:scaleType="fitXY"
         android:layout_marginStart="@dimen/size28"
         android:layout_marginTop="@dimen/size10"
-        android:background="@drawable/bg_rounded"
+        android:background="@color/gray"
+        app:shapeAppearance="@style/circle"
+        android:minWidth="@dimen/size60"
+        android:minHeight="@dimen/size60"
+        android:scaleType="fitXY"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_person" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvOwner"
-        android:maxLines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size16"
+        android:maxLines="1"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/ivLastMessage"
         app:layout_constraintStart_toEndOf="@id/ivOwner"
@@ -33,16 +35,22 @@
         android:id="@+id/ivLastMessage"
         android:layout_width="@dimen/size17"
         android:layout_height="@dimen/size17"
+        android:layout_marginEnd="@dimen/size10"
+        app:layout_constraintEnd_toStartOf="@id/tvLastMessage"
         app:layout_constraintBottom_toBottomOf="@id/ivOwner"
         app:layout_constraintStart_toStartOf="@id/tvOwner"
         app:layout_constraintTop_toBottomOf="@id/tvOwner" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvLastMessage"
-        android:maxLines="1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+
+        android:ellipsize="end"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:layout_marginEnd="@dimen/size10"
+        android:maxLines="1"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toStartOf="@+id/tvMessageCount"
         app:layout_constraintStart_toEndOf="@id/ivLastMessage"
         app:layout_constraintTop_toTopOf="@id/ivLastMessage" />
 
@@ -51,20 +59,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/size25"
-        android:textColor="@color/white"
+        android:textColor="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvOwner" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvMessageCount"
-        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/ivTyping"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/tvLastMessage"
+        android:layout_width="@dimen/size17"
+        android:layout_height="@dimen/size17"
         android:background="@drawable/bg_message_count"
-        android:layout_width="wrap_content"
-        android:maxWidth="@dimen/size17"
-        android:maxHeight="@dimen/size17"
-        android:layout_height="wrap_content"
+        android:gravity="center" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTyping"
+        android:src="@drawable/ic_typing"
+        android:layout_width="@dimen/size17"
         app:layout_constraintEnd_toEndOf="@id/tvLastTimeStamp"
-        app:layout_constraintTop_toTopOf="@id/tvLastMessage" />
+        app:layout_constraintTop_toTopOf="@id/tvLastMessage"
+        android:layout_height="@dimen/size17"/>
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider"

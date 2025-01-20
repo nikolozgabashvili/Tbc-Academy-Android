@@ -9,6 +9,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etSearch"
         android:layout_width="0dp"
+        android:inputType="text"
         android:layout_height="@dimen/size60"
         android:layout_marginStart="@dimen/size28"
         android:layout_marginTop="@dimen/size24"
@@ -19,6 +20,7 @@
         android:hint="@string/search"
         android:paddingHorizontal="@dimen/size24"
         android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
         app:layout_constraintEnd_toStartOf="@id/btnSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

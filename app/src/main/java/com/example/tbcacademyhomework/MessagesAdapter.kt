@@ -19,7 +19,6 @@ class MessagesAdapter :
         fun bind() {
             val item = getItem(adapterPosition)
             with(binding) {
-
                 Glide.with(root)
                     .load(item.image)
                     .placeholder(R.drawable.ic_person)
@@ -27,12 +26,11 @@ class MessagesAdapter :
                     .into(binding.ivOwner)
                 tvOwner.text = item.owner
                 tvLastTimeStamp.text = item.lastActive
-
-                ivOwner.isVisible = item.lastMessageType != MessageType.TEXT
+                ivLastMessage.isVisible = item.lastMessageType != MessageType.TEXT
                 when (item.lastMessageType) {
                     MessageType.TEXT -> Unit
-                    MessageType.VOICE -> ivOwner.setImageResource(R.drawable.bg_message_type_voice)
-                    MessageType.File -> ivOwner.setImageResource(R.drawable.bg_message_type_file)
+                    MessageType.VOICE -> ivLastMessage.setImageResource(R.drawable.bg_message_type_voice)
+                    MessageType.File -> ivLastMessage.setImageResource(R.drawable.bg_message_type_file)
                 }
                 when (item.lastMessageType) {
                     MessageType.TEXT -> tvLastMessage.text = item.lastMessage
@@ -43,14 +41,13 @@ class MessagesAdapter :
                         root.context.getString(R.string.file_message)
                 }
 
-                tvMessageCount.isVisible = item.unreadMessages > 0 || item.isTyping
-                if (item.isTyping) {
-                    tvMessageCount.setBackgroundResource(R.drawable.ic_typing)
-                    tvMessageCount.text = ""
-                } else if (item.unreadMessages > 0) {
-                    tvMessageCount.setBackgroundResource(R.drawable.bg_message_count)
-                    tvMessageCount.text = item.unreadMessages.toString()
-                }
+                tvMessageCount.isVisible = item.unreadMessages > 0
+                ivTyping.isVisible = item.isTyping
+                tvMessageCount.text = item.unreadMessages.toString()
+
+
+
+
 
 
             }
