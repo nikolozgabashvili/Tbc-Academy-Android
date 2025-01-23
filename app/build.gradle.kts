@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     id(libs.plugins.safeArgs.get().pluginId)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -51,7 +52,13 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.navigation.ui)
     implementation(libs.navigation.fragment)
+    implementation(libs.lottie)
+    implementation(libs.serialization.json)
+    implementation(libs.retrofit.serialization)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
+    implementation(libs.androidx.datastore.preferences)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
