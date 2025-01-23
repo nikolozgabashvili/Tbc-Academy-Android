@@ -23,6 +23,9 @@ class LoginViewModel(private val datastoreImpl: DatastoreImpl) : BaseViewModel()
     private val _loginScreenState = MutableStateFlow(LoginScreenState())
     val loginScreenState = _loginScreenState.asStateFlow()
 
+    private val _responseChannel = Channel<Resource<ResponseDto>>()
+    val responseFlow = _responseChannel.receiveAsFlow()
+
     private val _navigationChannel = Channel<Boolean>()
     val navigationFlow = _navigationChannel.receiveAsFlow()
 
@@ -44,6 +47,7 @@ class LoginViewModel(private val datastoreImpl: DatastoreImpl) : BaseViewModel()
                         _navigationChannel.send(true)
                     }
                 }
+                _responseChannel.send(resource)
                 _loginScreenState.update { it.copy(authResource = resource) }
             }
         }

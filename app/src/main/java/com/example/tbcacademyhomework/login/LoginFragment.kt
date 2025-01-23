@@ -19,7 +19,6 @@ import com.example.tbcacademyhomework.util.getError
 import com.example.tbcacademyhomework.util.getParcelable
 import com.example.tbcacademyhomework.util.isError
 import com.example.tbcacademyhomework.util.isLoading
-import com.example.tbcacademyhomework.util.isSuccess
 import kotlinx.coroutines.launch
 
 
@@ -118,22 +117,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     binding.btnLogin.isEnabled = it.isUserValid
                     binding.btnLogin.isLoading = resource.isLoading()
                     binding.btnRegister.btnEnabled = !resource.isLoading()
-
-                    if (resource.isError()) {
-
-                        val error =
-                            resource?.errorMessage
-                                ?: resource?.errorType?.getError(requireContext())
-                        error?.let {
-                            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-                        }
-                    }
                 }
             }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 loginViewModel.navigationFlow.collect { forceNavigation ->
                     if (forceNavigation) {
@@ -149,5 +137,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             }
         }
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                loginViewModel.responseFlow.collect { resource ->
+                    if (resource.isError()) {
+                        val error =
+                            resource.errorMessage
+                                ?: resource.errorType?.getError(requireContext())
+                        error?.let {
+                            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                }
+            }
+        }
     }
 }
