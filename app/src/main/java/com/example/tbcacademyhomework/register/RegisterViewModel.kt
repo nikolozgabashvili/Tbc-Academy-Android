@@ -1,6 +1,5 @@
 package com.example.tbcacademyhomework.register
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tbcacademyhomework.base.BaseViewModel
 import com.example.tbcacademyhomework.network.RetrofitImpl
