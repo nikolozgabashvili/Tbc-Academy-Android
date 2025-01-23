@@ -114,7 +114,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 loginViewModel.loginScreenState.collect {
+                    val resource = it.authResource
                     binding.btnLogin.isEnabled = it.isUserValid
+                    binding.btnLogin.isLoading = resource.isLoading()
+                    binding.btnRegister.btnEnabled = !resource.isLoading()
+
+                    if (resource.isError()) {
+
+                        val error =
+                            resource?.errorMessage
+                                ?: resource?.errorType?.getError(requireContext())
+                        error?.let {
+                            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
         }
@@ -122,25 +135,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         viewLifecycleOwner.lifecycleScope.launch {
 
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel.responseFlow.collect { resource ->
-                    binding.btnLogin.isLoading = resource.isLoading()
-                    binding.btnRegister.btnEnabled = !resource.isLoading()
-
-                    if (resource.isSuccess() && !binding.checkRemember.isChecked) {
+                loginViewModel.navigationFlow.collect { forceNavigation ->
+                    if (forceNavigation) {
                         val email = loginViewModel.loginScreenState.value.userEmail
-                        navController.navigate(
+                        findNavController().navigate(
                             LoginFragmentDirections.actionLoginFragmentToHomeFragment(
                                 email
                             )
                         )
-                    } else if (resource.isError()) {
-
-                        val error =
-                            resource.errorMessage ?: resource.errorType?.getError(requireContext())
-                        error?.let {
-                            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-                        }
                     }
+
                 }
             }
         }
