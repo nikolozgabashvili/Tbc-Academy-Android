@@ -52,6 +52,7 @@
     <dimen name="textSize28">28sp</dimen>
     <dimen name="textSize30">30sp</dimen>
     <dimen name="app_margin">20dp</dimen>
+    <dimen name="size100">100dp</dimen>
 
 
 </resources>

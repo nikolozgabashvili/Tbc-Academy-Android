@@ -32,7 +32,7 @@ object RetrofitImpl {
             .build()
     }
 
-    val authApiService: ApiService = provideRetrofit().create(ApiService::class.java)
+    val apiService: ApiService = provideRetrofit().create(ApiService::class.java)
 
 
     private const val BASE_URL = "https://reqres.in/api/"

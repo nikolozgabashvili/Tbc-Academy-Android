@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentRegisterBinding
-import com.example.tbcacademyhomework.models.User
+import com.example.tbcacademyhomework.models.UserParams
 import com.example.tbcacademyhomework.util.getError
 import com.example.tbcacademyhomework.util.isError
 import com.example.tbcacademyhomework.util.isLoading
@@ -63,9 +63,21 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
     }
 
+
+
+    private fun goBack() {
+        val email = registerViewModel.registerScreenState.value.email
+        val password = registerViewModel.registerScreenState.value.password
+        val userBundle = Bundle().apply {
+            putParcelable(USER_DATA, UserParams(email = email, password = password))
+        }
+        setFragmentResult(RESULT_KEY, userBundle)
+        navController.navigateUp()
+    }
+
     private fun initObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 registerViewModel.registerScreenState.collect { state ->
                     binding.btnRegister.btnEnabled = state.isUserValid
 
@@ -74,7 +86,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 registerViewModel.responseFlow.collect { resource ->
                     binding.btnRegister.isLoading = resource.isLoading()
                     if (resource.isSuccess()) {
@@ -93,15 +105,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
     }
 
-    private fun goBack() {
-        val email = registerViewModel.registerScreenState.value.email
-        val password = registerViewModel.registerScreenState.value.password
-        val userBundle = Bundle().apply {
-            putParcelable(USER_DATA, User(email = email, password = password))
-        }
-        setFragmentResult(RESULT_KEY, userBundle)
-        navController.popBackStack()
-    }
 
     companion object {
         const val RESULT_KEY = "result_key"

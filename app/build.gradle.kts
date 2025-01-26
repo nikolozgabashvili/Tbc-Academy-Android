@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.retrofit.serialization)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
+    implementation (libs.glide)
+
 
     implementation(libs.androidx.datastore.preferences)
     testImplementation(libs.junit)

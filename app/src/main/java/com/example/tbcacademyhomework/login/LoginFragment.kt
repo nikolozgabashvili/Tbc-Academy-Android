@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentLoginBinding
-import com.example.tbcacademyhomework.models.User
+import com.example.tbcacademyhomework.models.UserParams
 import com.example.tbcacademyhomework.register.RegisterFragment
 import com.example.tbcacademyhomework.storage.DatastoreImpl
 import com.example.tbcacademyhomework.util.getError
@@ -82,7 +82,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun setupResultListener() {
         setFragmentResultListener(RegisterFragment.RESULT_KEY) { _, bundle ->
-            val userData = getParcelable(bundle, RegisterFragment.USER_DATA, User::class.java)
+            val userData = getParcelable(bundle, RegisterFragment.USER_DATA, UserParams::class.java)
             userData?.let { data ->
                 binding.etPassword.setText(data.password)
                 binding.etEmail.setText(data.email)
@@ -96,22 +96,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private fun initObservers() {
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel.userMail().collect { email ->
-                    if (email != null) {
-                        navController.navigate(
-                            LoginFragmentDirections.actionLoginFragmentToHomeFragment(
-                                email
-                            )
-                        )
-                    }
-                }
-            }
-        }
-
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 loginViewModel.loginScreenState.collect {
                     val resource = it.authResource
                     binding.btnLogin.isEnabled = it.isUserValid
@@ -122,23 +107,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel.navigationFlow.collect { forceNavigation ->
-                    if (forceNavigation) {
-                        val email = loginViewModel.loginScreenState.value.userEmail
-                        findNavController().navigate(
-                            LoginFragmentDirections.actionLoginFragmentToHomeFragment(
-                                email
-                            )
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                loginViewModel.navigationFlow.collect {email->
+                    findNavController().navigate(
+                        LoginFragmentDirections.actionLoginFragmentToHomeFragment(
+                            email
                         )
-                    }
-
+                    )
                 }
             }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 loginViewModel.responseFlow.collect { resource ->
                     if (resource.isError()) {
                         val error =

@@ -42,7 +42,7 @@ class RegisterViewModel : BaseViewModel() {
             val email = _registerScreenState.value.email
             val password = _registerScreenState.value.password
             execute {
-                RetrofitImpl.authApiService.registerUser(AuthParams(email, password))
+                RetrofitImpl.apiService.registerUser(AuthParams(email, password))
             }.collect { resource ->
                 _responseChannel.send(resource)
 

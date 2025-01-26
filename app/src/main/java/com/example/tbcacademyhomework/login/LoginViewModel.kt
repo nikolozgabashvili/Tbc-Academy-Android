@@ -26,8 +26,12 @@ class LoginViewModel(private val datastoreImpl: DatastoreImpl) : BaseViewModel()
     private val _responseChannel = Channel<Resource<ResponseDto>>()
     val responseFlow = _responseChannel.receiveAsFlow()
 
-    private val _navigationChannel = Channel<Boolean>()
+    private val _navigationChannel = Channel<String>()
     val navigationFlow = _navigationChannel.receiveAsFlow()
+
+    init {
+        getAuthState()
+    }
 
 
     fun loginUser() {
@@ -35,7 +39,7 @@ class LoginViewModel(private val datastoreImpl: DatastoreImpl) : BaseViewModel()
             val email = _loginScreenState.value.userEmail
             val password = _loginScreenState.value.userPassword
             execute {
-                RetrofitImpl.authApiService.loginUser(AuthParams(email, password))
+                RetrofitImpl.apiService.loginUser(AuthParams(email, password))
             }.collect { resource ->
                 if (resource.isSuccess()) {
                     if (_loginScreenState.value.checkboxChecked) {
@@ -44,7 +48,7 @@ class LoginViewModel(private val datastoreImpl: DatastoreImpl) : BaseViewModel()
                             datastoreImpl.saveEmail(email)
                         }
                     } else {
-                        _navigationChannel.send(true)
+                        _navigationChannel.send(email)
                     }
                 }
                 _responseChannel.send(resource)
@@ -53,7 +57,15 @@ class LoginViewModel(private val datastoreImpl: DatastoreImpl) : BaseViewModel()
         }
     }
 
-    fun userMail() = datastoreImpl.getMail()
+    private fun getAuthState() {
+        viewModelScope.launch(Dispatchers.IO) {
+            datastoreImpl.getMail().collect {email->
+                if (email != null) {
+                    _navigationChannel.send(email)
+                }
+            }
+        }
+    }
 
     fun setUserEmail(email: String) {
         _loginScreenState.update { it.copy(userEmail = email) }
