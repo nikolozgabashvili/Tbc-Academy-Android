@@ -1,45 +1,20 @@
 package com.example.tbcacademyhomework.home
 
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.tbcacademyhomework.base.BaseViewModel
 import com.example.tbcacademyhomework.network.RetrofitImpl
-import com.example.tbcacademyhomework.util.toUser
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 
 class HomeViewModel : BaseViewModel() {
 
+    val userFlow: Flow<PagingData<User>> = Pager(
+        config = PagingConfig(pageSize = 6, prefetchDistance = 2),
+        pagingSourceFactory = { HomePagingSource(RetrofitImpl.apiService) }
+    ).flow.cachedIn(viewModelScope)
 
-    private val _state = MutableStateFlow(HomeScreenState())
-    val state = _state.asStateFlow()
-
-
-    init {
-        fetchUsers()
-    }
-
-
-    fun fetchUsers() {
-        val lastFetchedPage = _state.value.usersResource?.data?.page ?: 0
-        viewModelScope.launch(Dispatchers.IO) {
-            execute {
-                RetrofitImpl.apiService.fetchUsers(lastFetchedPage + 1)
-            }.collect { resource ->
-                val newData = resource.data?.data?.map { it.toUser() } ?: emptyList()
-                _state.update {
-                    it.copy(
-                        usersResource = resource,
-                        usersData = it.usersData?.plus(newData)
-                    )
-                }
-
-            }
-
-        }
-
-    }
 
 }

@@ -8,9 +8,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentHomeBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
@@ -40,47 +40,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun setupRecycler() {
         binding.rvUsers.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvUsers.adapter = usersAdapter
-
-        setupPaging()
+        binding.rvUsers.adapter = usersAdapter.withLoadStateFooter(
+            footer = LoaderStateAdapter()
+        )
     }
 
-    private fun setupPaging() {
-        binding.rvUsers.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val totalItemCount = layoutManager.itemCount
-                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-                val canFetch = homeViewmodel.state.value.canGetNextPage
-
-
-
-                if (lastVisibleItem + 1 >= totalItemCount && canFetch) {
-                    homeViewmodel.fetchUsers()
-                }
-            }
-        })
-    }
 
     private fun initObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                homeViewmodel.state.collect { state ->
-                    updateAdapter(state.usersData)
-
+                homeViewmodel.userFlow.collectLatest { users ->
+                    usersAdapter.submitData(pagingData = users)
 
                 }
 
             }
         }
-    }
-
-    private fun updateAdapter(usersData: List<User?>?) {
-        usersData?.let {
-            usersAdapter.submitList(it)
-        }
-
     }
 
 
