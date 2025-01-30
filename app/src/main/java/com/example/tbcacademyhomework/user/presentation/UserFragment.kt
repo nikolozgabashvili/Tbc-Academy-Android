@@ -73,12 +73,15 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::infl
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 userViewmodel.fetchedUser.collect { user ->
-                    user?.let {
-                        binding.tvEmail.text = getString(R.string.display_email, it.email)
-                        binding.tvLastName.text = getString(R.string.display_last_name, it.lastName)
+
+                    if (user?.isValid == true) {
+                        binding.tvEmail.text = getString(R.string.display_email, user.email)
+                        binding.tvLastName.text =
+                            getString(R.string.display_last_name, user.lastName)
                         binding.tvFirstName.text =
-                            getString(R.string.display_first_name, it.firstName)
+                            getString(R.string.display_first_name, user.firstName)
                     }
+
                 }
 
             }

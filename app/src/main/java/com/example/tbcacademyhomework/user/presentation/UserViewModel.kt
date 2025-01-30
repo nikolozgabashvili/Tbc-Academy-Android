@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class UserViewModel(private val userDataStore: UserDataStoreImpl) : ViewModel() {
 
@@ -20,10 +21,9 @@ class UserViewModel(private val userDataStore: UserDataStoreImpl) : ViewModel() 
     val fetchedUser = _fetchedUser.asStateFlow()
 
 
-    private fun validateUser(user: UserUi): Boolean {
-
+    private suspend fun validateUser(user: UserUi): Boolean {
         var isValid = true
-        viewModelScope.launch {
+        withContext(Dispatchers.Main.immediate) {
             if (!isValidEmail(user.email)) {
                 _events.send(
                     UserFragmentEvents.Error(UserValidationError.INVALID_EMAIL)
@@ -58,9 +58,9 @@ class UserViewModel(private val userDataStore: UserDataStoreImpl) : ViewModel() 
 
 
     fun saveUser(user: UserUi) {
-        val isUserInputValid = validateUser(user)
-        if (isUserInputValid) {
-            viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
+            val isUserInputValid = validateUser(user)
+            if (isUserInputValid) {
                 userDataStore.saveUser(user.toUser())
                 _events.send(UserFragmentEvents.Success)
 
