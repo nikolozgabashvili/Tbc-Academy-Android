@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".user.presentation.UserFragment">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etFirstName"
+        style="@style/input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_margin="@dimen/size10"
+        android:hint="@string/first_name" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etLastName"
+        style="@style/input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_margin="@dimen/size10"
+        android:hint="@string/last_name" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etEmail"
+        style="@style/input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_margin="@dimen/size10"
+        android:hint="@string/email" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        style="@style/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:text="@string/save"
+        android:textAllCaps="false" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRead"
+        style="@style/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:text="@string/read" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size10"
+        android:layout_marginTop="@dimen/size30"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize16" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize16" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize16"
+        tools:text="email@email.com" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
