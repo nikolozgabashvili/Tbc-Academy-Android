@@ -6,7 +6,7 @@ import androidx.datastore.core.DataStoreFactory
 import com.example.bcacademyhomework.storage.User
 import kotlinx.coroutines.flow.first
 
-class UserDataStoreImpl(val context: Context) {
+class UserDataStoreImpl(private val context: Context) {
 
     private val userDataStore: DataStore<User> = DataStoreFactory.create(
         serializer = UserSerializer,
