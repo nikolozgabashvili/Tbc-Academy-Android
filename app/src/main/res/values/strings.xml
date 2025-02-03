@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="no_internet_error">no internet</string>
+    <string name="serialization_error">serialization error</string>
+    <string name="unknown_error">unknown error</string>
+    <string name="unknown_host">host can not be reached</string>
+    <string name="user_full_name_display">%1$s %2$s</string>
+    <string name="you_are_offline">you are Offline</string>
+    <string name="you_are_online">you are online</string>
+    <string name="inactive">inactive</string>
+    <string name="online">online</string>
+    <string name="recently_active">active few minutes ago</string>
+    <string name="previously_available">available few hours ago</string>
+    <string name="disabled">disabled</string>
 </resources>
