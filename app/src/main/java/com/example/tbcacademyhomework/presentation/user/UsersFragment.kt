@@ -59,6 +59,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
                 usersViewModel.state.collect { state ->
                     val users = state.users
                     handleLoading(state.isFetching)
+                    handlePlaceholder(state.showPlaceholder)
                     if (users.isNotEmpty()) {
                         usersAdapter.submitList(users)
                     }
@@ -101,6 +102,10 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
                 }
             }
         }
+    }
+
+    private fun handlePlaceholder(placeholderVisibility: Boolean) {
+        binding.itemPlaceholder.root.isVisible = placeholderVisibility
     }
 
     private fun handleLoading(loading: Boolean) {
