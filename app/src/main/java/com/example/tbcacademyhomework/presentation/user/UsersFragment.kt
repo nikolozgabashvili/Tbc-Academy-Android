@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tbcacademyhomework.App
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.base.BaseFragment
 import com.example.tbcacademyhomework.databinding.FragmentUsersBinding
@@ -32,7 +33,10 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
     private fun initViewModel() {
         usersViewModel = ViewModelProvider(
             this, ViewModelFactory {
-                UsersViewModel(NetworkManager(requireContext().applicationContext))
+                UsersViewModel(
+                    App.database,
+                    NetworkManager(requireContext().applicationContext)
+                )
             }
         )[UsersViewModel::class.java]
     }

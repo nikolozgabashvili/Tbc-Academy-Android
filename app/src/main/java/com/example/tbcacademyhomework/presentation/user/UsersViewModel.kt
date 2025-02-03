@@ -2,8 +2,8 @@ package com.example.tbcacademyhomework.presentation.user
 
 
 import androidx.lifecycle.viewModelScope
-import com.example.tbcacademyhomework.App
 import com.example.tbcacademyhomework.base.BaseViewModel
+import com.example.tbcacademyhomework.data.local.UsersDatabase
 import com.example.tbcacademyhomework.data.local.entity.UserEntity
 import com.example.tbcacademyhomework.data.remote.RetrofitImpl
 import com.example.tbcacademyhomework.util.NetworkManager
@@ -21,7 +21,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class UsersViewModel(private val networkManager: NetworkManager) : BaseViewModel() {
+class UsersViewModel(
+    private val usersDatabase: UsersDatabase,
+    private val networkManager: NetworkManager
+) : BaseViewModel() {
 
     private val _state = MutableStateFlow(UsersScreenState())
     val state = _state.asStateFlow()
@@ -73,7 +76,7 @@ class UsersViewModel(private val networkManager: NetworkManager) : BaseViewModel
 
     private fun getUsersFromLocal() {
         viewModelScope.launch(Dispatchers.IO) {
-            App.database.userDao().getUsers().collect { users ->
+            usersDatabase.userDao().getUsers().collect { users ->
                 _state.update { it.copy(users = users.map { it.toUserUi() }) }
             }
         }
@@ -82,7 +85,7 @@ class UsersViewModel(private val networkManager: NetworkManager) : BaseViewModel
 
     private fun saveUsersLocally(users: List<UserEntity>) {
         viewModelScope.launch(Dispatchers.IO) {
-            App.database.userDao().upsertUsers(users)
+            usersDatabase.userDao().upsertUsers(users)
         }
     }
 
