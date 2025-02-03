@@ -48,8 +48,8 @@ class UsersViewModel(
                     _state.update { it.copy(isFetching = resource.isLoading()) }
                     if (resource.isSuccess()) {
                         val users = resource.data?.users
-                        users?.let {
-                            saveUsersLocally(it.map { it.toUserEntity() })
+                        users?.let { usersList ->
+                            saveUsersLocally(usersList.map { user -> user.toUserEntity() })
                         }
 
                     } else if (resource.isError()) {
@@ -67,7 +67,6 @@ class UsersViewModel(
 
     }
 
-
     private fun fetchUsers() {
         getUsersFromLocal()
         getUsersFromRemote()
@@ -77,7 +76,7 @@ class UsersViewModel(
     private fun getUsersFromLocal() {
         viewModelScope.launch(Dispatchers.IO) {
             usersDatabase.userDao().getUsers().collect { users ->
-                _state.update { it.copy(users = users.map { it.toUserUi() }) }
+                _state.update { state -> state.copy(users = users.map { user -> user.toUserUi() }) }
             }
         }
 
