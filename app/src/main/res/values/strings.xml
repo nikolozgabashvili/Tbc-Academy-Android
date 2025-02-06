@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="security_screen">Security screen</string>
+    <string name="enter_passcode">Enter your passcode</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="error_wrong_password">Error wrong password</string>
+    <string name="fingerprint_clicked">FingerPrint clicked</string>
+    <string name="success">Success</string>
 </resources>

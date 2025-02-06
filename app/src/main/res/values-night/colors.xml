@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="app_background">@color/black</color>
+    <color name="text_error">#FF5454</color>
+    <color name="text">@color/white</color>
+    <color name="button">#1C1C1E</color>
+    <color name="button_pressed">#4B4B4B</color>
+    <color name="button_wild">#000000</color>
+    <color name="button_wild_pressed">#4B4B4B</color>
+    <color name="fingerprint">@color/white</color>
+
+</resources>

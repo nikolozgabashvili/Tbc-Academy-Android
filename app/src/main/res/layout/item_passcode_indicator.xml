@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/size12"
+    android:layout_height="@dimen/size12"
+    android:layout_margin="@dimen/size22"
+    android:background="@drawable/bg_round"
+    android:backgroundTint="@color/gray">
+
+</View>

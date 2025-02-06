@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/size75"
+    android:layout_height="@dimen/size75"
+    android:layout_marginVertical="@dimen/size8"
+    android:layout_marginHorizontal="@dimen/size22"
+    tools:background="@drawable/bg_passcode_button">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvValue"
+        android:layout_width="wrap_content"
+        android:textColor="@color/text"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="@dimen/textSize32"
+        android:paddingTop="@dimen/size6"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/bg_passcode_button"
+        android:layout_gravity="center"
+        tools:text="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size15"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</FrameLayout>
