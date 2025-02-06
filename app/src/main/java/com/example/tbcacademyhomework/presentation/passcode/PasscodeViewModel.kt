@@ -14,6 +14,23 @@ import kotlinx.coroutines.launch
 
 class PasscodeViewModel : ViewModel() {
 
+    private val password = "0934"
+    private val passwordLayout = listOf(
+        PasscodeButton(type = PasscodeButtonType.Number("1")),
+        PasscodeButton(type = PasscodeButtonType.Number("2")),
+        PasscodeButton(type = PasscodeButtonType.Number("3")),
+        PasscodeButton(type = PasscodeButtonType.Number("4")),
+        PasscodeButton(type = PasscodeButtonType.Number("5")),
+        PasscodeButton(type = PasscodeButtonType.Number("6")),
+        PasscodeButton(type = PasscodeButtonType.Number("7")),
+        PasscodeButton(type = PasscodeButtonType.Number("8")),
+        PasscodeButton(type = PasscodeButtonType.Number("9")),
+        PasscodeButton(type = PasscodeButtonType.FingerPrint),
+        PasscodeButton(type = PasscodeButtonType.Number("0")),
+        PasscodeButton(type = PasscodeButtonType.BackSpace),
+    )
+
+
     private val _state = MutableStateFlow(PasscodeScreenState())
     val state = _state.asStateFlow()
 
@@ -26,7 +43,7 @@ class PasscodeViewModel : ViewModel() {
     }
 
     private fun generatePasswordIndicators() {
-        val indicatorList = PASSWORD.map {
+        val indicatorList = password.map {
             PasscodeIndicator()
         }
         viewModelScope.launch {
@@ -58,9 +75,9 @@ class PasscodeViewModel : ViewModel() {
 
     private fun checkPassword() {
         val currentPasscode = _state.value.passcode
-        if (currentPasscode.length == PASSWORD.length) {
+        if (currentPasscode.length == password.length) {
             viewModelScope.launch {
-                if (currentPasscode == PASSWORD) {
+                if (currentPasscode == password) {
                     eventChannel.send(PasscodeScreenEvent.Success)
                 } else {
                     eventChannel.send(PasscodeScreenEvent.Error)
@@ -75,21 +92,4 @@ class PasscodeViewModel : ViewModel() {
         _state.update { it.copy(passcode = "") }
     }
 
-    companion object {
-        private const val PASSWORD = "0934"
-        private val passwordLayout = listOf(
-            PasscodeButton(type = PasscodeButtonType.Number("1")),
-            PasscodeButton(type = PasscodeButtonType.Number("2")),
-            PasscodeButton(type = PasscodeButtonType.Number("3")),
-            PasscodeButton(type = PasscodeButtonType.Number("4")),
-            PasscodeButton(type = PasscodeButtonType.Number("5")),
-            PasscodeButton(type = PasscodeButtonType.Number("6")),
-            PasscodeButton(type = PasscodeButtonType.Number("7")),
-            PasscodeButton(type = PasscodeButtonType.Number("8")),
-            PasscodeButton(type = PasscodeButtonType.Number("9")),
-            PasscodeButton(type = PasscodeButtonType.FingerPrint),
-            PasscodeButton(type = PasscodeButtonType.Number("0")),
-            PasscodeButton(type = PasscodeButtonType.BackSpace),
-        )
-    }
 }
