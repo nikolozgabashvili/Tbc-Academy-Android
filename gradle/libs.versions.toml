@@ -18,6 +18,7 @@ ksp = "2.1.0-1.0.29"
 roomRuntime = "2.6.1"
 okhttp = "4.12.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
+lottie = "6.4.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -37,6 +38,9 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 
 #glide
 glide = {group = "com.github.bumptech.glide",name = "glide",version.ref = "glide"}
+
+#lotte
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 #retrofit
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
