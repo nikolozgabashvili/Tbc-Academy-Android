@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="serialization_error">Serialization error</string>
+    <string name="server_error">server error</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="empty_field_error">field must not be empty</string>
+    <string name="invaid_email_error">Email is not valid</string>
+    <string name="repeatPassword">Repeat Password</string>
+    <string name="back_button">back button</string>
+    <string name="profile">Profile</string>
+    <string name="log_out">Log out</string>
 </resources>
