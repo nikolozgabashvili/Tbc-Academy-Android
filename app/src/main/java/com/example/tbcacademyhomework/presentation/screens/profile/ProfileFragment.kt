@@ -26,7 +26,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         super.onCreate(savedInstanceState)
         profileViewModel = ViewModelProvider(
             this, ViewModelFactory {
-                ProfileViewModel(App.appModule.userPrefsDataSource)
+                ProfileViewModel(
+                    App.appModule.userPrefsDataSource,
+                    App.database
+                )
             }
         )[ProfileViewModel::class.java]
 

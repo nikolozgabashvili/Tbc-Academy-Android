@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.domain.local
+package com.example.tbcacademyhomework.domain.local.datastore
 
 import kotlinx.coroutines.flow.Flow
 

@@ -1,6 +1,6 @@
 package com.example.tbcacademyhomework.data.network.service
 
-import com.example.tbcacademyhomework.data.users.models.UsersListDto
+import com.example.tbcacademyhomework.data.remote.models.UsersListDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

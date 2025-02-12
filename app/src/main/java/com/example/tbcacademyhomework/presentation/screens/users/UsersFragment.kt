@@ -32,7 +32,12 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
         super.onCreate(savedInstanceState)
         usersViewModel = ViewModelProvider(
             this, factory = ViewModelFactory {
-                UsersViewModel(usersRepository = App.appModule.usersRepository)
+                UsersViewModel(
+                    usersRemoteSource = App.appModule.usersRemoteSource,
+                    connectivityObserver = App.appModule.connectivityObserver,
+                    appDatabase = App.database
+
+                )
             }
         )[UsersViewModel::class.java]
     }
@@ -62,7 +67,8 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
     private fun initObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                usersViewModel.users.collectLatest { pagingData ->
+                usersViewModel.usersFlow.collectLatest { pagingData ->
+
                     usersAdapter.submitData(pagingData)
                 }
             }

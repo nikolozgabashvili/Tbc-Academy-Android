@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.domain.users.models
+package com.example.tbcacademyhomework.domain.remote.models
 
 data class UsersList(
     val page: Int,

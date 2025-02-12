@@ -12,34 +12,43 @@ import com.example.tbcacademyhomework.domain.utils.Resource
 import com.example.tbcacademyhomework.domain.utils.map
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 class AuthRepositoryImpl(
     private val authApiService: AuthApiService
 ) : AuthRepository {
     override suspend fun loginUser(authUser: AuthUser): Flow<Resource<AuthResponse, DataError>> {
-        return withContext(Dispatchers.IO) {
-            HttpRequestHelper.executeCall {
-                authApiService.loginUser(authUser.toAuthUserRequest())
-            }.map { resource ->
-                resource.map {
-                    it.toDomain()
+        return flow {
+            emit(Resource.Loading)
+            withContext(Dispatchers.IO) {
+                HttpRequestHelper.safeCall {
+                    authApiService.loginUser(authUser.toAuthUserRequest())
+                }.also { resource ->
+                    withContext(Dispatchers.Main.immediate) {
+                        emit(resource.map { it.toDomain() })
+                    }
                 }
-
             }
+
+
         }
     }
 
     override suspend fun registerUser(authUser: AuthUser): Flow<Resource<AuthResponse, DataError>> {
-        return withContext(Dispatchers.IO) {
-            HttpRequestHelper.executeCall {
-                authApiService.registerUser(authUser.toAuthUserRequest())
-            }.map { resource ->
-                resource.map {
-                    it.toDomain()
+        return flow {
+
+            emit(Resource.Loading)
+            withContext(Dispatchers.IO) {
+                HttpRequestHelper.safeCall {
+                    authApiService.registerUser(authUser.toAuthUserRequest())
+                }.also { resource ->
+                    withContext(Dispatchers.Main.immediate) {
+                        emit(resource.map { it.toDomain() })
+                    }
                 }
             }
         }
     }
 }
+

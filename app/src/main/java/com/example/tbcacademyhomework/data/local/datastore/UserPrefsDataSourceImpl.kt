@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.data.local
+package com.example.tbcacademyhomework.data.local.datastore
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.tbcacademyhomework.domain.local.UserPrefsDataSource
+import com.example.tbcacademyhomework.domain.local.datastore.UserPrefsDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

@@ -7,9 +7,8 @@ import com.example.tbcacademyhomework.domain.auth.models.AuthUser
 import com.example.tbcacademyhomework.domain.auth.repository.AuthRepository
 import com.example.tbcacademyhomework.domain.utils.DataError
 import com.example.tbcacademyhomework.domain.utils.Resource
+import com.example.tbcacademyhomework.domain.validator.Validator
 import com.example.tbcacademyhomework.presentation.utils.toGenericString
-import com.example.tbcacademyhomework.presentation.validation.EmailValidator
-import com.example.tbcacademyhomework.presentation.validation.InputValidator
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,8 +18,8 @@ import kotlinx.coroutines.launch
 
 class RegisterViewModel(
     private val authRepository: AuthRepository,
-    private val emailValidator: EmailValidator,
-    private val passwordValidator: InputValidator
+    private val emailValidator: Validator,
+    private val passwordValidator: Validator
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(RegisterScreenState())

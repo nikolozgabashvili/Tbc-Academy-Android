@@ -1,10 +1,8 @@
 package com.example.tbcacademyhomework.presentation.validation
 
 import android.util.Patterns
+import com.example.tbcacademyhomework.domain.validator.Validator
 
-interface Validator {
-    fun isValid(input: String): Boolean
-}
 
 class EmailValidator : Validator {
     override fun isValid(input: String): Boolean {

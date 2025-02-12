@@ -1,15 +1,15 @@
-package com.example.tbcacademyhomework.data.users.models
+package com.example.tbcacademyhomework.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class UserDto(
-    val id: Int?,
-    val email: String?,
+    val id: Int,
+    val email: String,
     @SerialName("first_name")
-    val firstName: String?,
+    val firstName: String,
     @SerialName("last_name")
-    val lastName: String?,
-    val avatar: String?
+    val lastName: String,
+    val avatar: String
 )

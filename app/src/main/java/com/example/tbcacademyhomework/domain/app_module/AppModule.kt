@@ -1,15 +1,16 @@
 package com.example.tbcacademyhomework.domain.app_module
 
 import com.example.tbcacademyhomework.domain.auth.repository.AuthRepository
-import com.example.tbcacademyhomework.domain.local.UserPrefsDataSource
-import com.example.tbcacademyhomework.domain.users.repository.UsersRepository
-import com.example.tbcacademyhomework.presentation.validation.EmailValidator
-import com.example.tbcacademyhomework.presentation.validation.InputValidator
+import com.example.tbcacademyhomework.domain.connectivity_observer.ConnectivityObserver
+import com.example.tbcacademyhomework.domain.local.datastore.UserPrefsDataSource
+import com.example.tbcacademyhomework.domain.remote.repository.UsersRemoteSource
+import com.example.tbcacademyhomework.domain.validator.Validator
 
 interface AppModule {
-    val usersRepository: UsersRepository
+    val usersRemoteSource: UsersRemoteSource
     val authRepository: AuthRepository
     val userPrefsDataSource: UserPrefsDataSource
-    val emailValidator: EmailValidator
-    val inputValidator: InputValidator
+    val emailValidator: Validator
+    val inputValidator: Validator
+    val connectivityObserver: ConnectivityObserver
 }
