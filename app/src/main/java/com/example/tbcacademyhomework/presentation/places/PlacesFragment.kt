@@ -1,6 +1,7 @@
 package com.example.tbcacademyhomework.presentation.places
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,6 +13,7 @@ import com.example.tbcacademyhomework.databinding.FragmentPlacesBinding
 import com.example.tbcacademyhomework.domain.util.Resource
 import com.example.tbcacademyhomework.domain.util.isLoading
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
+import com.example.tbcacademyhomework.presentation.toString
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -63,6 +65,18 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>(FragmentPlacesBinding
                         is Resource.Error -> Unit
                         Resource.Loading -> Unit
                     }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                placesViewModel.event.collectLatest {
+                    Toast.makeText(
+                        requireContext(),
+                        it.toString(context = requireContext()),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
