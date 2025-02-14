@@ -17,7 +17,6 @@ import com.example.tbcacademyhomework.presentation.users.adapters.UsersAdapter
 import com.example.tbcacademyhomework.presentation.utils.getValue
 import com.example.tbcacademyhomework.presentation.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
