@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#22343C"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,9 +13,22 @@
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomMenu"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_bottom_bar"
+
+        android:layout_height="@dimen/size96"
+        app:itemBackground="@drawable/bottom_nav_item_selector"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemIconTint="@drawable/bottom_nav_content"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_menu" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

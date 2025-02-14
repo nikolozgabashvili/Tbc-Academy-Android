@@ -1,9 +1,11 @@
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.serialization)
     id(libs.plugins.safeArgs.get().pluginId)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -51,6 +53,15 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.navigation.ui)
     implementation(libs.navigation.fragment)
+    implementation(libs.retrofit.serialization)
+    implementation(libs.lottie)
+    implementation(libs.glide)
+    implementation(libs.logging.interceptor)
+    implementation(libs.okhttp)
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.serialization.json)
+    kapt(libs.dagger.hilt.compiler)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
