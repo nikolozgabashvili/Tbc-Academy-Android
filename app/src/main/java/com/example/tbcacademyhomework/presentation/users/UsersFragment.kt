@@ -57,7 +57,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
                 val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
                 val endReached = usersViewModel.state.value.pagingFinished
                 val isLoading = usersViewModel.state.value.loading
-                if (!endReached && totalItemCount <= (lastVisibleItem + 1) && !isLoading) {
+                if (!endReached && totalItemCount <= (lastVisibleItem + 2) && !isLoading) {
 
                     usersViewModel.fetchUsers()
 

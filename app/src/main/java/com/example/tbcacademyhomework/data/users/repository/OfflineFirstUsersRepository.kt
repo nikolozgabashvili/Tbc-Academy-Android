@@ -28,7 +28,6 @@ class OfflineFirstUsersRepositoryImpl @Inject constructor(
 
 
     private var hasInternetConnection = true
-    private var pagesToLoad = mutableSetOf<Int>()
     private var totalPages: Int? = null
 
     init {
