@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.tbcacademyhomework.presentation.screens.login.LoginFragment"
+        android:name="com.example.tbcacademyhomework.presentation.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.example.tbcacademyhomework.presentation.screens.users.UsersFragment"
+        android:name="com.example.tbcacademyhomework.presentation.users.UsersFragment"
         android:label="fragment_users"
         tools:layout="@layout/fragment_users" >
         <argument
@@ -33,12 +33,12 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.tbcacademyhomework.presentation.screens.register.RegisterFragment"
+        android:name="com.example.tbcacademyhomework.presentation.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.tbcacademyhomework.presentation.screens.profile.ProfileFragment"
+        android:name="com.example.tbcacademyhomework.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <argument

@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room.plugin)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -62,12 +64,11 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.preferences.datastore)
     implementation(libs.logging.interceptor)
-    implementation(libs.androidx.paging)
-    implementation(libs.room.paging)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
-
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.dagger.hilt.android)
 
     implementation(libs.serialization.json)
     testImplementation(libs.junit)

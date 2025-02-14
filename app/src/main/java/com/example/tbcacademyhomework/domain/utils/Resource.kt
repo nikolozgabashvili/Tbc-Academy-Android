@@ -6,6 +6,10 @@ sealed interface Resource<out D, out E : NetworkError> {
     data class Success<out D>(val data: D) : Resource<D, Nothing>
     data class Error<out E : NetworkError>(val error: E) : Resource<Nothing, E>
     data object Loading : Resource<Nothing, Nothing>
+
+
+
+
 }
 
 inline fun <T, E : NetworkError, R> Resource<T, E>.map(transform: (T) -> R): Resource<R, E> {

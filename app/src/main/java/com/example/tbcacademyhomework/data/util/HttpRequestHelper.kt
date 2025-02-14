@@ -4,8 +4,11 @@ import com.example.tbcacademyhomework.domain.utils.DataError
 import com.example.tbcacademyhomework.domain.utils.Resource
 import kotlinx.serialization.json.Json
 import retrofit2.Response
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object HttpRequestHelper {
+@Singleton
+class HttpRequestHelper @Inject constructor() {
 
     private val json = Json {
         ignoreUnknownKeys = true
@@ -32,7 +35,7 @@ object HttpRequestHelper {
     }
 
 
-    fun parseError(response: Response<*>): String? {
+    private fun parseError(response: Response<*>): String? {
         val errorString = response.errorBody()?.string()
         return errorString?.let { json.decodeFromString<ApiError>(it).error }
     }
