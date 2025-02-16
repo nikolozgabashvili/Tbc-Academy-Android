@@ -50,7 +50,7 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>(FragmentPlacesBinding
         binding.vpPlaces.apply {
             adapter = placesAdapter
             setPageTransformer(transformer)
-            offscreenPageLimit = 3
+            offscreenPageLimit = 1
             clipToPadding = false
             clipChildren = false
             setPadding(80, 0, 80, 0)
