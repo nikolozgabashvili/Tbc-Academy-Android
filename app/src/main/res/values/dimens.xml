@@ -59,6 +59,7 @@
     <dimen name="size96">96dp</dimen>
     <dimen name="size25">25dp</dimen>
     <dimen name="size540">540dp</dimen>
+    <dimen name="size200">200dp</dimen>
 
 
 </resources>

@@ -1,7 +1,6 @@
 package com.example.tbcacademyhomework.presentation.places
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -11,9 +10,9 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.tbcacademyhomework.databinding.FragmentPlacesBinding
 import com.example.tbcacademyhomework.domain.util.Resource
+import com.example.tbcacademyhomework.domain.util.isError
 import com.example.tbcacademyhomework.domain.util.isLoading
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
-import com.example.tbcacademyhomework.presentation.toString
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -26,9 +25,17 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>(FragmentPlacesBinding
     private val placesAdapter by lazy { PlacesAdapter() }
 
     override fun init(savedInstanceState: Bundle?) {
+        initListeners()
         initViewPager()
         initObservers()
 
+
+    }
+
+    private fun initListeners() {
+        binding.btnRetry.setOnClickListener {
+            placesViewModel.fetchPlaces()
+        }
     }
 
     private fun initViewPager() {
@@ -52,34 +59,24 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>(FragmentPlacesBinding
     }
 
     private fun initObservers() {
+
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 placesViewModel.state.collectLatest { resource ->
-                    binding.progressBar.isVisible = resource.isLoading()
+                    binding.loaderItem.root.isVisible = resource.isLoading()
+                    binding.errorWrapper.isVisible = resource.isError()
                     binding.vpPlaces.isVisible = !resource.isLoading()
                     when (resource) {
                         is Resource.Success -> {
                             placesAdapter.submitList(resource.data)
                         }
 
-                        is Resource.Error -> Unit
-                        Resource.Loading -> Unit
+                        else -> Unit
                     }
                 }
             }
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                placesViewModel.event.collectLatest {
-                    Toast.makeText(
-                        requireContext(),
-                        it.toString(context = requireContext()),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
     }
 
 }

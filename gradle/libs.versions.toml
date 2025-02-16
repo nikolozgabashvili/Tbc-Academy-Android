@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+gbdesignsystem = "1.0.5"
 kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -21,10 +22,12 @@ retrofit2KotlinxSerializationConverter = "1.0.0"
 lottie = "6.4.1"
 datastore = "1.1.2"
 pagingRuntimeKtx = "3.3.5"
-daggerHilt ="2.51.1"
+daggerHilt ="2.55"
+shimmer = "0.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+gbdesignsystem = { module = "com.github.nikolozgabashvili:gbDesignSystem", version.ref = "gbdesignsystem" }
 serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "safeArgs" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -65,6 +68,9 @@ dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compi
 
 #pading
 androidx-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
+
+#shimmer
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

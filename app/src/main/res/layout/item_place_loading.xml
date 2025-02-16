@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/size40"
+    app:cardBackgroundColor="#00000000"
+    app:cardCornerRadius="@dimen/size25"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_background">
+
+            <View
+                android:id="@+id/ivPlace"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size540"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <View
+                android:id="@+id/ivLocationIcon"
+                android:layout_width="@dimen/size16"
+                android:layout_height="@dimen/size16"
+                android:layout_marginStart="@dimen/size33"
+                android:layout_marginTop="@dimen/size40"
+                android:background="@color/loading_gray"
+                app:layout_constraintStart_toStartOf="@id/ivPlace"
+                app:layout_constraintTop_toTopOf="@id/ivPlace" />
+
+            <View
+                android:id="@+id/tvLocation"
+                android:layout_width="@dimen/size100"
+                android:layout_height="@dimen/size20"
+                android:layout_marginStart="@dimen/size9"
+                android:background="@color/loading_gray"
+                app:layout_constraintBottom_toBottomOf="@id/ivLocationIcon"
+                app:layout_constraintStart_toEndOf="@id/ivLocationIcon"
+                app:layout_constraintTop_toTopOf="@id/ivLocationIcon" />
+
+            <View
+                android:id="@+id/ivReactionCount"
+                android:layout_width="@dimen/size16"
+                android:layout_height="@dimen/size16"
+                android:layout_marginEnd="@dimen/size9"
+                android:background="@color/loading_gray"
+                app:layout_constraintBottom_toBottomOf="@id/tvReactionCount"
+                app:layout_constraintEnd_toStartOf="@id/tvReactionCount"
+                app:layout_constraintTop_toTopOf="@id/tvReactionCount" />
+
+            <View
+                android:id="@+id/tvReactionCount"
+                android:layout_width="50dp"
+                android:layout_height="@dimen/size20"
+                android:layout_marginEnd="@dimen/size32"
+                android:background="@color/loading_gray"
+                app:layout_constraintBottom_toBottomOf="@id/ivLocationIcon"
+                app:layout_constraintEnd_toEndOf="@id/ivPlace"
+                app:layout_constraintTop_toTopOf="@id/ivLocationIcon" />
+
+            <View
+                android:id="@+id/tvTitle"
+                android:layout_width="@dimen/size200"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/size30"
+                android:layout_marginBottom="@dimen/size30"
+                android:background="@color/loading_gray"
+                app:layout_constraintBottom_toTopOf="@id/tvPrice"
+                app:layout_constraintStart_toStartOf="@id/ivPlace" />
+
+            <View
+                android:id="@+id/tvPrice"
+                android:layout_width="@dimen/size50"
+                android:layout_height="@dimen/size20"
+                android:layout_marginStart="@dimen/size30"
+                android:layout_marginBottom="@dimen/size40"
+                android:background="@color/loading_gray"
+                app:layout_constraintBottom_toBottomOf="@id/ivPlace"
+                app:layout_constraintStart_toStartOf="@id/ivPlace" />
+
+
+            <View
+                android:id="@+id/ratingBar"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/size20"
+                android:layout_marginEnd="@dimen/size32"
+                android:background="@color/loading_gray"
+                app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+                app:layout_constraintEnd_toEndOf="@id/ivPlace"
+                app:layout_constraintTop_toTopOf="@id/tvPrice" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

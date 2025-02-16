@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.tbcacademyhomework.databinding.ItemPlaceBinding
 import com.example.tbcacademyhomework.domain.models.Place
 
-class PlacesAdapter:
+class PlacesAdapter :
     ListAdapter<Place, PlacesAdapter.PlacesViewHolder>(PlacesDiffUtil()) {
 
     inner class PlacesViewHolder(private val binding: ItemPlaceBinding) : ViewHolder(binding.root) {
@@ -21,7 +21,7 @@ class PlacesAdapter:
                 tvReactionCount.text = item.reactionCount.toString()
                 tvTitle.text = item.title
                 tvPrice.text = item.price
-                ratingBar.rating = item.rating.toFloat()
+                ratingBar.setRating(item.rating.toFloat())
             }
 
         }

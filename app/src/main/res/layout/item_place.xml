@@ -1,109 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="#00000000"
+    app:cardCornerRadius="@dimen/size25"
+    app:cardElevation="@dimen/size2"
+    app:strokeColor="@color/black"
+    app:strokeWidth="0dp">
 
-
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivPlace"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size540"
-        android:background="@color/black"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/circle" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivLocationIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size33"
-        android:layout_marginTop="@dimen/size40"
-        app:layout_constraintStart_toStartOf="@id/ivPlace"
-        app:layout_constraintTop_toTopOf="@id/ivPlace"
-        app:srcCompat="@drawable/ic_pin" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size9"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textSize20"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ivLocationIcon"
-        app:layout_constraintStart_toEndOf="@id/ivLocationIcon"
-        app:layout_constraintTop_toTopOf="@id/ivLocationIcon"
-        tools:text="Barcelona" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivReactionCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/size9"
-        app:layout_constraintBottom_toBottomOf="@id/tvReactionCount"
-        app:layout_constraintEnd_toStartOf="@id/tvReactionCount"
-        app:layout_constraintTop_toTopOf="@id/tvReactionCount"
-        app:srcCompat="@drawable/ic_flame" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvReactionCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/size32"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textSize20"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ivLocationIcon"
-        app:layout_constraintEnd_toEndOf="@id/ivPlace"
-        app:layout_constraintTop_toTopOf="@id/ivLocationIcon"
-        tools:text="6000" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size30"
-        android:layout_marginBottom="@dimen/size30"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textSize32"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tvPrice"
-        app:layout_constraintStart_toStartOf="@id/ivPlace"
-        tools:text="natural walk" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size30"
-        android:layout_marginBottom="@dimen/size40"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textSize20"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ivPlace"
-        app:layout_constraintStart_toStartOf="@id/ivPlace"
-        tools:text="$120" />
+        android:layout_height="match_parent">
 
 
-    <androidx.appcompat.widget.AppCompatRatingBar
-        android:id="@+id/ratingBar"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:foregroundGravity="right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivPlace"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size540"
+            android:background="@color/black"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        android:progressTint="@color/white"
-        android:tint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
-        app:layout_constraintEnd_toEndOf="@id/ivPlace"
-        app:layout_constraintTop_toTopOf="@id/tvPrice" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLocationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size33"
+            android:layout_marginTop="@dimen/size40"
+            app:layout_constraintStart_toStartOf="@id/ivPlace"
+            app:layout_constraintTop_toTopOf="@id/ivPlace"
+            app:srcCompat="@drawable/ic_pin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size9"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivLocationIcon"
+            app:layout_constraintStart_toEndOf="@id/ivLocationIcon"
+            app:layout_constraintTop_toTopOf="@id/ivLocationIcon"
+            tools:text="Barcelona" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivReactionCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size9"
+            app:layout_constraintBottom_toBottomOf="@id/tvReactionCount"
+            app:layout_constraintEnd_toStartOf="@id/tvReactionCount"
+            app:layout_constraintTop_toTopOf="@id/tvReactionCount"
+            app:srcCompat="@drawable/ic_flame" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReactionCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size32"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivLocationIcon"
+            app:layout_constraintEnd_toEndOf="@id/ivPlace"
+            app:layout_constraintTop_toTopOf="@id/ivLocationIcon"
+            tools:text="6000" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size30"
+            android:layout_marginBottom="@dimen/size30"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize32"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvPrice"
+            app:layout_constraintStart_toStartOf="@id/ivPlace"
+            tools:text="natural walk" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size30"
+            android:layout_marginBottom="@dimen/size40"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivPlace"
+            app:layout_constraintStart_toStartOf="@id/ivPlace"
+            tools:text="$120" />
+
+
+        <ge.gb_design_system.RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size32"
+            app:cornerRadius="1.5dp"
+            app:filledColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+            app:layout_constraintEnd_toEndOf="@id/ivPlace"
+            app:layout_constraintTop_toTopOf="@id/tvPrice"
+            app:starSize="@dimen/size14"
+            app:starSpacing="@dimen/size5"
+            app:unfilledColor="@color/gray" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

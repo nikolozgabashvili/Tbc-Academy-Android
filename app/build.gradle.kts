@@ -61,7 +61,8 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     implementation(libs.serialization.json)
     kapt(libs.dagger.hilt.compiler)
-
+    implementation (libs.gbdesignsystem)
+    implementation (libs.shimmer)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
