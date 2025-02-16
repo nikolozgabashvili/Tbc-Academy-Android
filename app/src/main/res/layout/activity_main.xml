@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#22343C"
+    android:background="@color/app_bg"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -22,7 +22,6 @@
         android:id="@+id/bottomMenu"
         android:layout_width="match_parent"
         android:background="@drawable/bg_bottom_bar"
-
         android:layout_height="@dimen/size96"
         app:itemBackground="@drawable/bottom_nav_item_selector"
         app:itemActiveIndicatorStyle="@null"

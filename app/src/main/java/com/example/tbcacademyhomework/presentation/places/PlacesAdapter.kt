@@ -15,13 +15,13 @@ class PlacesAdapter :
     inner class PlacesViewHolder(private val binding: ItemPlaceBinding) : ViewHolder(binding.root) {
         fun bind(position: Int) {
             val item = getItem(position)
-            with(binding) {
+                with(binding) {
                 Glide.with(root).load(item.cover).into(ivPlace)
                 tvLocation.text = item.location
                 tvReactionCount.text = item.reactionCount.toString()
                 tvTitle.text = item.title
                 tvPrice.text = item.price
-                ratingBar.setRating(item.rating.toFloat())
+                ratingBar.currentRating = item.rating.toFloat()
             }
 
         }

@@ -4,7 +4,6 @@ import com.example.tbcacademyhomework.data.models.PlaceDto
 import com.example.tbcacademyhomework.domain.models.Place
 
 fun PlaceDto.toPlace(): Place {
-    println(rate)
     return Place(
         id = id,
         cover = cover,

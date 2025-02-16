@@ -44,8 +44,8 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>(FragmentPlacesBinding
         val transformer = CompositePageTransformer()
         transformer.addTransformer(MarginPageTransformer(40))
         transformer.addTransformer { page, position ->
-            val r = 1 - abs(position)
-            page.scaleY = 0.85f + r * 0.14f
+            val scaleFactor = 1 - abs(position)
+            page.scaleY = 0.85f + scaleFactor * 0.15f
         }
         binding.vpPlaces.apply {
             adapter = placesAdapter
