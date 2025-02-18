@@ -39,11 +39,11 @@ android {
 
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "1.8"
     }
 
     buildFeatures {
@@ -55,9 +55,7 @@ android {
     }
     kapt{
         correctErrorTypes = true
-        kotlinOptions {
-            languageVersion = "2.1"
-        }
+
     }
 }
 
@@ -78,7 +76,6 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
-    implementation(libs.androidx.lifecycle.process)
     ksp(libs.room.compiler)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.android)

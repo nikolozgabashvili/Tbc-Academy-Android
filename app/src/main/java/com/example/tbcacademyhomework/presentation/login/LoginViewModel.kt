@@ -34,9 +34,15 @@ class LoginViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            userPrefsRepository.getUserEmail().collect {email->
-                email?.let {
-                    eventsChannel.send(LoginEvent.Success)
+            userPrefsRepository.getShouldRemember().let { shouldRemember ->
+                if (shouldRemember != true) {
+                    println("cleared")
+                    userPrefsRepository.clearData()
+                } else {
+                    if (userPrefsRepository.getUserEmail() != null) {
+                        println("notnull")
+                        eventsChannel.send(LoginEvent.Success)
+                    }
                 }
             }
         }
@@ -59,9 +65,10 @@ class LoginViewModel @Inject constructor(
             is Resource.Success -> {
                 val email = _state.value.userEmail
 
-                    userPrefsRepository.saveToken(resource.data.token)
-                    userPrefsRepository.savEmail(email)
-                    userPrefsRepository.saveShouldRemember(_state.value.checkboxChecked)
+                userPrefsRepository.saveToken(resource.data.token)
+                userPrefsRepository.savEmail(email)
+                userPrefsRepository.saveShouldRemember(_state.value.checkboxChecked)
+                eventsChannel.send(LoginEvent.Success)
             }
 
             is Resource.Error -> {

@@ -3,7 +3,6 @@ package com.example.tbcacademyhomework.data.profile.profile.repository
 import com.example.tbcacademyhomework.domain.core.repository.UserPrefsRepository
 import com.example.tbcacademyhomework.domain.profile.repository.ProfileRepository
 import com.example.tbcacademyhomework.domain.users.repository.UsersLocalRepository
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
@@ -16,7 +15,7 @@ class ProfileRepositoryImpl @Inject constructor(
         userPrefsRepository.clearData()
     }
 
-    override suspend fun getUserEmail(): Flow<String?> {
+    override suspend fun getUserEmail(): String? {
         return userPrefsRepository.getUserEmail()
     }
 

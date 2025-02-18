@@ -7,7 +7,6 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.example.tbcacademyhomework.domain.core.repository.UserPrefsRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
@@ -25,11 +24,11 @@ class UserPrefsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getUserEmail(): Flow<String?> {
+    override suspend fun getUserEmail(): String? {
         return withContext(Dispatchers.IO) {
             dataStore.data.map { preferences ->
                 preferences[EMAIL_KEY]
-            }
+            }.first()
         }
     }
 

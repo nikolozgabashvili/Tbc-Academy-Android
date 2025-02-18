@@ -25,7 +25,7 @@ class ProfileViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            profileRepository.getUserEmail().collect { email ->
+            profileRepository.getUserEmail()?.let { email ->
                 _state.update { it.copy(email = email) }
             }
 
