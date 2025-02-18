@@ -1,18 +1,23 @@
 package com.example.tbcacademyhomework.data.profile.profile.repository
 
-import com.example.tbcacademyhomework.data.users.database.AppDatabase
 import com.example.tbcacademyhomework.domain.core.repository.UserPrefsRepository
 import com.example.tbcacademyhomework.domain.profile.repository.ProfileRepository
+import com.example.tbcacademyhomework.domain.users.repository.UsersLocalRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
-    private val appDatabase: AppDatabase,
+    private val localDataSource: UsersLocalRepository,
     private val userPrefsRepository: UserPrefsRepository,
-):ProfileRepository{
+) : ProfileRepository {
 
     override suspend fun clearUser() {
-        appDatabase.userDao.clearAll()
+        localDataSource.deleteData()
         userPrefsRepository.clearData()
+    }
+
+    override suspend fun getUserEmail(): Flow<String?> {
+        return userPrefsRepository.getUserEmail()
     }
 
 }

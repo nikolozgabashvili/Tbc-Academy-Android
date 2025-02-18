@@ -2,6 +2,7 @@ package com.example.tbcacademyhomework.data.core.repository
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.example.tbcacademyhomework.domain.core.repository.UserPrefsRepository
@@ -49,11 +50,28 @@ class UserPrefsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun saveShouldRemember(shouldRemember: Boolean) {
+        withContext(Dispatchers.IO) {
+            dataStore.edit { preferences ->
+                preferences[SHOULD_REMEMBER] = shouldRemember
+            }
+        }
+    }
+
+    override suspend fun getShouldRemember(): Boolean? {
+        return withContext(Dispatchers.IO) {
+            dataStore.data.map { preferences ->
+                preferences[SHOULD_REMEMBER]
+            }.first()
+        }
+    }
+
     override suspend fun clearData() {
         withContext(Dispatchers.IO) {
             dataStore.edit { preferences ->
                 preferences.remove(TOKEN_KEY)
                 preferences.remove(EMAIL_KEY)
+                preferences.remove(SHOULD_REMEMBER)
 
             }
         }
@@ -62,6 +80,7 @@ class UserPrefsRepositoryImpl @Inject constructor(
     companion object {
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val EMAIL_KEY = stringPreferencesKey("email")
+        private val SHOULD_REMEMBER = booleanPreferencesKey("remember_user")
     }
 
 

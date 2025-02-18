@@ -31,4 +31,8 @@ class UsersLocalRepositoryImpl @Inject constructor(
             usersDao.getUsersBeforePage(page).map { it.toDomain() }
         }
     }
+
+    override suspend fun deleteData() {
+        usersDao.clearAll()
+    }
 }

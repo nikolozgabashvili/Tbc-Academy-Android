@@ -36,7 +36,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             userPrefsRepository.getUserEmail().collect {email->
                 email?.let {
-                    eventsChannel.send(LoginEvent.Success(it))
+                    eventsChannel.send(LoginEvent.Success)
                 }
             }
         }
@@ -58,13 +58,10 @@ class LoginViewModel @Inject constructor(
         when (resource) {
             is Resource.Success -> {
                 val email = _state.value.userEmail
-                if (_state.value.checkboxChecked) {
 
                     userPrefsRepository.saveToken(resource.data.token)
                     userPrefsRepository.savEmail(email)
-                } else {
-                    eventsChannel.send(LoginEvent.Success(email = email))
-                }
+                    userPrefsRepository.saveShouldRemember(_state.value.checkboxChecked)
             }
 
             is Resource.Error -> {

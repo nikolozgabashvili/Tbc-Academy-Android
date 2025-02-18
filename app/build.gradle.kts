@@ -31,21 +31,33 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String","BASE_URL","\"https://reqres.in/api/\"")
         }
+        debug {
+            buildConfigField("String","BASE_URL","\"https://reqres.in/api/\"")
+        }
+
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
     room {
         schemaDirectory("$projectDir/schemas")
+    }
+    kapt{
+        correctErrorTypes = true
+        kotlinOptions {
+            languageVersion = "2.1"
+        }
     }
 }
 
@@ -66,6 +78,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.androidx.lifecycle.process)
     ksp(libs.room.compiler)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.android)

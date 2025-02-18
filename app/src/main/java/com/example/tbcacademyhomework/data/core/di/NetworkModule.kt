@@ -1,5 +1,6 @@
 package com.example.tbcacademyhomework.data.core.di
 
+import com.example.tbcacademyhomework.BuildConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -22,7 +23,7 @@ object NetworkModule {
     ): Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(httpClient)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
@@ -33,16 +34,18 @@ object NetworkModule {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
-        return OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .build()
+        return OkHttpClient.Builder().apply {
+            if (BuildConfig.DEBUG)
+                addInterceptor(loggingInterceptor)
+        }.build()
+
+
     }
 
     private val json = Json {
         ignoreUnknownKeys = true
         explicitNulls = false
     }
-    private const val BASE_URL = "https://reqres.in/api/"
 
 
 }

@@ -24,9 +24,6 @@
         android:name="com.example.tbcacademyhomework.presentation.users.UsersFragment"
         android:label="fragment_users"
         tools:layout="@layout/fragment_users" >
-        <argument
-            android:name="email"
-            app:argType="string" />
         <action
             android:id="@+id/action_usersFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -41,9 +38,6 @@
         android:name="com.example.tbcacademyhomework.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
-        <argument
-            android:name="email"
-            app:argType="string" />
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"

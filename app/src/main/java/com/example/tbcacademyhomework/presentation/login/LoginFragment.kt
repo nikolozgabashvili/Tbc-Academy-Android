@@ -90,9 +90,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     when (event) {
                         is LoginEvent.Success -> {
                             navController.navigate(
-                                LoginFragmentDirections.actionLoginFragmentToUsersFragment(
-                                    event.email
-                                )
+                                LoginFragmentDirections.actionLoginFragmentToUsersFragment()
                             )
                         }
 

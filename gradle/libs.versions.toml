@@ -9,9 +9,9 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
-safeArgs = "2.8.6"
+safeArgs = "2.8.7"
 serialization = "2.1.0"
-navVersion = "2.8.6"
+navVersion = "2.8.7"
 kotlinxSerializationJson = "1.7.3"
 glide = "4.16.0"
 ksp = "2.1.0-1.0.29"
@@ -21,6 +21,7 @@ retrofit2KotlinxSerializationConverter = "1.0.0"
 lottie = "6.4.1"
 datastore = "1.1.2"
 daggerHilt = "2.51.1"
+lifecycleProcess = "2.8.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -60,6 +61,7 @@ dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compi
 
 #datastore
 preferences-datastore = {group = "androidx.datastore",name ="datastore-preferences",version.ref = "datastore"}
+androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycleProcess" }
 
 
 [plugins]

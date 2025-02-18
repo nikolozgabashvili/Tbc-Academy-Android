@@ -8,7 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbcacademyhomework.databinding.FragmentUsersBinding
@@ -26,7 +25,6 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
     private val usersViewModel: UsersViewModel by viewModels()
     private lateinit var navController: NavController
 
-    private val args: UsersFragmentArgs by navArgs()
     private val usersAdapter by lazy { UsersAdapter() }
 
 
@@ -45,7 +43,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
 
     private fun initListeners() {
         binding.btnProfile.setOnClickListener {
-            navController.navigate(UsersFragmentDirections.actionUsersFragmentToProfileFragment(args.email))
+            navController.navigate(UsersFragmentDirections.actionUsersFragmentToProfileFragment())
         }
 
         binding.rvUsers.addOnScrollListener(object : RecyclerView.OnScrollListener() {

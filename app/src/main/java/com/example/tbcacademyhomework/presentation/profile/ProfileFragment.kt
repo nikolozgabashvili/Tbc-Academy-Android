@@ -7,7 +7,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.tbcacademyhomework.databinding.FragmentProfileBinding
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,15 +18,21 @@ import kotlinx.coroutines.launch
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
 
     private val profileViewModel: ProfileViewModel by viewModels()
-    private val args: ProfileFragmentArgs by navArgs()
     private lateinit var navController: NavController
 
 
     override fun init(savedInstanceState: Bundle?) {
         navController = findNavController()
         initListeners()
-        initViews()
         initObservers()
+    }
+
+
+    private fun initListeners() {
+        binding.btnLogOut.setOnClickListener {
+            profileViewModel.logOutUser()
+        }
+
     }
 
     private fun initObservers() {
@@ -39,15 +44,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             }
         }
 
-    }
-
-    private fun initViews() {
-        binding.tvEmail.text = args.email
-    }
-
-    private fun initListeners() {
-        binding.btnLogOut.setOnClickListener {
-            profileViewModel.logOutUser()
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                profileViewModel.state.collectLatest {
+                    binding.tvEmail.text = it.email
+                }
+            }
         }
 
     }

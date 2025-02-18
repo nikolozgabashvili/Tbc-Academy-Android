@@ -8,5 +8,7 @@ interface UserPrefsRepository {
     suspend fun getUserEmail(): Flow<String?>
     suspend fun saveToken(token: String)
     suspend fun savEmail(email: String)
+    suspend fun saveShouldRemember(shouldRemember:Boolean)
+    suspend fun getShouldRemember():Boolean?
     suspend fun clearData()
 }
