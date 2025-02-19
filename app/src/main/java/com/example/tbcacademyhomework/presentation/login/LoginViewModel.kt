@@ -36,11 +36,9 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             userPrefsRepository.getShouldRemember().let { shouldRemember ->
                 if (shouldRemember != true) {
-                    println("cleared")
                     userPrefsRepository.clearData()
                 } else {
                     if (userPrefsRepository.getUserEmail() != null) {
-                        println("notnull")
                         eventsChannel.send(LoginEvent.Success)
                     }
                 }
