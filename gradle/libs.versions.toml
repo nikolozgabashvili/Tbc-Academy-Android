@@ -1,6 +1,6 @@
 [versions]
 agp = "8.6.1"
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -9,18 +9,19 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
-safeArgs = "2.8.6"
-serialization = "2.1.0"
-navVersion = "2.8.6"
+safeArgs = "2.8.7"
+serialization = "2.1.10"
+navVersion = "2.8.7"
 kotlinxSerializationJson = "1.7.3"
 glide = "4.16.0"
-ksp = "2.1.0-1.0.29"
+ksp = "2.1.10-1.0.29"
 roomRuntime = "2.6.1"
 okhttp = "4.12.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
 lottie = "6.4.1"
 datastore = "1.1.2"
-pagingRuntimeKtx = "3.3.5"
+pagingRuntimeKtx = "3.3.6"
+daggerHilt = "2.55"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,6 +57,10 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRunti
 
 #datastore
 preferences-datastore = {group = "androidx.datastore",name ="datastore-preferences",version.ref = "datastore"}
+
+#dagger hilt
+dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android",version.ref = "daggerHilt" }
+dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler",version.ref = "daggerHilt" }
 
 #pading
 androidx-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
