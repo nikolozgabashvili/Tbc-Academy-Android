@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="28dp"
+    app:strokeWidth="0dp"
+    android:elevation="@dimen/size4"
+    app:cardForegroundColor="@null"
+    app:cardBackgroundColor="@null"
+    android:layout_marginTop="@dimen/size24"
+    app:cardCornerRadius="@dimen/size25"
+    android:background="@drawable/bg_post">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_post"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivOwner"
+            android:layout_width="@dimen/size48"
+            android:layout_height="@dimen/size48"
+            android:layout_marginStart="@dimen/size19"
+            android:layout_marginTop="@dimen/size24"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/circle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvOwnerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size15"
+            android:layout_marginBottom="@dimen/size6"
+            android:fontFamily="@font/sf_pro_display"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize16"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivOwner"
+            app:layout_constraintTop_toTopOf="@id/ivOwner"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="hello hello" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPostTimestamp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_display"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/textSize14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvOwnerName"
+            app:layout_constraintTop_toBottomOf="@id/tvOwnerName"
+            tools:text="hello hello" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPostTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size19"
+            android:layout_marginTop="@dimen/size9"
+            android:fontFamily="@font/sf_pro_display"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivOwner"
+            tools:text="We’re interested in your ideas and would be glad to build something bigger out of it. " />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivPostImage1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size154"
+            android:layout_marginHorizontal="@dimen/size19"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toStartOf="@id/ivPostImage2"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPostTitle"
+            app:shapeAppearanceOverlay="@style/rounded25" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivPostImage2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/size19"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@id/ivPostImage3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivPostImage1"
+            app:layout_constraintTop_toTopOf="@id/ivPostImage1"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:shapeAppearanceOverlay="@style/rounded25"
+            tools:layout_height="71dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivPostImage3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size12"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/ivPostImage1"
+            app:layout_constraintEnd_toEndOf="@+id/ivPostImage2"
+            app:layout_constraintStart_toStartOf="@+id/ivPostImage2"
+            app:layout_constraintTop_toBottomOf="@id/ivPostImage2"
+            app:shapeAppearanceOverlay="@style/rounded25"
+            tools:layout_height="71dp" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/dividerImages"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size1"
+            android:layout_marginHorizontal="@dimen/size19"
+            android:layout_marginTop="@dimen/size16"
+            app:dividerColor="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/ivPostImage1" />
+
+        <include
+            android:id="@+id/item_comment"
+            layout="@layout/item_reaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size19"
+            android:layout_marginTop="@dimen/size18"
+            app:layout_constraintEnd_toStartOf="@id/item_like"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerImages" />
+
+        <include
+            android:id="@+id/item_like"
+            layout="@layout/item_reaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size18"
+            app:layout_constraintEnd_toStartOf="@id/item_share"
+            app:layout_constraintStart_toEndOf="@id/item_comment"
+            app:layout_constraintTop_toBottomOf="@id/dividerImages" />
+
+        <include
+            android:id="@+id/item_share"
+            layout="@layout/item_reaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size18"
+            android:layout_marginEnd="@dimen/size19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_like"
+            app:layout_constraintTop_toBottomOf="@id/dividerImages" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size1"
+            android:layout_marginTop="@dimen/size16"
+            app:dividerColor="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/item_comment"
+            app:layout_goneMarginTop="@dimen/size20" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivUser"
+            android:layout_width="@dimen/size48"
+            android:layout_height="@dimen/size48"
+            android:layout_marginStart="@dimen/size20"
+            android:layout_marginTop="@dimen/size15"
+            android:layout_marginBottom="@dimen/size16"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:shapeAppearanceOverlay="@style/circle"
+            app:srcCompat="@drawable/ic_person" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etComment"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size42"
+            android:layout_marginStart="@dimen/size12"
+            android:layout_marginEnd="@dimen/size19"
+            android:background="@drawable/bg_input"
+            android:drawableEnd="@drawable/ic_comment_inp"
+            android:hint="@string/write_comment"
+            android:paddingHorizontal="@dimen/size16"
+            android:textColorHint="@color/text_secondary"
+            android:textSize="@dimen/textSize14"
+            app:layout_constraintBottom_toBottomOf="@+id/ivUser"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivUser"
+            app:layout_constraintTop_toTopOf="@+id/ivUser" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

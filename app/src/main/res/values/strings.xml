@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="serialization_error">Serialization error</string>
+    <string name="unknowr_error">Unknown error</string>
+    <string name="unreachable_host_error">Host can\'t be reached</string>
+    <string name="comments">%1$s Comments</string>
+    <string name="likes">%1$s Likes</string>
+    <string name="share">Share</string>
+    <string name="write_comment">Write Comment..</string>
+    <string name="favourites">favourites</string>
+    <string name="home">home</string>
+    <string name="messages">chat</string>
+    <string name="notifications">notifications</string>
 </resources>

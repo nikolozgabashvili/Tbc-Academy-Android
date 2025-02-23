@@ -1,9 +1,12 @@
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     id(libs.plugins.safeArgs.get().pluginId)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -27,6 +30,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String","BASE_URL","\"https://run.mocky.io/v3/\"")
+        }
+        debug {
+            buildConfigField("String","BASE_URL","\"https://run.mocky.io/v3/\"")
         }
     }
     compileOptions {
@@ -39,6 +46,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
+    }
+
+    kapt {
+        correctErrorTypes = true
     }
 }
 
@@ -51,6 +63,18 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.navigation.ui)
     implementation(libs.navigation.fragment)
+    // dagger hilt
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
+
+    // retrofit
+    implementation(libs.retrofit.serialization)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+    // glide
+    implementation(libs.glide)
+    // serialization
+    implementation(libs.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

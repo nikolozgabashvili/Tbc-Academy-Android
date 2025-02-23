@@ -5,16 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".presentation.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomMenu"
+        android:layout_width="match_parent"
+        app:elevation="18dp"
+        android:layout_height="@dimen/size96"
+        android:background="@drawable/bg_bottom_bar"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemIconTint="@drawable/bottom_nav_content"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_nav" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
