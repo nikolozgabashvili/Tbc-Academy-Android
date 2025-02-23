@@ -3,6 +3,7 @@ package com.example.tbcacademyhomework.presentation.home.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -20,8 +21,8 @@ class StoryAdapter : ListAdapter<Story, StoryAdapter.StoryViewHolder>(StoryDiffU
             with(binding) {
                 ivCover.loadImage(
                     item.cover,
+                    scaleType = ImageView.ScaleType.FIT_XY,
                     placeholderResId = R.drawable.ic_refresh,
-                    errorResId = R.drawable.ic_person
                 )
                 tvTitle.text = item.title
 

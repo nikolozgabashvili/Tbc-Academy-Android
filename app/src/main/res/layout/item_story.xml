@@ -7,7 +7,6 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivCover"
         android:layout_width="match_parent"
-        android:scaleType="fitXY"
         app:shapeAppearanceOverlay="@style/rounded25"
         android:layout_height="match_parent" />
 
