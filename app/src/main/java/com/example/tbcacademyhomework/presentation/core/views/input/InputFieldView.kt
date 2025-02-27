@@ -1,13 +1,18 @@
 package com.example.tbcacademyhomework.presentation.core.views.input
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.example.tbcacademyhomework.R
@@ -28,6 +33,20 @@ class InputFieldView @JvmOverloads constructor(
 
 
     private val binding = InputFieldViewBinding.inflate(LayoutInflater.from(context), this)
+    private var onTextChangedListener: ((String) -> Unit)? = null
+
+    var errorText: String = ""
+        set(value) {
+            field = value
+            binding.tvError.text = errorText
+        }
+
+    var isError: Boolean = false
+        set(value) {
+            field = value
+            updateErrorState()
+        }
+
 
     private var inputType: InputType = InputType.STANDARD
         set(value) {
@@ -76,6 +95,7 @@ class InputFieldView @JvmOverloads constructor(
             binding.etInput.setHintTextColor(value)
         }
 
+
     init {
 
         context.withStyledAttributes(
@@ -107,12 +127,50 @@ class InputFieldView @JvmOverloads constructor(
         }
 
 
+
+        initListeners()
+    }
+
+
+    private fun initListeners() {
         binding.ivPasswordToggle.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
         }
 
         binding.root.setOnClickListener {
-            binding.etInput.requestFocus()
+            showKeyboard(binding.etInput)
+
+
+        }
+
+
+        binding.etInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                isError = false
+                onTextChangedListener?.invoke(s.toString())
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+
+    }
+
+    fun setOnTextChangedListener(listener: (String) -> Unit) {
+        onTextChangedListener = listener
+    }
+
+    private fun showKeyboard(view: View) {
+        if (view.requestFocus()) {
+            val imm = getSystemService(context, InputMethodManager::class.java)
+            imm?.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
         }
     }
 
@@ -153,6 +211,17 @@ class InputFieldView @JvmOverloads constructor(
             binding.etInput.text?.let { binding.etInput.setSelection(it.length) }
         }
 
+    }
+
+    private fun updateErrorState() {
+        val showError = isError && errorText.isNotEmpty()
+        binding.errorLayout.isVisible = showError
+        val strokeColor = ContextCompat.getColor(
+            context,
+            if (showError) R.color.text_error else R.color.input_stroke
+        )
+
+        binding.card.strokeColor = strokeColor
 
     }
 

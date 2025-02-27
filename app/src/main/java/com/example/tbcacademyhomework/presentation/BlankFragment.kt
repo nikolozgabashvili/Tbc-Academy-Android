@@ -25,9 +25,8 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>(FragmentBlankBinding::i
         }
 
         binding.btn.setOnClickListener {
-            println(binding.et1.text)
-            println(binding.et2.text)
-            println(binding.et3.text)
+            binding.et3.errorText = binding.et3.text
+            binding.et3.isError = true
         }
 
 

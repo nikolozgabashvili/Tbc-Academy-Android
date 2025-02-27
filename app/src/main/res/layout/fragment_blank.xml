@@ -17,6 +17,8 @@
         android:id="@+id/et2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:textColor="@color/textPrimary"
+        app:hintColor="@color/textSecondary"
         app:startIcon="@drawable/ic_launcher_foreground"
         app:endIcon="@drawable/ic_visibility"
         />
@@ -25,7 +27,8 @@
         android:id="@+id/et3"
         app:hint ="asdad"
         android:layout_width="match_parent"
-        app:textColor="#ABAB21"
+        app:textColor="@color/textPrimary"
+        app:hintColor="@color/textSecondary"
         android:layout_height="wrap_content"
         app:inputType="password"
         app:startIcon="@drawable/ic_launcher_foreground" />

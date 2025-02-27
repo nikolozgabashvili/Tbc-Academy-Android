@@ -6,6 +6,9 @@
     <color name="app_background">#E2E2E2</color>
     <color name="text_error">#FF5454</color>
 
+    <color name="textPrimary">#34383C</color>
+    <color name="textSecondary">#A334383C</color>
+    <color name="input_stroke">#CCCCCC</color>
 
 
 </resources>
