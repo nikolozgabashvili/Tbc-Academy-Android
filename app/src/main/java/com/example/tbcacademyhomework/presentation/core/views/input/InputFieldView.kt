@@ -83,7 +83,7 @@ class InputFieldView @JvmOverloads constructor(
             }
         }
 
-    var textColor: Int = R.color.black
+    var textColor: Int = R.color.textPrimary
         set(value) {
             field = value
             binding.etInput.setTextColor(value)
@@ -102,6 +102,10 @@ class InputFieldView @JvmOverloads constructor(
             attrs,
             R.styleable.InputFieldView
         ) {
+            binding.etInput.inputType = getInt(
+                R.styleable.InputFieldView_android_inputType,
+                android.text.InputType.TYPE_CLASS_TEXT
+            )
 
             inputType = InputType.getEnumWithValue(
                 getInt(R.styleable.InputFieldView_inputType, 1)
@@ -117,12 +121,13 @@ class InputFieldView @JvmOverloads constructor(
             )
             textColor = getColor(
                 R.styleable.InputFieldView_textColor,
-                ContextCompat.getColor(context, R.color.black)
+                ContextCompat.getColor(context, R.color.textPrimary)
             )
             hintColor = getColor(
                 R.styleable.InputFieldView_hintColor,
                 ContextCompat.getColor(context, R.color.gray)
             )
+
 
         }
 
@@ -199,6 +204,7 @@ class InputFieldView @JvmOverloads constructor(
 
     private fun setupPasswordInput() {
         if (inputType == InputType.PASSWORD) {
+
             if (isPasswordVisible) {
                 binding.etInput.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 binding.ivPasswordToggle.setImageResource(R.drawable.ic_visibility)
@@ -226,15 +232,14 @@ class InputFieldView @JvmOverloads constructor(
     }
 
     private fun setType(inputType: InputType) {
-
         if (inputType == InputType.PASSWORD) {
-
+            binding.etInput.inputType = android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
             binding.etInput.transformationMethod = PasswordTransformationMethod.getInstance()
             binding.ivPasswordToggle.isVisible = true
             binding.ivEndIcon.isVisible = false
             isPasswordVisible = false
         } else {
-
+            binding.etInput.inputType = android.text.InputType.TYPE_CLASS_TEXT
             binding.etInput.transformationMethod = null
             binding.ivPasswordToggle.isVisible = false
         }
