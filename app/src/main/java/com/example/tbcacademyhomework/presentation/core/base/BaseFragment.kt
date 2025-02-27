@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.base
+package com.example.tbcacademyhomework.presentation.core.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
