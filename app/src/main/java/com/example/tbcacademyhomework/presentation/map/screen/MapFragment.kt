@@ -29,7 +29,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.maps.android.clustering.ClusterManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -93,16 +92,13 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
         val map = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         map.getMapAsync { gMap ->
             googleMap = gMap
-            googleMap?.setOnMarkerClickListener { marker ->
-                openBottomSheet(marker)
-                false
-            }
+
         }
     }
 
-    private fun openBottomSheet(marker:Marker){
-        val location = marker.tag as? Location
-        location?.let {
+    private fun openBottomSheet(location:Location){
+
+        location.let {
             findNavController().navigate(
                 MapFragmentDirections.actionMapFragmentToLocationDetailsFragment(
                     title = it.locationTitle,
@@ -279,6 +275,11 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
 
         clusterManager.addItems(locations)
         clusterManager.cluster()
+        clusterManager.setOnClusterItemClickListener {
+            openBottomSheet(it)
+            true
+
+        }
 
 
         googleMap.setOnCameraIdleListener {

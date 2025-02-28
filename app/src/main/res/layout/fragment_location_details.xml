@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/size20"
+    android:background="@color/white"
     tools:context=".presentation.locationDetails.LocationDetailsFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
