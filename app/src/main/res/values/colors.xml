@@ -10,5 +10,23 @@
     <color name="textSecondary">#A334383C</color>
     <color name="input_stroke">#CCCCCC</color>
 
+    <color name="buttonDark">#232629</color>
+    <color name="invertedLight">#FFFFFF</color>
+
+    <color name="ComponentPressed">#1A34383C</color>
+    <color name="errorBase">#D71920</color>
+    <color name="errorPressed">#29D71920</color>
+    <color name="errorDisabled">#14D71920</color>
+
+
+    <color name="buttonPrimaryPressed">#232629</color>
+    <color name="disabled">#0D34383C</color>
+    <color name="buttonPrimary">#34383C</color>
+    <color name="buttonSecondary">#0D34383C</color>
+    <color name="buttonSecondaryPressed">#1A34383C</color>
+
+
+    <color name="textDisabled">#3D34383C</color>
+
 
 </resources>

@@ -17,25 +17,41 @@
         android:id="@+id/et2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:textColor="@color/textPrimary"
+        app:endIcon="@drawable/ic_visibility"
         app:hintColor="@color/textSecondary"
         app:startIcon="@drawable/ic_launcher_foreground"
-        app:endIcon="@drawable/ic_visibility"
-        />
+        app:textColor="@color/textPrimary" />
 
     <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
         android:id="@+id/et3"
-        app:hint ="asdad"
         android:layout_width="match_parent"
-        app:textColor="@color/textPrimary"
-        app:hintColor="@color/textSecondary"
         android:layout_height="wrap_content"
+        app:hint="asdad"
+        app:hintColor="@color/textSecondary"
         app:inputType="password"
-        app:startIcon="@drawable/ic_launcher_foreground" />
+        app:startIcon="@drawable/ic_launcher_foreground"
+        app:textColor="@color/textPrimary" />
 
-    <Button
+    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
         android:id="@+id/btn"
+        app:btnEndIcon="@drawable/ic_filled_error"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:btnText="text" />
+
+    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
+        android:id="@+id/btn2"
+        app:btnEndIcon="@drawable/ic_filled_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:btnText="text"
+        app:btnType="secondary" />
+
+    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:btnText="text"
+        app:btnType="error" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

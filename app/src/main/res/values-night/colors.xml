@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="textPrimary">#E6FFFFFF</color>
+    <color name="textSecondary">#80FFFFFF</color>
+
+    <color name="buttonDark">#4E5155</color>
     <color name="input_stroke">#CCCCCC</color>
+
+    <color name="ComponentPressed">#1AFFFFFF</color>
+    <color name="invertedLight">#34383C</color>
+
+    <color name="errorBase">#DF444A</color>
+    <color name="errorPressed">#1ADF444A</color>
+    <color name="errorDisabled">#0DDF444A</color>
+
+    <color name="buttonPrimaryPressed">#E6FFFFFF</color>
+    <color name="disabled">#0DFFFFFF</color>
+    <color name="buttonPrimary">#FFFFFF</color>
+    <color name="buttonSecondary">#0DFFFFFF</color>
+    <color name="buttonSecondaryPressed">#1A34383C</color>
+
+    <color name="textDisabled">#33FFFFFF</color>
+
 </resources>
