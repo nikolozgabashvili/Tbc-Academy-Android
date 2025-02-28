@@ -2,6 +2,28 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mapFragment">
 
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.tbcacademyhomework.presentation.map.screen.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_locationDetailsFragment"
+            app:destination="@id/locationDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/locationDetailsFragment"
+        android:name="com.example.tbcacademyhomework.presentation.locationDetails.LocationDetailsFragment"
+        android:label="fragment_location_details"
+        tools:layout="@layout/fragment_location_details" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="addres"
+            app:argType="string" />
+    </dialog>
 </navigation>

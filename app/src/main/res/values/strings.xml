@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="serialization_error">Serialization error</string>
+    <string name="unknowr_error">Unknow error</string>
+    <string name="unreachable_host_error">Host can\'t be reached</string>
+    <string name="location_permission_needed">location permisssion needed</string>
+    <string name="location_permission_needed_desc">This app needs location permissions to function properly.</string>
+    <string name="ok">OK</string>
+    <string name="gps_disabled">gps is disabled</string>
+    <string name="gps_disabled_desc">"GPS is disabled. Please enable it "</string>
 </resources>
