@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -161,11 +162,11 @@ class ButtonView @JvmOverloads constructor(
         with(binding) {
             container.updatePadding(left = outPadding, right = outPadding)
 
-            val startLayoutParams = ivStartIcon.layoutParams as LayoutParams
+            val startLayoutParams = ivStartIcon.layoutParams as LinearLayout.LayoutParams
             startLayoutParams.marginEnd = inPadding
             ivStartIcon.layoutParams = startLayoutParams
 
-            val endLayoutParams = ivEndIcon.layoutParams as LayoutParams
+            val endLayoutParams = ivEndIcon.layoutParams as LinearLayout.LayoutParams
             endLayoutParams.marginStart = inPadding
             ivEndIcon.layoutParams = endLayoutParams
 
