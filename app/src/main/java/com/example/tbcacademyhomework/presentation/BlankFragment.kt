@@ -2,6 +2,7 @@ package com.example.tbcacademyhomework.presentation
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.databinding.FragmentBlankBinding
 import com.example.tbcacademyhomework.presentation.core.base.BaseFragment
 import kotlinx.coroutines.delay
@@ -22,7 +23,7 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>(FragmentBlankBinding::i
         }
 
         binding.btn.setOnClickListener {
-            binding.btn2.isLoading = true
+            findNavController().navigate(BlankFragmentDirections.actionBlankFragmentToThemeFragment())
         }
         binding.btn3.setOnClickListener {
             binding.btn3.text = "Dasd"
