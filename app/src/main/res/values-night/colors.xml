@@ -8,6 +8,7 @@
 
     <color name="ComponentPressed">#1AFFFFFF</color>
     <color name="invertedLight">#34383C</color>
+    <color name="baseLight">#FFFFFF</color>
 
     <color name="errorBase">#DF444A</color>
     <color name="errorPressed">#1ADF444A</color>

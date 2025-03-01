@@ -12,6 +12,7 @@
 
     <color name="buttonDark">#232629</color>
     <color name="invertedLight">#FFFFFF</color>
+`    <color name="baseLight">#000000</color>
 
     <color name="ComponentPressed">#1A34383C</color>
     <color name="errorBase">#D71920</color>
