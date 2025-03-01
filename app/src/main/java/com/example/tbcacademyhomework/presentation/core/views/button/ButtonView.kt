@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -16,15 +15,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
-import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.ViewButtonBinding
 import com.example.tbcacademyhomework.presentation.core.util.GenericImage
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.core.util.setBackgroundDrawable
-import com.example.tbcacademyhomework.presentation.core.util.setCompatFilterColor
-import com.example.tbcacademyhomework.presentation.core.util.setCompatTextColor
+import com.example.tbcacademyhomework.presentation.core.util.setTextColor
+import com.example.tbcacademyhomework.presentation.core.util.setTintColor
 import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 
 class ButtonView @JvmOverloads constructor(
@@ -33,7 +31,7 @@ class ButtonView @JvmOverloads constructor(
     defStyle: Int = 0
 ) : ConstraintLayout(context, attrs, defStyle) {
 
-    val binding = ViewButtonBinding.inflate(LayoutInflater.from(context), this)
+    private val binding = ViewButtonBinding.inflate(LayoutInflater.from(context), this)
 
     var buttonSize: ButtonSize = ButtonSize.Large
         set(value) {
@@ -83,8 +81,8 @@ class ButtonView @JvmOverloads constructor(
     var isVisible: Boolean = true
         set(value) {
             binding.apply {
-                container.isVisible = value
-                root.isVisible = value
+                container.visibleIf(value)
+                root.visibleIf(value)
             }
             field = value
         }
@@ -148,9 +146,9 @@ class ButtonView @JvmOverloads constructor(
             ContextCompat.getColor(context, buttonType.colorDisabledContent)
         }
 
-        binding.ivEndIcon.setCompatFilterColor(color = colorContent)
-        binding.ivStartIcon.setCompatFilterColor(color = colorContent)
-        binding.tvTitle.setCompatTextColor(color = colorContent)
+        binding.ivEndIcon.setTintColor(color = colorContent)
+        binding.ivStartIcon.setTintColor(color = colorContent)
+        binding.tvTitle.setTextColor(color = colorContent)
 
     }
 
@@ -163,11 +161,11 @@ class ButtonView @JvmOverloads constructor(
         with(binding) {
             container.updatePadding(left = outPadding, right = outPadding)
 
-            val startLayoutParams = ivStartIcon.layoutParams as LinearLayout.LayoutParams
+            val startLayoutParams = ivStartIcon.layoutParams as LayoutParams
             startLayoutParams.marginEnd = inPadding
             ivStartIcon.layoutParams = startLayoutParams
 
-            val endLayoutParams = ivEndIcon.layoutParams as LinearLayout.LayoutParams
+            val endLayoutParams = ivEndIcon.layoutParams as LayoutParams
             endLayoutParams.marginStart = inPadding
             ivEndIcon.layoutParams = endLayoutParams
 
@@ -190,7 +188,7 @@ class ButtonView @JvmOverloads constructor(
         binding.loader.playAnimation()
         isClickable = !loader
         binding.tvTitle.visibleIf(!loader, gone = false)
-        binding.loader.isVisible = loader
+        binding.loader.visibleIf(loader)
         if (!loader) binding.loader.setAnimation(buttonType.loader)
     }
 

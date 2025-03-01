@@ -3,7 +3,6 @@ package com.example.tbcacademyhomework.presentation.core.util
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
@@ -39,29 +38,19 @@ fun ImageView.loadImage(@DrawableRes resId: Int?) {
 
 }
 
-fun AppCompatImageView.setCompatFilterColor(
-    @ColorRes colorRes: Int? = null,
+fun AppCompatImageView.setTintColor(
     @ColorInt color: Int? = null
 ) {
-    colorRes?.let {
-        setColorFilter(ContextCompat.getColor(context, it))
-    } ?: run {
-        color?.let {
-            setColorFilter(it)
-        }
+    color?.let {
+        setColorFilter(it)
     }
 }
 
-fun AppCompatTextView.setCompatTextColor(
-    @ColorRes colorRes: Int? = null,
+fun AppCompatTextView.setTextColor(
     @ColorInt color: Int? = null
 ) {
-    colorRes?.let {
-        setTextColor(ContextCompat.getColor(context, it))
-    } ?: run {
-        color?.let {
-            setTextColor(it)
-        }
+    color?.let {
+        setTextColor(it)
     }
 }
 
@@ -69,9 +58,6 @@ fun View.setBackgroundDrawable(@DrawableRes resId: Int?) {
     resId?.let { background = ContextCompat.getDrawable(context, it) }
 }
 
-fun View.setCompatBackgroundColor(@ColorRes color: Int?) {
-    color?.let { background.setTint(ContextCompat.getColor(context, it)) }
-}
 
 fun View.show() {
     visibility = View.VISIBLE
