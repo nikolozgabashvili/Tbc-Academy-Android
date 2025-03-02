@@ -1,6 +1,5 @@
 package com.example.tbcacademyhomework.presentation
 
-import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.databinding.FragmentBlankBinding
@@ -11,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class BlankFragment : BaseFragment<FragmentBlankBinding>(FragmentBlankBinding::inflate) {
 
-    override fun init(savedInstanceState: Bundle?) {
+    override fun init() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             delay(2000)
@@ -26,8 +25,7 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>(FragmentBlankBinding::i
             findNavController().navigate(BlankFragmentDirections.actionBlankFragmentToThemeFragment())
         }
         binding.btn3.setOnClickListener {
-            binding.btn3.text = "Dasd"
-            binding.btn2.isLoading = false
+            findNavController().navigate(BlankFragmentDirections.actionBlankFragmentToLanguageFragment())
         }
 
 

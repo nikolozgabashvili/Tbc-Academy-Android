@@ -5,4 +5,7 @@
     <string name="theme_light">თეთრი</string>
     <string name="theme_dark">მუქი</string>
     <string name="day_night_theme">განათების რეჟიმი</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="language_change_title">შეცვალე ენა</string>
 </resources>

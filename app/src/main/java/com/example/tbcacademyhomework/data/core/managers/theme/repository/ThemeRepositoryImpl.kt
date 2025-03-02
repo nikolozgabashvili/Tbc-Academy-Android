@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.data.managers.theme.repository
+package com.example.tbcacademyhomework.data.core.managers.theme.repository
 
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.example.tbcacademyhomework.domain.core.datastore.DataStoreHelper

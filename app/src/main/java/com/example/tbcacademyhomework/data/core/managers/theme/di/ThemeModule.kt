@@ -1,6 +1,6 @@
-package com.example.tbcacademyhomework.data.managers.theme.di
+package com.example.tbcacademyhomework.data.core.managers.theme.di
 
-import com.example.tbcacademyhomework.data.managers.theme.repository.ThemeRepositoryImpl
+import com.example.tbcacademyhomework.data.core.managers.theme.repository.ThemeRepositoryImpl
 import com.example.tbcacademyhomework.domain.managers.theme.repository.ThemeRepository
 import dagger.Binds
 import dagger.Module
