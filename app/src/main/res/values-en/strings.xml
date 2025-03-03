@@ -14,5 +14,20 @@
     <string name="validation_uppercase_letter">At least one uppercase letter</string>
     <string name="validation_lowercase_letter">At least one lowercase letter</string>
     <string name="validation_number">At least one number</string>
+    <string name="empty_password_error">password must not be empty</string>
+    <string name="invalid_email_error">email is not valid</string>
+    <string name="have_acc_login">already have account? log in</string>
+    <string name="register">register</string>
+    <string name="hint_repeat_password">repeat passsword</string>
+    <string name="passwords_do_not_match">passwords don\'t match</string>
+    <string name="password_requirement_error">password doesn\'t meet requirements</string>
+    <string name="invalid_credentials">credentials doesn\'t match</string>
+    <string name="invalid_email">email is not valid</string>
+    <string name="network_error">connection_error</string>
+    <string name="user_collision">user already exists</string>
+    <string name="unknown_error">unknown error</string>
+    <string name="home">Home</string>
+    <string name="favourites">Favourites</string>
+    <string name="settings">Settings</string>
 
 </resources>

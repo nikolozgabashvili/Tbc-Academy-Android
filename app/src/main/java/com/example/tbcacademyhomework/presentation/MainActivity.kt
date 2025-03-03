@@ -1,43 +1,84 @@
-package com.example.tbcacademyhomework
+package com.example.tbcacademyhomework.presentation
 
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.ActivityMainBinding
-import com.example.tbcacademyhomework.presentation.core.managers.language.LanguageManager
 import com.example.tbcacademyhomework.presentation.core.managers.language.getLanguageManager
+import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var languageManager: LanguageManager
+
+    private val mainViewModel: MainViewModel by viewModels()
+
+    private lateinit var navController: NavController
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                !mainViewModel.themeSet
+            }
+        }
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         handleEdgeToEdge()
+        initBottomNavigation()
         initObserver()
 
 
     }
 
+    private fun initBottomNavigation() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        navController.graph = navController.navInflater.inflate(R.navigation.nav_graph)
+        binding.bottomMenu.setupWithNavController(navController)
+        binding.bottomMenu.setOnApplyWindowInsetsListener(null)
+
+        setBottomNavBarVisibility()
+    }
+
+    private fun getVisibleNavFragmentIds(): List<Int> {
+        return listOf(
+            R.id.homeFragment,
+            R.id.favouritesFragment,
+            R.id.settingsFragment
+        )
+    }
+
+    private fun setBottomNavBarVisibility() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+
+            binding.bottomMenu.visibleIf(
+                destination.id in getVisibleNavFragmentIds()
+            )
+        }
+    }
+
     private fun initObserver() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                languageManager.getLanguageEvent().collect {
+                mainViewModel.restartActivityEvent.collect {
                     recreate()
                 }
             }

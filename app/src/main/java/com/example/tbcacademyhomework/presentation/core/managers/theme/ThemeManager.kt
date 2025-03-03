@@ -8,11 +8,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
-
+@Singleton
 class ThemeManager @Inject constructor(
     private val getSelectedThemeUseCase: GetSelectedThemeUseCase
 ) : CoroutineScope {
+
+    var themeSet: Boolean = false
+
     fun init() {
         launch {
             getSelectedThemeUseCase().collect {
@@ -28,6 +32,8 @@ class ThemeManager @Inject constructor(
             Theme.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
         }
         AppCompatDelegate.setDefaultNightMode(mode)
+        themeSet = true
+
     }
 
     override val coroutineContext: CoroutineContext

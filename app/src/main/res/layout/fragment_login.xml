@@ -1,71 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".domain.auth.screen.login.LoginFragment">
+    android:fillViewport="true"
+    tools:context=".presentation.auth.screen.login.LoginFragment">
 
-    <include
-        android:id="@+id/topBar"
-        layout="@layout/item_topbar"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-    <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size20"
-        android:layout_marginTop="@dimen/size10"
-        app:hint="@string/hint_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:startIcon="@drawable/ic_mail" />
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/item_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size20"
-        android:layout_marginTop="@dimen/size10"
-        app:hint="@string/hint_password"
-        app:inputType="password"
-        app:layout_constraintEnd_toEndOf="parent"
+        <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size20"
+            android:layout_marginTop="@dimen/size10"
+            android:inputType="textEmailAddress"
+            app:hint="@string/hint_email"
+            app:startIcon="@drawable/ic_mail" />
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmail"
-        app:startIcon="@drawable/ic_lock" />
+        <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size20"
+            android:layout_marginTop="@dimen/size10"
+            app:hint="@string/hint_password"
+            app:inputType="password"
+            app:startIcon="@drawable/ic_lock" />
 
-        <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvValidations"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/etPassword"
-        app:layout_constraintStart_toStartOf="@id/etPassword"
-        app:layout_constraintTop_toBottomOf="@id/etPassword" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size20"
-        android:layout_marginBottom="@dimen/size10"
-        app:btnType="primary"
-        app:layout_constraintBottom_toTopOf="@id/btnRegister"
-        app:text="@string/login" />
+        <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size20"
+            android:layout_marginTop="@dimen/size10"
+            android:layout_marginBottom="@dimen/size10"
+            app:btnType="primary"
+            app:text="@string/login" />
 
-    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size20"
-        android:layout_marginBottom="@dimen/size10"
-        app:btnType="secondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:text="@string/do_not_have_acc_register" />
+        <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size20"
+            android:layout_marginBottom="@dimen/size10"
+            app:btnType="secondary"
+            app:text="@string/do_not_have_acc_register" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

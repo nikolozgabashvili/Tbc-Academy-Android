@@ -194,11 +194,11 @@ class InputFieldView @JvmOverloads constructor(
 
             if (isPasswordVisible) {
                 binding.etInput.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                binding.ivPasswordToggle.setImageResource(R.drawable.ic_visibility)
+                binding.ivPasswordToggle.setImageResource(R.drawable.ic_visibility_off)
             } else {
 
                 binding.etInput.transformationMethod = PasswordTransformationMethod.getInstance()
-                binding.ivPasswordToggle.setImageResource(R.drawable.ic_visibility_off)
+                binding.ivPasswordToggle.setImageResource(R.drawable.ic_visibility)
             }
 
             binding.etInput.text?.let { binding.etInput.setSelection(it.length) }
@@ -226,7 +226,6 @@ class InputFieldView @JvmOverloads constructor(
             binding.ivEndIcon.isVisible = false
             isPasswordVisible = false
         } else {
-            binding.etInput.inputType = android.text.InputType.TYPE_CLASS_TEXT
             binding.etInput.transformationMethod = null
             binding.ivPasswordToggle.isVisible = false
         }

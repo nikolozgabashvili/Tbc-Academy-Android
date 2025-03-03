@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.domain.core.validation.PasswordValidationState
 
-private fun Fragment.getValidationItems(state: PasswordValidationState): List<ValidationItem> {
+fun Fragment.getValidationItems(state: PasswordValidationState): List<ValidationItem> {
     return listOf(
         ValidationItem(
             message = getString(

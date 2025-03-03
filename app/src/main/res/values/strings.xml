@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">TbcAcademyHomework</string>
+    <string name="app_name" translatable="false">Food App</string>
 
     <string name="theme_system">სისტემური</string>
     <string name="theme_light">თეთრი</string>
@@ -16,4 +16,19 @@
     <string name="validation_uppercase_letter">მინიმუმ ერთი დიდი ლათინური ასო.</string>
     <string name="validation_lowercase_letter">მინიმუმ ერთი პატარა ლათინური ასო.</string>
     <string name="validation_number">მინიმუმ ერთი ციფრი</string>
+    <string name="empty_password_error">პაროლი არ უნდა იყოს ცარიელი</string>
+    <string name="invalid_email_error">ელ. ფოსტა არ არის ვალიდური</string>
+    <string name="have_acc_login">გაქვს ანგარიში? შედი სისტემაში</string>
+    <string name="register">დარეგისტრირდი</string>
+    <string name="hint_repeat_password">გაიმეორე პაროლი</string>
+    <string name="passwords_do_not_match">პაროლი არ ემთხვევა</string>
+    <string name="password_requirement_error">პაროლი არ აკმაყოფილებს ყველა კომპონენტს</string>
+    <string name="invalid_credentials">პაროლი ან ელ. ფოსტა არ ემთხვევა\n</string>
+    <string name="invalid_email">ელ. ფოსტა არ არის ვალიდური</string>
+    <string name="network_error">ინტერნეტის პრობლემა</string>
+    <string name="user_collision">მომხმარებელი უკვე არსებობს</string>
+    <string name="unknown_error">დაფიქსირდა შეცდომა</string>
+    <string name="home">მთავარი გვერდი</string>
+    <string name="favourites">ფავორიტები</string>
+    <string name="settings">პარამეტრები</string>
 </resources>

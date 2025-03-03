@@ -10,7 +10,9 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import java.util.Locale
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class LanguageManager @Inject constructor(
     private val getLanguageEventUseCase: GetLanguageEventUseCase,
     private val getLanguageUseCase: GetLanguageUseCase
@@ -18,10 +20,10 @@ class LanguageManager @Inject constructor(
 
     fun getLanguageEvent() = getLanguageEventUseCase()
 
-    private val currentLanguage : AppLanguage
-    get() {
-        return runBlocking { getLanguageUseCase().first() }
-    }
+    private val currentLanguage: AppLanguage
+        get() {
+            return runBlocking { getLanguageUseCase().first() }
+        }
 
     fun setLanguage(context: Context): Context {
         val newLocale = Locale(currentLanguage.localeString)
