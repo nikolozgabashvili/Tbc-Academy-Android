@@ -61,6 +61,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(newBase?.getLanguageManager?.setLanguage(newBase))
+        super.attachBaseContext(newBase)
     }
 }

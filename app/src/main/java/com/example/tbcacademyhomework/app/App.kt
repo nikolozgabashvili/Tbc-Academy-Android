@@ -22,10 +22,6 @@ class App : Application(), LanguageManagerProvider {
         themeManager.init()
     }
 
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-    }
-
     override fun provideLanguageManager(): LanguageManager {
         return languageManager
     }
