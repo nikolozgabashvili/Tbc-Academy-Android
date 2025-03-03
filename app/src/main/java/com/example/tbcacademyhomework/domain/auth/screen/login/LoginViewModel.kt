@@ -48,8 +48,6 @@ class LoginViewModel @Inject constructor(
                         emailValid = isEmailValid
                     )
                 )
-            }else{
-
             }
 
         }
