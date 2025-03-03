@@ -19,7 +19,7 @@ import androidx.core.view.children
 import androidx.core.view.updatePadding
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.ViewButtonBinding
-import com.example.tbcacademyhomework.presentation.core.util.GenericImage
+import com.example.tbcacademyhomework.presentation.core.util.gone
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.core.util.setBackgroundDrawable
 import com.example.tbcacademyhomework.presentation.core.util.setTextColor
@@ -52,18 +52,21 @@ class ButtonView @JvmOverloads constructor(
             field = value
         }
 
-    var startIcon: GenericImage? = null
+    var startIcon: Int? = null
         set(value) {
             binding.ivStartIcon.loadImage(value)
-            binding.ivStartIcon.visibleIf(value != null)
             field = value
+            setupIconsVisibility()
         }
 
-    var endIcon: GenericImage? = null
+
+
+    var endIcon: Int? = null
         set(value) {
+
             binding.ivEndIcon.loadImage(value)
-            binding.ivEndIcon.visibleIf(value != null)
             field = value
+            setupIconsVisibility()
         }
 
     var text: String? = null
@@ -98,12 +101,18 @@ class ButtonView @JvmOverloads constructor(
             buttonType = ButtonType.getEnumForValue(
                 getInt(R.styleable.ButtonView_btnType, 0)
             )
-            startIcon = GenericImage.Resource(
-                getResourceId(R.styleable.ButtonView_btnStartIcon, -1).takeIf { it != -1 }
-            )
-            endIcon = GenericImage.Resource(
-                getResourceId(R.styleable.ButtonView_btnEndIcon, -1).takeIf { it != -1 }
-            )
+            startIcon =
+                getResourceId(
+                    R.styleable.ButtonView_btnStartIcon,
+                    RESOURCE_DEFAULT_VALUE
+                ).takeIf { it != RESOURCE_DEFAULT_VALUE }
+
+            endIcon =
+                getResourceId(
+                    R.styleable.ButtonView_btnEndIcon,
+                    RESOURCE_DEFAULT_VALUE
+                ).takeIf { it != RESOURCE_DEFAULT_VALUE }
+
             text = getString(R.styleable.ButtonView_btnText)
 
             btnEnabled = getBoolean(R.styleable.ButtonView_btnEnabled, true)
@@ -131,6 +140,19 @@ class ButtonView @JvmOverloads constructor(
 
             is AppCompatImageView -> view.alpha = if (enabled) 1f else 0.25f
         }
+    }
+
+    private fun setupIconsVisibility() {
+        val bothIconsNull = startIcon == null && endIcon == null
+
+        if (bothIconsNull) {
+            binding.ivStartIcon.gone()
+            binding.ivEndIcon.gone()
+            return
+        }
+        binding.ivStartIcon.visibleIf(startIcon != null, gone = false)
+        binding.ivEndIcon.visibleIf(endIcon != null, gone = false)
+
     }
 
     private fun updateColors() {
@@ -267,6 +289,10 @@ class ButtonView @JvmOverloads constructor(
                 return entries.firstOrNull { it.value == value } ?: Primary
             }
         }
+    }
+
+    companion object {
+        private const val RESOURCE_DEFAULT_VALUE = -1
     }
 
 

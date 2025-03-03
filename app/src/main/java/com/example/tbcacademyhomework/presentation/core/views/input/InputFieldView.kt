@@ -12,7 +12,6 @@ import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -22,8 +21,10 @@ import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.InputFieldViewBinding
 import com.example.tbcacademyhomework.presentation.core.util.getParcelableSafe
 import com.example.tbcacademyhomework.presentation.core.util.getSparseParcelableArraySafe
+import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.core.util.restoreChildViewStates
 import com.example.tbcacademyhomework.presentation.core.util.saveChildViewStates
+import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 
 class InputFieldView @JvmOverloads constructor(
     context: Context,
@@ -76,18 +77,16 @@ class InputFieldView @JvmOverloads constructor(
 
     var startIcon: Int? = null
         set(value) {
-            if (value != RESOURCE_DEFAULT_VALUE) {
-                field = value
-                setInputStartIcon(startIcon)
-            }
+            binding.ivStartIcon.loadImage(value)
+            binding.ivStartIcon.visibleIf(value != null)
+            field = value
         }
 
     var endIcon: Int? = null
         set(value) {
-            if (value != RESOURCE_DEFAULT_VALUE) {
-                field = value
-                setInputEndIcon(endIcon)
-            }
+            binding.ivEndIcon.loadImage(value)
+            binding.ivEndIcon.visibleIf(value != null)
+            field = value
         }
 
     var textColor: Int = R.color.textPrimary
@@ -120,12 +119,16 @@ class InputFieldView @JvmOverloads constructor(
 
             hint = getString(R.styleable.InputFieldView_hint)
 
-            startIcon = getResourceId(R.styleable.InputFieldView_startIcon, RESOURCE_DEFAULT_VALUE)
+            startIcon = getResourceId(
+                R.styleable.InputFieldView_startIcon,
+                RESOURCE_DEFAULT_VALUE
+            ).takeIf { it != RESOURCE_DEFAULT_VALUE }
 
             endIcon = getResourceId(
                 R.styleable.InputFieldView_endIcon,
                 RESOURCE_DEFAULT_VALUE
-            )
+            ).takeIf { it != RESOURCE_DEFAULT_VALUE }
+
             textColor = getColor(
                 R.styleable.InputFieldView_textColor,
                 ContextCompat.getColor(context, R.color.textPrimary)
@@ -183,29 +186,6 @@ class InputFieldView @JvmOverloads constructor(
         if (view.requestFocus()) {
             val imm = getSystemService(context, InputMethodManager::class.java)
             imm?.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-        }
-    }
-
-
-    private fun setInputStartIcon(@DrawableRes iconRes: Int?) {
-        iconRes?.let {
-            binding.ivStartIcon.setImageResource(iconRes)
-            binding.ivStartIcon.isVisible = true
-        } ?: run {
-            binding.ivStartIcon.isVisible = false
-        }
-    }
-
-
-    private fun setInputEndIcon(@DrawableRes iconRes: Int?) {
-        if (inputType != InputType.PASSWORD) {
-            iconRes?.let {
-                binding.ivEndIcon.setImageResource(iconRes)
-                binding.ivEndIcon.isVisible = true
-                binding.ivPasswordToggle.isVisible = false
-            } ?: run {
-                binding.ivEndIcon.isVisible = false
-            }
         }
     }
 
