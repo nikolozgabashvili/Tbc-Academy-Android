@@ -2,8 +2,8 @@ package com.example.tbcacademyhomework.data.core.managers.theme.repository
 
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.example.tbcacademyhomework.domain.core.datastore.DataStoreHelper
-import com.example.tbcacademyhomework.domain.managers.theme.Theme
-import com.example.tbcacademyhomework.domain.managers.theme.repository.ThemeRepository
+import com.example.tbcacademyhomework.domain.core.managers.theme.Theme
+import com.example.tbcacademyhomework.domain.core.managers.theme.repository.ThemeRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

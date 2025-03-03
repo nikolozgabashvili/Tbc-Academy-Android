@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.tbcacademyhomework.databinding.ItemThemeBinding
-import com.example.tbcacademyhomework.domain.managers.theme.Theme
+import com.example.tbcacademyhomework.domain.core.managers.theme.Theme
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 

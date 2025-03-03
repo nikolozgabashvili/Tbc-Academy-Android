@@ -2,7 +2,7 @@ package com.example.tbcacademyhomework.presentation.core.managers.theme
 
 import android.content.Context
 import com.example.tbcacademyhomework.R
-import com.example.tbcacademyhomework.domain.managers.theme.Theme
+import com.example.tbcacademyhomework.domain.core.managers.theme.Theme
 
 fun Theme.getDisplayableName(context: Context): String {
     return when (this) {

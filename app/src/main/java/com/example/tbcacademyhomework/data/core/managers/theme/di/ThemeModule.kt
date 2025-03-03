@@ -1,7 +1,7 @@
 package com.example.tbcacademyhomework.data.core.managers.theme.di
 
 import com.example.tbcacademyhomework.data.core.managers.theme.repository.ThemeRepositoryImpl
-import com.example.tbcacademyhomework.domain.managers.theme.repository.ThemeRepository
+import com.example.tbcacademyhomework.domain.core.managers.theme.repository.ThemeRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

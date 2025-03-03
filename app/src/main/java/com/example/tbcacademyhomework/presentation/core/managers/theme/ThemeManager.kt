@@ -1,8 +1,8 @@
 package com.example.tbcacademyhomework.presentation.core.managers.theme
 
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.tbcacademyhomework.domain.managers.theme.Theme
-import com.example.tbcacademyhomework.domain.managers.theme.usecase.GetSelectedThemeUseCase
+import com.example.tbcacademyhomework.domain.core.managers.theme.Theme
+import com.example.tbcacademyhomework.domain.core.managers.theme.usecase.GetSelectedThemeUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

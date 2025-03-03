@@ -1,6 +1,6 @@
-package com.example.tbcacademyhomework.domain.managers.language.repository
+package com.example.tbcacademyhomework.domain.core.managers.language.repository
 
-import com.example.tbcacademyhomework.domain.managers.language.AppLanguage
+import com.example.tbcacademyhomework.domain.core.managers.language.AppLanguage
 import kotlinx.coroutines.flow.Flow
 
 interface LanguageRepository {

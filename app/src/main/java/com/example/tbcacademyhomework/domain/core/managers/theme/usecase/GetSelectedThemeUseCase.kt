@@ -1,7 +1,7 @@
-package com.example.tbcacademyhomework.domain.managers.theme.usecase
+package com.example.tbcacademyhomework.domain.core.managers.theme.usecase
 
-import com.example.tbcacademyhomework.domain.managers.theme.Theme
-import com.example.tbcacademyhomework.domain.managers.theme.repository.ThemeRepository
+import com.example.tbcacademyhomework.domain.core.managers.theme.Theme
+import com.example.tbcacademyhomework.domain.core.managers.theme.repository.ThemeRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

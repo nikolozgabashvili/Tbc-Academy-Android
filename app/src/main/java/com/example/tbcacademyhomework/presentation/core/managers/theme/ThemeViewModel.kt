@@ -1,10 +1,10 @@
 package com.example.tbcacademyhomework.presentation.core.managers.theme
 
 import androidx.lifecycle.ViewModel
-import com.example.tbcacademyhomework.domain.managers.theme.Theme
-import com.example.tbcacademyhomework.domain.managers.theme.usecase.ChangeThemeUseCase
-import com.example.tbcacademyhomework.domain.managers.theme.usecase.GetAvailableThemesUseCase
-import com.example.tbcacademyhomework.domain.managers.theme.usecase.GetSelectedThemeUseCase
+import com.example.tbcacademyhomework.domain.core.managers.theme.Theme
+import com.example.tbcacademyhomework.domain.core.managers.theme.usecase.ChangeThemeUseCase
+import com.example.tbcacademyhomework.domain.core.managers.theme.usecase.GetAvailableThemesUseCase
+import com.example.tbcacademyhomework.domain.core.managers.theme.usecase.GetSelectedThemeUseCase
 import com.example.tbcacademyhomework.presentation.core.util.launchCoroutineScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,6 +41,8 @@ class ThemeViewModel @Inject constructor(
     }
 
     fun onThemeSelected(theme: Theme) {
+        val newThemes = _state.value.themes.map { it.copy(isSelected = it.theme == theme) }
+        _state.update { it.copy(themes = newThemes) }
         launchCoroutineScope {
             setThemeUseCase(theme)
         }

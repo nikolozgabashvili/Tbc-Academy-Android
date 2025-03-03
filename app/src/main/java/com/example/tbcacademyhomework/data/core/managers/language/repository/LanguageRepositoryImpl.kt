@@ -2,8 +2,8 @@ package com.example.tbcacademyhomework.data.core.managers.language.repository
 
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.example.tbcacademyhomework.domain.core.datastore.DataStoreHelper
-import com.example.tbcacademyhomework.domain.managers.language.AppLanguage
-import com.example.tbcacademyhomework.domain.managers.language.repository.LanguageRepository
+import com.example.tbcacademyhomework.domain.core.managers.language.AppLanguage
+import com.example.tbcacademyhomework.domain.core.managers.language.repository.LanguageRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

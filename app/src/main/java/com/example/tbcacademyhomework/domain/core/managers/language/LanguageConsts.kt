@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.domain.managers.language
+package com.example.tbcacademyhomework.domain.core.managers.language
 
 object LanguageConsts {
 

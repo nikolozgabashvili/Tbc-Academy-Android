@@ -1,6 +1,6 @@
-package com.example.tbcacademyhomework.domain.managers.language.usecase
+package com.example.tbcacademyhomework.domain.core.managers.language.usecase
 
-import com.example.tbcacademyhomework.domain.managers.language.repository.LanguageRepository
+import com.example.tbcacademyhomework.domain.core.managers.language.repository.LanguageRepository
 import javax.inject.Inject
 
 class GetLanguageEventUseCase @Inject constructor(

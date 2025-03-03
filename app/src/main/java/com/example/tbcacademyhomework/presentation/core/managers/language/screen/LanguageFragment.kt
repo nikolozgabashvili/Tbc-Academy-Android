@@ -45,11 +45,11 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
     }
 
     private fun initObservers() {
-
         launchCoroutineScope {
-            languageViewModel.state.collectLatest {
-                languageAdapter.submitList(it.languages)
+            languageViewModel.state.collectLatest { state ->
+                languageAdapter.submitList(state.languages)
             }
         }
+
     }
 }

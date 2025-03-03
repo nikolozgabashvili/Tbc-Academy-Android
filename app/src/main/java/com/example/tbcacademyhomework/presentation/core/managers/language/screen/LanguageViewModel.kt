@@ -1,10 +1,10 @@
 package com.example.tbcacademyhomework.presentation.core.managers.language.screen
 
 import androidx.lifecycle.ViewModel
-import com.example.tbcacademyhomework.domain.managers.language.AppLanguage
-import com.example.tbcacademyhomework.domain.managers.language.usecase.ChangeLanguageUseCase
-import com.example.tbcacademyhomework.domain.managers.language.usecase.GetAvailableLanguagesUseCase
-import com.example.tbcacademyhomework.domain.managers.language.usecase.GetLanguageUseCase
+import com.example.tbcacademyhomework.domain.core.managers.language.AppLanguage
+import com.example.tbcacademyhomework.domain.core.managers.language.usecase.ChangeLanguageUseCase
+import com.example.tbcacademyhomework.domain.core.managers.language.usecase.GetAvailableLanguagesUseCase
+import com.example.tbcacademyhomework.domain.core.managers.language.usecase.GetLanguageUseCase
 import com.example.tbcacademyhomework.presentation.core.util.launchCoroutineScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,6 +41,9 @@ class LanguageViewModel @Inject constructor(
     }
 
     fun onLanguageSelected(language: AppLanguage) {
+        val newLanguages =
+            _state.value.languages.map { it.copy(isSelected = it.language == language) }
+        _state.update { it.copy(languages = newLanguages) }
         launchCoroutineScope {
             setLanguageUseCase(language)
         }

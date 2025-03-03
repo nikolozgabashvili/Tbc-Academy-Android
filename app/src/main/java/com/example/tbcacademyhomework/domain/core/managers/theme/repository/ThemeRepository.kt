@@ -1,6 +1,6 @@
-package com.example.tbcacademyhomework.domain.managers.theme.repository
+package com.example.tbcacademyhomework.domain.core.managers.theme.repository
 
-import com.example.tbcacademyhomework.domain.managers.theme.Theme
+import com.example.tbcacademyhomework.domain.core.managers.theme.Theme
 import kotlinx.coroutines.flow.Flow
 
 interface ThemeRepository {
