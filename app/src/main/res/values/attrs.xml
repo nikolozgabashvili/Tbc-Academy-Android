@@ -30,7 +30,7 @@
         </attr>
         <attr name="btnStartIcon" format="reference" />
         <attr name="btnEndIcon" format="reference" />
-        <attr name="btnText" format="string" />
+        <attr name="text" format="string" />
         <attr name="btnEnabled" format="boolean" />
     </declare-styleable>
 </resources>

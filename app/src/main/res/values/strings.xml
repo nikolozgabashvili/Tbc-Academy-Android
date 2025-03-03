@@ -8,4 +8,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="language_change_title">შეცვალე ენა</string>
+    <string name="login">შედი სისტემაში</string>
+    <string name="hint_email">ელ. ფოსტა</string>
+    <string name="hint_password">პაროლი</string>
+    <string name="do_not_have_acc_register">არ გაქვს ანგარიში? დარეგისტრირდი.</string>
+    <string name="validation_password_length_message">მინიმუმ %1$s სიმბოლო.</string>
+    <string name="validation_uppercase_letter">მინიმუმ ერთი დიდი ლათინური ასო.</string>
+    <string name="validation_lowercase_letter">მინიმუმ ერთი პატარა ლათინური ასო.</string>
+    <string name="validation_number">მინიმუმ ერთი ციფრი</string>
 </resources>

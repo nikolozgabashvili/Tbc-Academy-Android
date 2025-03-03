@@ -113,7 +113,7 @@ class ButtonView @JvmOverloads constructor(
                     RESOURCE_DEFAULT_VALUE
                 ).takeIf { it != RESOURCE_DEFAULT_VALUE }
 
-            text = getString(R.styleable.ButtonView_btnText)
+            text = getString(R.styleable.ButtonView_text)
 
             btnEnabled = getBoolean(R.styleable.ButtonView_btnEnabled, true)
         }

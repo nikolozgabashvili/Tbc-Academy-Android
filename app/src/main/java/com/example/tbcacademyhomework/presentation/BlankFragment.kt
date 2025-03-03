@@ -13,6 +13,9 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>(FragmentBlankBinding::i
             findNavController().navigate(BlankFragmentDirections.actionBlankFragmentToLanguageFragment())
         }
 
+        binding.btn2.setOnClickListener {
+            findNavController().navigate(BlankFragmentDirections.actionBlankFragmentToLoginFragment())
+        }
 
 
     }

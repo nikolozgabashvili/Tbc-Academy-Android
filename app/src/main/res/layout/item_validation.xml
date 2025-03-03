@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/size4"
+    android:gravity="center_vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivValidationStatus"
+        android:layout_width="@dimen/size14"
+        android:layout_height="@dimen/size14"
+        android:layout_marginEnd="8dp"
+        tools:srcCompat="@drawable/ic_valid" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvValidationMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize12"
+        android:textStyle="bold"
+        tools:text="At least 10 characters" />
+
+</LinearLayout>

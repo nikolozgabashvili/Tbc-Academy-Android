@@ -9,25 +9,45 @@
     tools:context=".presentation.BlankFragment">
 
 
-
     <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
         android:id="@+id/a"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
         android:id="@+id/b"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
         android:id="@+id/c"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <Button
+    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
         android:id="@+id/btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:text="hello" />
+
+    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:btnStartIcon="@drawable/ic_filled_error"
+        app:text="hello" />
+
+    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:btnEndIcon="@drawable/ic_filled_error"
+        app:text="hello" />
+
+    <com.example.tbcacademyhomework.presentation.core.views.button.ButtonView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:btnEndIcon="@drawable/ic_filled_error"
+        app:btnStartIcon="@drawable/ic_filled_error"
+        app:text="hello" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

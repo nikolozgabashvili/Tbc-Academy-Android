@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.data.core.di
+package com.example.tbcacademyhomework.data.core.datastore.di
 
 import com.example.tbcacademyhomework.data.core.datastore.DataStoreHelperImpl
 import com.example.tbcacademyhomework.domain.core.datastore.DataStoreHelper
@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class CoreModule {
+abstract class DataStoreModule {
 
     @Binds
     @Singleton

@@ -27,6 +27,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivStartIcon"
                     android:layout_width="@dimen/size24"
+                    app:tint="@color/textSecondary"
                     android:layout_height="@dimen/size24"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -56,6 +57,7 @@
                     android:id="@+id/ivEndIcon"
                     android:layout_width="@dimen/size24"
                     android:layout_height="@dimen/size24"
+                    app:tint="@color/textSecondary"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

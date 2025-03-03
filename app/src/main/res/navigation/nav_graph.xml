@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_blankFragment_to_languageFragment"
             app:destination="@id/languageFragment" />
+        <action
+            android:id="@+id/action_blankFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/themeFragment"
@@ -27,4 +30,9 @@
         android:name="com.example.tbcacademyhomework.presentation.core.managers.language.screen.LanguageFragment"
         android:label="fragment_language"
         tools:layout="@layout/fragment_language" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.tbcacademyhomework.domain.auth.screen.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

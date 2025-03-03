@@ -24,6 +24,7 @@ import com.example.tbcacademyhomework.presentation.core.util.getSparseParcelable
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.core.util.restoreChildViewStates
 import com.example.tbcacademyhomework.presentation.core.util.saveChildViewStates
+import com.example.tbcacademyhomework.presentation.core.util.setTintColor
 import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 
 class InputFieldView @JvmOverloads constructor(
