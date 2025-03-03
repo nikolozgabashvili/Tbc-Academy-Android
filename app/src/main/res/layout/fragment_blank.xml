@@ -10,17 +10,20 @@
 
 
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
+        android:id="@+id/a"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size50"/>
+        android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
+        android:id="@+id/b"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size50"/>
+        android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <com.example.tbcacademyhomework.presentation.core.views.input.InputFieldView
+        android:id="@+id/c"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size50"/>
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn"

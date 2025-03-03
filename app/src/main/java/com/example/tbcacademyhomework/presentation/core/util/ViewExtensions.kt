@@ -1,12 +1,16 @@
 package com.example.tbcacademyhomework.presentation.core.util
 
+import android.os.Parcelable
+import android.util.SparseArray
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import com.bumptech.glide.Glide
 
 
@@ -78,4 +82,15 @@ fun View.visibleIf(visible: Boolean?, gone: Boolean = true) {
     } else {
         if (gone) gone() else hide()
     }
+}
+
+fun ViewGroup.saveChildViewStates(): SparseArray<Parcelable> {
+    val childViewStates = SparseArray<Parcelable>()
+    children.forEach { child -> child.saveHierarchyState(childViewStates) }
+    return childViewStates
+}
+
+
+fun ViewGroup.restoreChildViewStates(childViewStates: SparseArray<Parcelable>) {
+    children.forEach { child -> child.restoreHierarchyState(childViewStates) }
 }

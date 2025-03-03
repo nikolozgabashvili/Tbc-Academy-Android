@@ -1,11 +1,14 @@
 package com.example.tbcacademyhomework.presentation.core.views.input
 
 import android.content.Context
+import android.os.Bundle
+import android.os.Parcelable
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
+import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -17,6 +20,10 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.InputFieldViewBinding
+import com.example.tbcacademyhomework.presentation.core.util.getParcelableSafe
+import com.example.tbcacademyhomework.presentation.core.util.getSparseParcelableArraySafe
+import com.example.tbcacademyhomework.presentation.core.util.restoreChildViewStates
+import com.example.tbcacademyhomework.presentation.core.util.saveChildViewStates
 
 class InputFieldView @JvmOverloads constructor(
     context: Context,
@@ -245,8 +252,35 @@ class InputFieldView @JvmOverloads constructor(
         }
     }
 
+    override fun dispatchSaveInstanceState(container: SparseArray<Parcelable>?) {
+        dispatchFreezeSelfOnly(container)
+    }
+
+    override fun dispatchRestoreInstanceState(container: SparseArray<Parcelable>?) {
+        dispatchThawSelfOnly(container)
+    }
+
+    override fun onSaveInstanceState(): Parcelable {
+        return Bundle().apply {
+            putParcelable(SUPER_KEY, super.onSaveInstanceState())
+            putSparseParcelableArray(CHILDREN_KEY, saveChildViewStates())
+        }
+    }
+
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        var newState = state
+        if (newState is Bundle) {
+            val childrenState = newState.getSparseParcelableArraySafe(CHILDREN_KEY)
+            childrenState?.let { restoreChildViewStates(it) }
+            newState = newState.getParcelableSafe(SUPER_KEY)
+        }
+        super.onRestoreInstanceState(newState)
+    }
+
 
     companion object {
-        const val RESOURCE_DEFAULT_VALUE = -1
+        private const val RESOURCE_DEFAULT_VALUE = -1
+        private const val SUPER_KEY = "super_key"
+        private const val CHILDREN_KEY = "children_key"
     }
 }
