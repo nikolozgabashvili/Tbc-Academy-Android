@@ -8,6 +8,7 @@ import com.example.tbcacademyhomework.databinding.FragmentFavouritesBinding
 import com.example.tbcacademyhomework.presentation.core.base.BaseFragment
 import com.example.tbcacademyhomework.presentation.core.util.hide
 import com.example.tbcacademyhomework.presentation.core.util.launchCoroutineScope
+import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 import com.example.tbcacademyhomework.presentation.meal.adapters.MealAdapter
 import com.example.tbcacademyhomework.presentation.meal.home.model.MealUi
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,6 +46,8 @@ class FavouritesFragment :
         launchCoroutineScope {
             viewModel.state.collectLatest {
                 mealAdapter.submitList(it.favourites)
+                binding.rvFavMeals.visibleIf(it.favourites.isNotEmpty())
+                binding.tvEmptyFavMeals.visibleIf(it.favourites.isEmpty())
             }
         }
     }

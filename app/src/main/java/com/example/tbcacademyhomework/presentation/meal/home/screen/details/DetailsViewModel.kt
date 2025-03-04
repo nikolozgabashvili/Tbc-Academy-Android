@@ -33,8 +33,8 @@ class DetailsViewModel @AssistedInject constructor(
 
 
     init {
-        getDetails()
         isMealFavourite()
+        getDetails()
     }
 
     private fun addFavourite() {

@@ -5,6 +5,7 @@ import com.example.tbcacademyhomework.domain.core.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
+    fun isUserLoggedIn(): Boolean
     suspend fun login(email: String, password: String): Flow<Resource<Unit, FirebaseError>>
     suspend fun register(email: String, password: String): Flow<Resource<Unit, FirebaseError>>
     suspend fun logout(): Flow<Resource<Unit, FirebaseError>>

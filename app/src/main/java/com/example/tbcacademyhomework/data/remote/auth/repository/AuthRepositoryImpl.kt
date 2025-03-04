@@ -15,6 +15,9 @@ class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseAuthHelper: FirebaseAuthHelper
 ) : AuthRepository {
+    override fun isUserLoggedIn(): Boolean {
+        return firebaseAuth.currentUser!=null
+    }
 
     override suspend fun login(
         email: String,

@@ -11,7 +11,9 @@
         layout="@layout/item_topbar" />
 
     <TextView
+        android:id="@+id/tvEmptyFavMeals"
         android:layout_weight="1"
+        android:visibility="gone"
         android:textSize="@dimen/textSize20"
         android:gravity="center"
         android:text="@string/you_don_t_have_any_favourite_meals_yet"

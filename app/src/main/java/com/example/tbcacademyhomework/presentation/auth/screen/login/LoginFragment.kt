@@ -8,6 +8,7 @@ import com.example.tbcacademyhomework.presentation.auth.util.toErrorString
 import com.example.tbcacademyhomework.presentation.core.base.BaseFragment
 import com.example.tbcacademyhomework.presentation.core.util.hide
 import com.example.tbcacademyhomework.presentation.core.util.launchCoroutineScope
+import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 import com.example.tbcacademyhomework.presentation.util.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -52,6 +53,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             viewModel.state.collectLatest {
                 binding.btnLogin.isLoading = it.loading
                 binding.btnRegister.isEnabled = !it.loading
+                binding.root.visibleIf(!it.isLoggedIn)
 
             }
         }
