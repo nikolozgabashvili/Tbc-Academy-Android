@@ -47,7 +47,11 @@
         android:id="@+id/favouritesFragment"
         android:name="com.example.tbcacademyhomework.presentation.meal.favourites.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_favouriteDetailsFragment"
+            app:destination="@id/favouriteDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.tbcacademyhomework.presentation.settings.SettingsFragment"
@@ -65,6 +69,15 @@
         android:name="com.example.tbcacademyhomework.presentation.meal.home.screen.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="meal"
+            app:argType="com.example.tbcacademyhomework.presentation.meal.home.model.MealUi" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteDetailsFragment"
+        android:name="com.example.tbcacademyhomework.presentation.meal.favourites.detail.FavouriteDetailsFragment"
+        android:label="fragment_favourite_details"
+        tools:layout="@layout/fragment_favourite_details" >
         <argument
             android:name="meal"
             app:argType="com.example.tbcacademyhomework.presentation.meal.home.model.MealUi" />

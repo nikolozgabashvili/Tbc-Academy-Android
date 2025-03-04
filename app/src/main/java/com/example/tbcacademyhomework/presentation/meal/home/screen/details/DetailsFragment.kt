@@ -109,9 +109,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
                         }
                     }
 
-
                 }
-
 
             }
         }

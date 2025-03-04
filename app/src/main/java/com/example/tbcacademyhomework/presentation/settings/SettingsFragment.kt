@@ -2,8 +2,10 @@ package com.example.tbcacademyhomework.presentation.settings
 
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.FragmentSettingsBinding
 import com.example.tbcacademyhomework.presentation.core.base.BaseFragment
+import com.example.tbcacademyhomework.presentation.core.util.hide
 import com.example.tbcacademyhomework.presentation.settings.adapter.SettingItemType
 import com.example.tbcacademyhomework.presentation.settings.adapter.SettingItemsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,8 +22,14 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     }
 
     override fun init() {
+        initViews()
         initSettingRecycler()
 
+    }
+
+    private fun initViews() {
+        binding.topBar.btnStart.hide()
+        binding.topBar.tvTitle.text = getString(R.string.settings)
     }
 
     private fun initSettingRecycler() {
