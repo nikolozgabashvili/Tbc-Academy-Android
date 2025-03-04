@@ -2,8 +2,10 @@ package com.example.tbcacademyhomework.data.remote.core.util
 
 import com.example.tbcacademyhomework.domain.core.util.DataError
 import com.example.tbcacademyhomework.domain.core.util.Resource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -25,12 +27,12 @@ class HttpRequestHelper @Inject constructor() {
             } catch (e: Exception) {
                 when (e) {
                     else -> {
+                        e.printStackTrace()
                         emit(Resource.Error(DataError.DynamicError.UNKNOWN))
                     }
                 }
-
             }
 
-        }
+        }.flowOn(Dispatchers.IO)
     }
 }

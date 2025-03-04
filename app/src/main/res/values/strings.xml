@@ -33,4 +33,7 @@
     <string name="settings">პარამეტრები</string>
     <string name="profile">პროფილი</string>
     <string name="language">ენა</string>
+    <string name="ingredients">ინგრედიენტები</string>
+    <string name="retry">ცადე თავიდან</string>
+    <string name="see_video">იხილეთ ვიდეო</string>
 </resources>

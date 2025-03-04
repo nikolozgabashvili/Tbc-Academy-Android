@@ -6,12 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbcacademyhomework.databinding.ItemMealBinding
-import com.example.tbcacademyhomework.presentation.core.util.GenericImage
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.meal.home.model.MealUi
 
 class MealAdapter(
-    private val onMealClicked: (String) -> Unit
+    private val onMealClicked: (MealUi) -> Unit
 ) : ListAdapter<MealUi, MealAdapter.MealViewHolder>(MealDiffUtil()) {
 
     inner class MealViewHolder(private val binding: ItemMealBinding) :
@@ -19,12 +18,10 @@ class MealAdapter(
         fun bind() {
             val item = getItem(adapterPosition)
             binding.tvMealName.text = item.mealName
-            val image = GenericImage.NetworkImage(
-                url = item.mealImage,
-            )
-            binding.ivMeal.loadImage(image)
+
+            binding.ivMeal.loadImage(item.mealImage)
             binding.root.setOnClickListener {
-                onMealClicked(item.mealId)
+                onMealClicked(item)
             }
 
         }

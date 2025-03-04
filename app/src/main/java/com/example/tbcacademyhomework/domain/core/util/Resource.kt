@@ -20,3 +20,4 @@ inline fun <T, E : NetworkError, R> Resource<T, E>.map(transform: (T) -> R): Res
 }
 
 fun Resource<*, *>.isLoading() = this is Resource.Loading
+fun Resource<*, *>.isError() = this is Resource.Error

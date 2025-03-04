@@ -13,8 +13,7 @@ class GetMealByCategoryUseCase @Inject constructor(
     private val repository: MealRepository
 ) {
     suspend operator fun invoke(category:String): Flow<Resource<MealListDomain, DataError>> {
-        return withContext(Dispatchers.IO) {
-            repository.getMealsByCategory(category)
-        }
+        return repository.getMealsByCategory(category)
+
     }
 }

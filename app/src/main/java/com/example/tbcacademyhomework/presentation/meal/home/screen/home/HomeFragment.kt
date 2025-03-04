@@ -1,6 +1,7 @@
-package com.example.tbcacademyhomework.presentation.meal.home
+package com.example.tbcacademyhomework.presentation.meal.home.screen.home
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tbcacademyhomework.databinding.FragmentHomeBinding
 import com.example.tbcacademyhomework.presentation.core.base.BaseFragment
@@ -8,6 +9,7 @@ import com.example.tbcacademyhomework.presentation.core.util.launchCoroutineScop
 import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 import com.example.tbcacademyhomework.presentation.meal.adapters.MealAdapter
 import com.example.tbcacademyhomework.presentation.meal.home.adapter.CategoryAdapter
+import com.example.tbcacademyhomework.presentation.meal.home.model.MealUi
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -16,6 +18,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private val viewModel: HomeViewModel by viewModels()
     private val categoryAdapter by lazy { CategoryAdapter(viewModel::onCategorySelected) }
+    private val navController by lazy { findNavController() }
     private val mealAdapter by lazy { MealAdapter(::onMealSelected) }
     override fun init() {
 
@@ -64,9 +67,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private fun onMealSelected(id: String) {
-        //todo navigate
-
+    private fun onMealSelected(meal: MealUi) {
+        navController.navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(meal))
     }
 
 }

@@ -1,5 +1,9 @@
 package com.example.tbcacademyhomework.presentation.core.util
 
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Parcelable
 import android.util.SparseArray
 import android.view.View
@@ -15,24 +19,18 @@ import com.bumptech.glide.Glide
 
 
 fun ImageView.loadImage(
-    image: GenericImage?
+    url: String?,
+    placeholder: Int? = null,
+    error: Int? = null
 ) {
-    when (image) {
-        is GenericImage.Resource -> {
-            loadImage(image.resId)
-        }
 
-        is GenericImage.NetworkImage -> {
-            val glideRequest = Glide.with(context).load(image.url)
-            image.error?.let { glideRequest.error(it) }
-            image.placeHolder?.let { glideRequest.placeholder(it) }
+    val glideRequest = Glide.with(context).load(url)
+    error?.let { glideRequest.error(it) }
+    placeholder?.let { glideRequest.placeholder(it) }
 
-            glideRequest.into(this)
-        }
+    glideRequest.into(this)
 
-        null -> Unit
-    }
-    Glide.with(this)
+
 }
 
 fun ImageView.loadImage(@DrawableRes resId: Int?) {
@@ -93,4 +91,15 @@ fun ViewGroup.saveChildViewStates(): SparseArray<Parcelable> {
 
 fun ViewGroup.restoreChildViewStates(childViewStates: SparseArray<Parcelable>) {
     children.forEach { child -> child.restoreHierarchyState(childViewStates) }
+}
+
+fun Context.openYouTubeVideo(videoUrl: String) {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
+        intent.setPackage("com.google.android.youtube")
+        startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
+        startActivity(browserIntent)
+    }
 }

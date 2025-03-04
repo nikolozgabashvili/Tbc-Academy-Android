@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.presentation.meal.home
+package com.example.tbcacademyhomework.presentation.meal.home.screen.home
 
 import androidx.lifecycle.ViewModel
 import com.example.tbcacademyhomework.domain.core.util.Resource

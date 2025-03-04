@@ -1,16 +1,20 @@
 package com.example.tbcacademyhomework.data.remote.meal.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class MealDetailListDTO(
     val meals: List<MealDetailDTO>
 ) {
+    @Serializable
     data class MealDetailDTO(
-        val idMeal: String,
-        val strMeal: String,
-        val strCategory: String,
-        val strArea: String,
-        val strInstructions: String,
-        val strMealThumb: String,
-        val strYoutube: String,
+        val idMeal: String?,
+        val strMeal: String?,
+        val strCategory: String?,
+        val strArea: String?,
+        val strInstructions: String?,
+        val strMealThumb: String?,
+        val strYoutube: String?,
         val strIngredient1: String?,
         val strIngredient2: String?,
         val strIngredient3: String?,

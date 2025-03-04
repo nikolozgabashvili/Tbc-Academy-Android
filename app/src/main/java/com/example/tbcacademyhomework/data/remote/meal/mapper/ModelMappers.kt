@@ -41,14 +41,29 @@ fun MealDetailListDTO.toDomain(): MealDetailListDomain {
 }
 
 fun MealDetailListDTO.MealDetailDTO.toDomain(): MealDetailListDomain.MealDetailDomain {
-    val ingredientsMap: MutableMap<String?, String> = mutableMapOf()
-    for (i in 1..20) {
-        val ingredientField = this::class.java.getDeclaredField("strIngredient$i").get(this) as? String
-        val measureField = this::class.java.getDeclaredField("strMeasure$i").get(this) as? String
-        if (!ingredientField.isNullOrEmpty() && !measureField.isNullOrEmpty()) {
-            ingredientsMap[ingredientField] = measureField
-        }
-    }
+    val ingredientsMap: MutableMap<String?, String?> = mutableMapOf()
+
+    ingredientsMap[this.strIngredient1] = strMeasure1
+    ingredientsMap[this.strIngredient2] = strMeasure2
+    ingredientsMap[this.strIngredient3] = strMeasure3
+    ingredientsMap[this.strIngredient4] = strMeasure4
+    ingredientsMap[this.strIngredient5] = strMeasure5
+    ingredientsMap[this.strIngredient6] = strMeasure6
+    ingredientsMap[this.strIngredient7] = strMeasure7
+    ingredientsMap[this.strIngredient8] = strMeasure8
+    ingredientsMap[this.strIngredient9] = strMeasure9
+    ingredientsMap[this.strIngredient10] = strMeasure10
+    ingredientsMap[this.strIngredient11] = strMeasure11
+    ingredientsMap[this.strIngredient12] = strMeasure12
+    ingredientsMap[this.strIngredient13] = strMeasure13
+    ingredientsMap[this.strIngredient14] = strMeasure14
+    ingredientsMap[this.strIngredient15] = strMeasure15
+    ingredientsMap[this.strIngredient16] = strMeasure16
+    ingredientsMap[this.strIngredient17] = strMeasure17
+    ingredientsMap[this.strIngredient18] = strMeasure18
+    ingredientsMap[this.strIngredient19] = strMeasure19
+    ingredientsMap[this.strIngredient20] = strMeasure20
+
 
     return MealDetailListDomain.MealDetailDomain(
         id = idMeal,
