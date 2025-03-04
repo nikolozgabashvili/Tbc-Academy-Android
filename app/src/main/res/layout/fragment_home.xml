@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="@dimen/size20"
     tools:context=".presentation.meal.home.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView

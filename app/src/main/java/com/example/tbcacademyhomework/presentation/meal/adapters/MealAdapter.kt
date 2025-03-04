@@ -10,7 +10,9 @@ import com.example.tbcacademyhomework.presentation.core.util.GenericImage
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.meal.home.model.MealUi
 
-class MealAdapter : ListAdapter<MealUi, MealAdapter.MealViewHolder>(MealDiffUtil()) {
+class MealAdapter(
+    private val onMealClicked: (String) -> Unit
+) : ListAdapter<MealUi, MealAdapter.MealViewHolder>(MealDiffUtil()) {
 
     inner class MealViewHolder(private val binding: ItemMealBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -21,6 +23,9 @@ class MealAdapter : ListAdapter<MealUi, MealAdapter.MealViewHolder>(MealDiffUtil
                 url = item.mealImage,
             )
             binding.ivMeal.loadImage(image)
+            binding.root.setOnClickListener {
+                onMealClicked(item.mealId)
+            }
 
         }
 

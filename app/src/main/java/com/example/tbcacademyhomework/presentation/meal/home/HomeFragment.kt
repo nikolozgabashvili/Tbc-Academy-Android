@@ -16,7 +16,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private val viewModel: HomeViewModel by viewModels()
     private val categoryAdapter by lazy { CategoryAdapter(viewModel::onCategorySelected) }
-    private val mealAdapter by lazy { MealAdapter() }
+    private val mealAdapter by lazy { MealAdapter(::onMealSelected) }
     override fun init() {
 
         initCategoryRecycler()
@@ -62,6 +62,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             rvMeals.visibleIf(!state.mealLoading)
             mealLoader.visibleIf(state.mealLoading)
         }
+    }
+
+    private fun onMealSelected(id: String) {
+        //todo navigate
+
     }
 
 }

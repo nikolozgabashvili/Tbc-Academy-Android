@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMeals"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/size20" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/mealLoader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        android:orientation="vertical">
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

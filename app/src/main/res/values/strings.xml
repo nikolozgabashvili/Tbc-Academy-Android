@@ -31,4 +31,6 @@
     <string name="home">მთავარი გვერდი</string>
     <string name="favourites">ფავორიტები</string>
     <string name="settings">პარამეტრები</string>
+    <string name="profile">პროფილი</string>
+    <string name="language">ენა</string>
 </resources>
