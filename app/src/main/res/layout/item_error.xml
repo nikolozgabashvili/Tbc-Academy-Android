@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardForegroundColor="@color/buttonSecondaryPressed"
-    app:cardCornerRadius="@dimen/size10">
+    app:cardCornerRadius="@dimen/size10"
+    app:cardForegroundColor="@color/buttonSecondaryPressed">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/size10"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/size10"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 

@@ -2,6 +2,7 @@ package com.example.tbcacademyhomework.presentation.meal.home.screen.home
 
 import androidx.lifecycle.ViewModel
 import com.example.tbcacademyhomework.domain.core.util.Resource
+import com.example.tbcacademyhomework.domain.core.util.isError
 import com.example.tbcacademyhomework.domain.core.util.isLoading
 import com.example.tbcacademyhomework.domain.meal.usecase.GetMealByCategoryUseCase
 import com.example.tbcacademyhomework.domain.meal.usecase.GetMealCategoriesUseCase
@@ -25,26 +26,33 @@ class HomeViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
+        getCategories()
+    }
+
+    fun getCategories() {
+        getMeals()
         launchCoroutineScope {
             getMealCategoryUseCase().collect { resource ->
-                _state.update { it.copy(categoryLoading = resource.isLoading()) }
+                _state.update {
+                    it.copy(
+                        categoryLoading = resource.isLoading(),
+                        mealLoading = resource.isLoading(),
+                        mealError = false,
+                        categoryError = resource.isError()
+                    )
+                }
 
-                when (resource) {
-                    is Resource.Success -> {
-                        val categories = resource.data.toUi()
-                        _state.update {
-                            it.copy(
-                                rawCategories = categories,
-                                rawMeals = categories.map { MealByCategory(it.id, it.name) },
-                            )
-                        }
-                        categories.firstOrNull()?.let {
-                            onCategorySelected(it)
-                        }
+                if (resource is Resource.Success) {
+                    val categories = resource.data.toUi()
+                    _state.update {
+                        it.copy(
+                            rawCategories = categories,
+                            rawMeals = categories.map { MealByCategory(it.id, it.name) },
+                        )
                     }
-
-                    is Resource.Error -> Unit//todo
-                    Resource.Loading -> Unit
+                    categories.firstOrNull()?.let {
+                        onCategorySelected(it)
+                    }
                 }
 
             }
@@ -52,18 +60,25 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun onCategorySelected(category: CategoryUi) {
-        _state.update { it.copy(selectedCategoryId = category.id) }
-        shouldMakeCall(category.name)
-
-
+    fun retryMeals() {
+        if (_state.value.mappedCategories.isEmpty()) {
+            getCategories()
+        } else {
+            getMeals()
+        }
     }
 
-    private fun shouldMakeCall(category: String) {
-        if (_state.value.mealsToShow.isEmpty()) {
-            launchCoroutineScope {
+    private fun getMeals() {
+        launchCoroutineScope {
+            val category = _state.value.mappedCategories.firstOrNull { it.isSelected }?.name
+            category?.let {
                 getMealByCategoryUseCase(category).collect { resource ->
-                    _state.update { it.copy(mealLoading = resource.isLoading()) }
+                    _state.update {
+                        it.copy(
+                            mealLoading = resource.isLoading(),
+                            mealError = resource.isError()
+                        )
+                    }
                     if (resource is Resource.Success) {
                         val mealList = resource.data
                         _state.update { state ->
@@ -82,12 +97,23 @@ class HomeViewModel @Inject constructor(
                             )
                         }
                     }
+
                 }
             }
-        } else {
-            _state.update { it.copy(mealLoading = false) }
         }
+    }
 
+    fun onCategorySelected(category: CategoryUi) {
+        _state.update { it.copy(selectedCategoryId = category.id) }
+        shouldMakeCall()
 
+    }
+
+    private fun shouldMakeCall() {
+        if (_state.value.mealsToShow.isEmpty()) {
+            getMeals()
+        } else {
+            _state.update { it.copy(mealLoading = false, mealError = false) }
+        }
     }
 }

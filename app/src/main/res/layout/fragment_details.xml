@@ -33,14 +33,15 @@
 
             <include
                 android:id="@+id/errorView"
-                layout="@layout/item_error" />
+                layout="@layout/item_error"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size100" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/containerDetails"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/size20">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivMeal"
@@ -85,10 +86,10 @@
                     android:id="@+id/tvSeeVideo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginBottom="@dimen/size20"
                     android:textColor="@color/textPrimary"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvIngredients" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

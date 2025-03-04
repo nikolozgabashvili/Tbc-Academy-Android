@@ -25,7 +25,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         initCategoryRecycler()
         initMealRecycler()
         initObservers()
+        initListeners()
 
+    }
+
+    private fun initListeners() {
+        binding.itemErrorList.btnRetry.setOnClickListener {
+            viewModel.retryMeals()
+        }
+
+        binding.itemErrorCategory.btnRetry.setOnClickListener {
+            viewModel.getCategories()
+        }
     }
 
 
@@ -60,9 +71,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun handleLoading(state: HomeScreenState) {
         with(binding) {
-            rvCategory.visibleIf(!state.categoryLoading)
+            rvCategory.visibleIf(!state.categoryLoading && state.mappedCategories.isNotEmpty())
             categoryLoader.visibleIf(state.categoryLoading)
-            rvMeals.visibleIf(!state.mealLoading)
+            rvMeals.visibleIf(!state.mealLoading && state.mealsToShow.isNotEmpty())
+            itemErrorList.root.visibleIf(state.mealError && state.mealsToShow.isEmpty())
+            itemErrorCategory.root.visibleIf(state.categoryError)
             mealLoader.visibleIf(state.mealLoading)
         }
     }

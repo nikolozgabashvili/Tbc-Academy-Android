@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class HttpRequestHelper @Inject constructor() {
@@ -26,6 +27,9 @@ class HttpRequestHelper @Inject constructor() {
 
             } catch (e: Exception) {
                 when (e) {
+                    is UnknownHostException ->
+                        emit(Resource.Error(DataError.DynamicError.NETWORK_ERROR))
+
                     else -> {
                         e.printStackTrace()
                         emit(Resource.Error(DataError.DynamicError.UNKNOWN))

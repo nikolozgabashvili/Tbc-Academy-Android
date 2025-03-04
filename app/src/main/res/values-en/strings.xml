@@ -31,5 +31,8 @@
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
     <string name="language">Language</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="retry">Retry</string>
+    <string name="see_video">See video</string>
 
 </resources>
