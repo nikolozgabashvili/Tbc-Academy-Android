@@ -79,5 +79,5 @@ Meal App is a comprehensive Android application designed to provide users with a
 
 - **Dependency Injection**: Dagger Hilt
 - **Authentication**: Firebase Authentication
-- **Meal api**: https://www.themealdb.com/
+- **Meal API**: https://www.themealdb.com/
 - **Asynchronous Programming**: Kotlin Coroutines
