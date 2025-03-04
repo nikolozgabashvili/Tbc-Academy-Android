@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetSelectedThemeUseCase @Inject constructor(
     private val themeRepository: ThemeRepository
 ) {
-    operator fun invoke(): Flow<Theme> {
+    suspend operator fun invoke(): Flow<Theme> {
         return themeRepository.getTheme()
     }
 }

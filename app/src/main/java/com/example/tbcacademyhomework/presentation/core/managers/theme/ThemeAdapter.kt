@@ -49,11 +49,11 @@ class ThemeAdapter(
 
 private class ThemeDiffUtil : DiffUtil.ItemCallback<ThemeItem>() {
     override fun areContentsTheSame(oldItem: ThemeItem, newItem: ThemeItem): Boolean {
-        return oldItem.theme == newItem.theme
+        return oldItem == newItem
     }
 
     override fun areItemsTheSame(oldItem: ThemeItem, newItem: ThemeItem): Boolean {
-        return oldItem == newItem
+        return oldItem.theme == newItem.theme
     }
 
 }

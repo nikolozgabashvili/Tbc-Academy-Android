@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.HomeFragment">
+    android:orientation="vertical"
+    tools:context=".presentation.meal.home.HomeFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/size20"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_category"
+        tools:orientation="horizontal" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/categoryLoader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size20">
+
+        <include layout="@layout/item_category_loader" />
+
+        <include layout="@layout/item_category_loader" />
+
+        <include layout="@layout/item_category_loader" />
+
+        <include layout="@layout/item_category_loader" />
+
+        <include layout="@layout/item_category_loader" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/mealLoader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        android:orientation="vertical">
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+        <include layout="@layout/item_meal_loader" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMeals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/size20" />
 
 
-</FrameLayout>
+</LinearLayout>

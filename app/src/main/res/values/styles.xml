@@ -15,5 +15,9 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/textSecondary</item>
     </style>
+    
+    <style name="circleImage">
+        <item name="cornerSize">50%</item>
+    </style>
 
 </resources>

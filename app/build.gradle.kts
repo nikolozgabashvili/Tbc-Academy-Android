@@ -31,6 +31,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://themealdb.com/api/json/v1/1/\"")
+        }
+
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://themealdb.com/api/json/v1/1/\"")
         }
     }
     compileOptions {
@@ -43,6 +48,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     kapt {
@@ -64,8 +70,10 @@ dependencies {
     implementation(libs.lottie)
     implementation(libs.dagger.hilt.android)
     implementation(libs.retrofit.serialization)
+    implementation(libs.serialization.json)
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
+    implementation(libs.shimmer)
     implementation(libs.firebase.auth)
     implementation(libs.splash.screen)
     kapt(libs.dagger.hilt.compiler)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shimmerCategory"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/size6">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCategory"
+        android:layout_width="@dimen/size80"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_radius_10"
+        android:paddingHorizontal="@dimen/size10"
+        android:paddingVertical="@dimen/size8"
+        android:textColor="@color/invertedLight"
+        android:textSize="@dimen/textSize16" />
+
+</com.facebook.shimmer.ShimmerFrameLayout>

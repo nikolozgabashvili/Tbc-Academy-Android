@@ -45,11 +45,11 @@ class LanguageAdapter(private val onLanguageSelected: (AppLanguage) -> Unit) :
 
 private class LanguageDiffUtil : DiffUtil.ItemCallback<AppLanguageItem>() {
     override fun areContentsTheSame(oldItem: AppLanguageItem, newItem: AppLanguageItem): Boolean {
-        return oldItem.language == newItem.language
+        return oldItem == newItem
     }
 
     override fun areItemsTheSame(oldItem: AppLanguageItem, newItem: AppLanguageItem): Boolean {
-        return oldItem == newItem
+        return oldItem.language == newItem.language
     }
 
 }
