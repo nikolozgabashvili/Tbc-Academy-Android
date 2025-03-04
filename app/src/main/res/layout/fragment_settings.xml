@@ -11,7 +11,7 @@
         layout="@layout/item_topbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:padding="@dimen/size20"
+        android:paddingHorizontal="@dimen/size20"
         android:id="@+id/rvSettingItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
