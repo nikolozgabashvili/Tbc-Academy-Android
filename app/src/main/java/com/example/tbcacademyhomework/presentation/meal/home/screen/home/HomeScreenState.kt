@@ -1,5 +1,6 @@
 package com.example.tbcacademyhomework.presentation.meal.home.screen.home
 
+import com.example.tbcacademyhomework.domain.core.util.DataError
 import com.example.tbcacademyhomework.presentation.meal.home.model.CategoryUi
 import com.example.tbcacademyhomework.presentation.meal.home.model.MealByCategory
 import com.example.tbcacademyhomework.presentation.meal.home.model.MealUi
@@ -7,8 +8,8 @@ import com.example.tbcacademyhomework.presentation.meal.home.model.MealUi
 data class HomeScreenState(
     val categoryLoading: Boolean = false,
     val mealLoading: Boolean = false,
-    val mealError: Boolean = false,
-    val categoryError: Boolean = false,
+    val mealError: DataError? = null,
+    val categoryError: DataError? = null,
     private val rawCategories: List<CategoryUi> = emptyList(),
     val rawMeals: List<MealByCategory> = emptyList(),
     val selectedCategoryId: String? = null

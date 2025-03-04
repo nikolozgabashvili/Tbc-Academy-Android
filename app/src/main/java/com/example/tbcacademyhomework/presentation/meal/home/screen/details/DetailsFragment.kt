@@ -5,6 +5,7 @@ import android.text.Spanned
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -72,7 +73,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
                     containerDetails.visibleIf(showContent)
                     errorView.root.visibleIf(it.isError)
                     if (showContent) {
-                        ivMeal.loadImage(it.details?.image)
+                        ivMeal.loadImage(
+                            url = it.details?.image,
+                            scaleType = ImageView.ScaleType.CENTER_CROP
+                        )
                         tvDescription.text = it.details?.instructions
                         val ingredients = StringBuilder()
                         it.details?.ingredientMap?.forEach { (key, value) ->

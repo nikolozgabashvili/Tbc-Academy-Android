@@ -5,6 +5,7 @@ import android.text.Spanned
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -65,7 +66,10 @@ class FavouriteDetailsFragment :
                     } else {
                         binding.topBar.ivEndIcon.loadImage(R.drawable.ic_favourite_border)
                     }
-                    ivMeal.loadImage(state.details?.image)
+                    ivMeal.loadImage(
+                        url = state.details?.image,
+                        scaleType = ImageView.ScaleType.CENTER_CROP
+                    )
 
                     tvDescription.text = state.details?.instructions
                     val ingredients = StringBuilder()

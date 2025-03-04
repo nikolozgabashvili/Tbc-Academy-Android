@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tbcacademyhomework.databinding.FragmentHomeBinding
 import com.example.tbcacademyhomework.presentation.core.base.BaseFragment
 import com.example.tbcacademyhomework.presentation.core.util.launchCoroutineScope
+import com.example.tbcacademyhomework.presentation.core.util.toErrorString
 import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 import com.example.tbcacademyhomework.presentation.meal.adapters.MealAdapter
 import com.example.tbcacademyhomework.presentation.meal.home.adapter.CategoryAdapter
@@ -74,8 +75,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             rvCategory.visibleIf(!state.categoryLoading && state.mappedCategories.isNotEmpty())
             categoryLoader.visibleIf(state.categoryLoading)
             rvMeals.visibleIf(!state.mealLoading && state.mealsToShow.isNotEmpty())
-            itemErrorList.root.visibleIf(state.mealError && state.mealsToShow.isEmpty())
-            itemErrorCategory.root.visibleIf(state.categoryError)
+            itemErrorList.root.visibleIf(state.mealError != null && state.mealsToShow.isEmpty())
+            itemErrorList.tvError.text = state.mealError?.toErrorString(requireContext())
+            itemErrorCategory.root.visibleIf(state.categoryError != null)
+            itemErrorCategory.tvError.text = state.categoryError?.toErrorString(requireContext())
             mealLoader.visibleIf(state.mealLoading)
         }
     }

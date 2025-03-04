@@ -43,7 +43,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     private fun settingItemClicked(item: SettingItemType) {
         when (item) {
             SettingItemType.PROFILE -> {
-
+                navController.navigate(SettingsFragmentDirections.actionSettingsFragmentToProfileFragment())
             }
 
             SettingItemType.THEME -> {

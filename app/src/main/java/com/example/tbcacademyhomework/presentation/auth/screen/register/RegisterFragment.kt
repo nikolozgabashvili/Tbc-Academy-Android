@@ -87,7 +87,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             viewModel.events.collect { event ->
                 when (event) {
                     RegisterScreenEvents.Success -> {
-                        binding.root.showSnackBar("success")
+                        navController.navigateUp()
                     }
 
                     is RegisterScreenEvents.Error -> {

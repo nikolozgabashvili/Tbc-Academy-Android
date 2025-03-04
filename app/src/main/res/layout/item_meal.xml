@@ -16,7 +16,6 @@
             android:id="@+id/ivMeal"
             android:layout_width="@dimen/size60"
             android:layout_height="@dimen/size60"
-            android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/circleImage" />
 
         <androidx.appcompat.widget.AppCompatTextView

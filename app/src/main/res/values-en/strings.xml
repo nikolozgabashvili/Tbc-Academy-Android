@@ -23,7 +23,7 @@
     <string name="password_requirement_error">password doesn\'t meet requirements</string>
     <string name="invalid_credentials">credentials doesn\'t match</string>
     <string name="invalid_email">email is not valid</string>
-    <string name="network_error">connection_error</string>
+    <string name="network_error">connection error</string>
     <string name="user_collision">user already exists</string>
     <string name="unknown_error">unknown error</string>
     <string name="home">Home</string>
@@ -32,7 +32,9 @@
     <string name="profile">Profile</string>
     <string name="language">Language</string>
     <string name="ingredients">Ingredients</string>
-    <string name="retry">Retry</string>
+    <string name="retry">Try again</string>
     <string name="see_video">See video</string>
+    <string name="logOut">Sign Out</string>
+    <string name="you_don_t_have_any_favourite_meals_yet">You don\'t have any favourite meals yet</string>
 
 </resources>

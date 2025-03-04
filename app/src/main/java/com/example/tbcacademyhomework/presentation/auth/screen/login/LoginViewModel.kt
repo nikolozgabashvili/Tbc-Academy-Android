@@ -1,7 +1,7 @@
 package com.example.tbcacademyhomework.presentation.auth.screen.login
 
 import androidx.lifecycle.ViewModel
-import com.example.tbcacademyhomework.domain.auth.usecase.IsUserAuthorizedUseCase
+import com.example.tbcacademyhomework.domain.auth.usecase.GetFirebaseAuthStateUseCase
 import com.example.tbcacademyhomework.domain.auth.usecase.LoginUseCase
 import com.example.tbcacademyhomework.domain.core.util.Resource
 import com.example.tbcacademyhomework.domain.core.util.isLoading
@@ -19,7 +19,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val isEmailValidUseCase: IsEmailValidUseCase,
     private val loginUseCase: LoginUseCase,
-    private val isUserAuthorizedUseCase: IsUserAuthorizedUseCase
+    private val getFirebaseAuthStateUseCase: GetFirebaseAuthStateUseCase
 
 ) : ViewModel() {
 
@@ -32,8 +32,11 @@ class LoginViewModel @Inject constructor(
 
     init {
         launchCoroutineScope {
-            if (isUserAuthorizedUseCase()){
-                eventChannel.send(LoginScreenEvents.NavigateHome)
+            getFirebaseAuthStateUseCase().collect{loggedIn->
+                if (loggedIn){
+                    eventChannel.send(LoginScreenEvents.NavigateHome)
+                }
+
             }
         }
     }

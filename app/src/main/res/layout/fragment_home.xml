@@ -67,7 +67,8 @@
         layout="@layout/item_error"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size100"
-        android:layout_marginHorizontal="@dimen/size20" />
+        android:layout_marginHorizontal="@dimen/size20"
+        android:layout_marginTop="@dimen/size20" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMeals"

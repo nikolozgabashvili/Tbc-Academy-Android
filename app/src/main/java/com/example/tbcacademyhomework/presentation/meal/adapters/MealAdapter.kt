@@ -2,6 +2,7 @@ package com.example.tbcacademyhomework.presentation.meal.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,7 @@ class MealAdapter(
             val item = getItem(adapterPosition)
             binding.tvMealName.text = item.mealName
 
-            binding.ivMeal.loadImage(item.mealImage)
+            binding.ivMeal.loadImage(item.mealImage, scaleType = ImageView.ScaleType.CENTER_CROP)
             binding.root.setOnClickListener {
                 onMealClicked(item)
             }

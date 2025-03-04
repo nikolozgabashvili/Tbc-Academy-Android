@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbcacademyhomework.databinding.ItemSettingBinding
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
+import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 
 class SettingItemsAdapter(
     private val items: List<SettingItemType>,
@@ -19,6 +20,7 @@ class SettingItemsAdapter(
             with(binding) {
                 tvSettingTitle.text = root.context.getString(item.titleRes)
                 ivStartView.loadImage(item.iconRes)
+                divider.visibleIf(item != items.last(), gone = false)
                 root.setOnClickListener {
                     onItemClicked(item)
                 }

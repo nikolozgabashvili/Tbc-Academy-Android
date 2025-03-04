@@ -3,12 +3,14 @@ package com.example.tbcacademyhomework.presentation.core.util
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Parcelable
 import android.util.SparseArray
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ImageView.ScaleType
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
@@ -16,18 +18,48 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.example.tbcacademyhomework.R
 
 
 fun ImageView.loadImage(
     url: String?,
-    placeholder: Int? = null,
-    error: Int? = null
+    placeholder: Int? = R.drawable.ic_loading,
+    error: Int? = R.drawable.ic_filled_error,
+    scaleType: ScaleType = ScaleType.FIT_CENTER
 ) {
 
     val glideRequest = Glide.with(context).load(url)
     error?.let { glideRequest.error(it) }
     placeholder?.let { glideRequest.placeholder(it) }
+    glideRequest.listener(object : RequestListener<Drawable> {
 
+
+        override fun onResourceReady(
+            resource: Drawable,
+            model: Any,
+            target: com.bumptech.glide.request.target.Target<Drawable>?,
+            dataSource: DataSource,
+            isFirstResource: Boolean
+        ): Boolean {
+            this@loadImage.scaleType = scaleType
+            return false
+        }
+
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any?,
+            target: com.bumptech.glide.request.target.Target<Drawable>,
+            isFirstResource: Boolean
+        ): Boolean {
+            this@loadImage.scaleType = ScaleType.FIT_CENTER
+            return false
+        }
+
+    })
+        .into(this)
     glideRequest.into(this)
 
 

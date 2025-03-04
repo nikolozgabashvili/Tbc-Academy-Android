@@ -21,7 +21,6 @@
                 android:layout_width="@dimen/size60"
                 android:layout_height="@dimen/size60"
                 android:background="@drawable/bg_circle"
-                android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/circleImage" />
 
             <androidx.appcompat.widget.AppCompatTextView

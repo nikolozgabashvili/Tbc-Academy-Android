@@ -6,8 +6,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/size20">
+        android:layout_height="wrap_content">
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/viewIv"
@@ -21,8 +20,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/gray_dark"
-                app:shapeAppearanceOverlay="@style/rounded" />
+                android:background="@drawable/bg_radius_10"/>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 

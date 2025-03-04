@@ -10,6 +10,15 @@
         android:id="@+id/topBar"
         layout="@layout/item_topbar" />
 
+    <TextView
+        android:layout_weight="1"
+        android:textSize="@dimen/textSize20"
+        android:gravity="center"
+        android:text="@string/you_don_t_have_any_favourite_meals_yet"
+        android:textColor="@color/textSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavMeals"
         android:layout_width="match_parent"

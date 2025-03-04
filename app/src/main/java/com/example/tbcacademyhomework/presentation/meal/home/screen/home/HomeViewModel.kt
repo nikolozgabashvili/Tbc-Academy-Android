@@ -2,7 +2,6 @@ package com.example.tbcacademyhomework.presentation.meal.home.screen.home
 
 import androidx.lifecycle.ViewModel
 import com.example.tbcacademyhomework.domain.core.util.Resource
-import com.example.tbcacademyhomework.domain.core.util.isError
 import com.example.tbcacademyhomework.domain.core.util.isLoading
 import com.example.tbcacademyhomework.domain.meal.usecase.GetMealByCategoryUseCase
 import com.example.tbcacademyhomework.domain.meal.usecase.GetMealCategoriesUseCase
@@ -37,8 +36,8 @@ class HomeViewModel @Inject constructor(
                     it.copy(
                         categoryLoading = resource.isLoading(),
                         mealLoading = resource.isLoading(),
-                        mealError = false,
-                        categoryError = resource.isError()
+                        mealError = null,
+                        categoryError = if (resource is Resource.Error) resource.error else null
                     )
                 }
 
@@ -76,7 +75,7 @@ class HomeViewModel @Inject constructor(
                     _state.update {
                         it.copy(
                             mealLoading = resource.isLoading(),
-                            mealError = resource.isError()
+                            mealError = if (resource is Resource.Error) resource.error else null
                         )
                     }
                     if (resource is Resource.Success) {
@@ -113,7 +112,7 @@ class HomeViewModel @Inject constructor(
         if (_state.value.mealsToShow.isEmpty()) {
             getMeals()
         } else {
-            _state.update { it.copy(mealLoading = false, mealError = false) }
+            _state.update { it.copy(mealLoading = false, mealError = null) }
         }
     }
 }

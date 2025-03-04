@@ -3,8 +3,8 @@ package com.example.tbcacademyhomework.domain.auth.usecase
 import com.example.tbcacademyhomework.domain.auth.repository.AuthRepository
 import javax.inject.Inject
 
-class IsUserAuthorizedUseCase @Inject constructor(
-    private val authRepository: AuthRepository,
+class GetFirebaseAuthStateUseCase @Inject constructor(
+    private val repository: AuthRepository
 ) {
-    operator fun invoke() = authRepository.isUserLoggedIn
+    operator fun invoke() = repository.getFirebaseAuthState()
 }
