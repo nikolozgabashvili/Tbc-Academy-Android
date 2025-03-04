@@ -67,12 +67,10 @@ class HomeViewModel @Inject constructor(
                     when (resource) {
                         is Resource.Success -> {
                             val mealList = resource.data
-                            println(mealList)
                             _state.update { state ->
 
                                 state.copy(
                                     rawMeals = state.rawMeals.map {
-                                        println("meal $it")
                                         if (it.categoryName == category)
                                             it.copy(meals = mealList.meals.map {
                                                 MealUi(
