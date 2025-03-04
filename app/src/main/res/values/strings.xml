@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Food App</string>
+    <string name="app_name" translatable="false">Meal App</string>
 
     <string name="theme_system">სისტემური</string>
     <string name="theme_light">თეთრი</string>
