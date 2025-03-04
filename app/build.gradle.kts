@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kapt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.room.plugin)
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -54,6 +55,10 @@ android {
     kapt {
         correctErrorTypes = true
     }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
 }
 
 dependencies {
@@ -70,6 +75,9 @@ dependencies {
     implementation(libs.lottie)
     implementation(libs.dagger.hilt.android)
     implementation(libs.retrofit.serialization)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
     implementation(libs.serialization.json)
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)

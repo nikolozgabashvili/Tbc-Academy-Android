@@ -16,6 +16,7 @@ import com.example.tbcacademyhomework.presentation.core.util.factory.ViewModelFa
 import com.example.tbcacademyhomework.presentation.core.util.launchCoroutineScope
 import com.example.tbcacademyhomework.presentation.core.util.loadImage
 import com.example.tbcacademyhomework.presentation.core.util.openYouTubeVideo
+import com.example.tbcacademyhomework.presentation.core.util.show
 import com.example.tbcacademyhomework.presentation.core.util.visibleIf
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -45,9 +46,11 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
 
     private fun initViews() {
         binding.topBar.tvTitle.text = args.meal.mealName
-        binding.topBar.ivEndIcon.setOnClickListener {
+        binding.topBar.btnEnd.setOnClickListener {
             viewModel.favouriteClick()
         }
+        binding.topBar.btnEnd.show()
+
 
     }
 
@@ -98,6 +101,11 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
                             tvSeeVideo.movementMethod =
                                 android.text.method.LinkMovementMethod.getInstance()
 
+                        }
+                        if (it.isFavourite) {
+                            binding.topBar.ivEndIcon.loadImage(R.drawable.ic_favourites)
+                        } else {
+                            binding.topBar.ivEndIcon.loadImage(R.drawable.ic_favourite_border)
                         }
                     }
 

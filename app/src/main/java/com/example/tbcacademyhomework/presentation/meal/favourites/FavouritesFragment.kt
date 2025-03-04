@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavouritesFragment :
     BaseFragment<FragmentFavouritesBinding>(FragmentFavouritesBinding::inflate) {
 
-        override fun init() {
+    override fun init() {
 
     }
 

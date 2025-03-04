@@ -4,7 +4,7 @@ data class MealDetailListDomain(
     val meals: List<MealDetailDomain>
 ) {
     data class MealDetailDomain(
-        val id: String?,
+        val id: String,
         val name: String?,
         val category: String?,
         val area: String?,

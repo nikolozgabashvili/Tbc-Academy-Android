@@ -5,9 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".presentation.meal.favourites.FavouritesFragment">
 
-    <EditText
-        android:id="@+id/aer"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavMeals"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size50"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size20"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/size20" />
 
 </FrameLayout>

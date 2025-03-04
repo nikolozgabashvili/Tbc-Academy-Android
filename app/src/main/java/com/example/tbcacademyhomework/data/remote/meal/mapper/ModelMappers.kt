@@ -66,7 +66,7 @@ fun MealDetailListDTO.MealDetailDTO.toDomain(): MealDetailListDomain.MealDetailD
 
 
     return MealDetailListDomain.MealDetailDomain(
-        id = idMeal,
+        id = idMeal ?: "",
         name = strMeal,
         category = strCategory,
         area = strArea,

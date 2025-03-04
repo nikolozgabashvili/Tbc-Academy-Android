@@ -5,6 +5,6 @@ import com.example.tbcacademyhomework.presentation.meal.home.screen.details.mode
 data class DetailsScreenState(
     val loading: Boolean = false,
     val details: MealDetailUi? = null,
-    val hasInternetConnection: Boolean = true,
+    val isFavourite: Boolean = false,
     val isError: Boolean = false
 )
