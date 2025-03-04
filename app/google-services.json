@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "705602556719",
+    "project_id": "tbcitacademymidterm",
+    "storage_bucket": "tbcitacademymidterm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705602556719:android:b5ae1f0e534910b5aa87da",
+        "android_client_info": {
+          "package_name": "com.example.tbcacademyhomework"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4WA23qaxByAGZNqPrS5NfaIswGSTWI3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

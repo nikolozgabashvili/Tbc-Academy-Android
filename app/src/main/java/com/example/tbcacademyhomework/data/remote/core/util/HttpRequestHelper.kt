@@ -31,7 +31,6 @@ class HttpRequestHelper @Inject constructor() {
                         emit(Resource.Error(DataError.DynamicError.NETWORK_ERROR))
 
                     else -> {
-                        e.printStackTrace()
                         emit(Resource.Error(DataError.DynamicError.UNKNOWN))
                     }
                 }
