@@ -64,28 +64,23 @@ class HomeViewModel @Inject constructor(
             launchCoroutineScope {
                 getMealByCategoryUseCase(category).collect { resource ->
                     _state.update { it.copy(mealLoading = resource.isLoading()) }
-                    when (resource) {
-                        is Resource.Success -> {
-                            val mealList = resource.data
-                            _state.update { state ->
-
-                                state.copy(
-                                    rawMeals = state.rawMeals.map {
-                                        if (it.categoryName == category)
-                                            it.copy(meals = mealList.meals.map {
-                                                MealUi(
-                                                    mealId = it.id,
-                                                    mealImage = it.mealImage,
-                                                    mealName = it.mealName
-                                                )
-                                            }) else it
-                                    }
-                                )
-                            }
+                    if (resource is Resource.Success) {
+                        val mealList = resource.data
+                        _state.update { state ->
+                            state.copy(
+                                rawMeals = state.rawMeals.map { mealByCategory ->
+                                    if (mealByCategory.categoryName == category) {
+                                        mealByCategory.copy(meals = mealList.meals.map { meal ->
+                                            MealUi(
+                                                mealId = meal.id,
+                                                mealImage = meal.mealImage,
+                                                mealName = meal.mealName
+                                            )
+                                        })
+                                    } else mealByCategory
+                                }
+                            )
                         }
-
-                        is Resource.Error -> Unit
-                        Resource.Loading -> Unit
                     }
                 }
             }
