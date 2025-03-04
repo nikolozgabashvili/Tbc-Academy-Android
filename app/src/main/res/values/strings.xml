@@ -35,5 +35,5 @@
     <string name="retry">ცადე თავიდან</string>
     <string name="see_video">იხილეთ ვიდეო</string>
     <string name="logOut">გამოსვლა</string>
-    <string name="you_don_t_have_any_favourite_meals_yet">შენ არ გაქვს დამახსოვრებული საკვები</string>
+    <string name="you_don_t_have_any_favourite_meals_yet">შენ არ გაქვს დამახსოვრებული რეცეპტი</string>
 </resources>
