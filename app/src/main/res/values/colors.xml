@@ -8,6 +8,7 @@
 
     <color name="textPrimary">#34383C</color>
     <color name="textSecondary">#A334383C</color>
+    <color name="bottom_ripple">#2934383C</color>
     <color name="input_stroke">#CCCCCC</color>
 
     <color name="buttonDark">#232629</color>

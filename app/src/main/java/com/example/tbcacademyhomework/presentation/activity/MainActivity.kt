@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.presentation
+package com.example.tbcacademyhomework.presentation.activity
 
 import android.content.Context
 import android.os.Bundle
@@ -13,7 +13,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.ActivityMainBinding
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private val mainViewModel: MainViewModel by viewModels()
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     private lateinit var navController: NavController
 
@@ -52,8 +56,32 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         navController.graph = navController.navInflater.inflate(R.navigation.nav_graph)
+
         binding.bottomMenu.setupWithNavController(navController)
         binding.bottomMenu.setOnApplyWindowInsetsListener(null)
+
+        binding.bottomMenu.setOnItemReselectedListener { }
+
+        binding.bottomMenu.setOnItemSelectedListener { item ->
+            navController.navigate(
+                item.itemId,
+                null,
+                NavOptions.Builder()
+                    .setLaunchSingleTop(true)
+                    .setPopUpTo(
+                        R.id.homeFragment,
+                        inclusive = false,
+                        saveState = true
+                    )
+                    .setRestoreState(true)
+                    .build()
+            )
+            true
+        }
+
+        appBarConfiguration = AppBarConfiguration(
+            getVisibleNavFragmentIds().toSet()
+        )
 
         setBottomNavBarVisibility()
     }
@@ -68,7 +96,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setBottomNavBarVisibility() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             binding.bottomMenu.visibleIf(
                 destination.id in getVisibleNavFragmentIds()
             )
@@ -84,6 +111,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration)
+    }
+
 
     private fun handleEdgeToEdge() {
         enableEdgeToEdge()

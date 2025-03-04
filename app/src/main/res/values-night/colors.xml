@@ -2,7 +2,7 @@
 <resources>
     <color name="textPrimary">#E6FFFFFF</color>
     <color name="textSecondary">#80FFFFFF</color>
-
+    <color name="bottom_ripple">#29FFFFFF</color>
     <color name="app_background">#2E2929</color>
 
     <color name="buttonDark">#4E5155</color>
