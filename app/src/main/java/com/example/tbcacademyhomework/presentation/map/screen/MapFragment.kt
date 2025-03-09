@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
@@ -21,7 +20,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.FragmentMapBinding
 import com.example.tbcacademyhomework.presentation.core.base.BaseFragment
-import com.example.tbcacademyhomework.presentation.map.GpsStatusReceiver
 import com.example.tbcacademyhomework.presentation.map.LocationRenderer
 import com.example.tbcacademyhomework.presentation.map.MapScreenEvent
 import com.example.tbcacademyhomework.presentation.map.model.Location
@@ -39,15 +37,22 @@ import kotlinx.coroutines.launch
 class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate) {
 
     private lateinit var permissionRationaleDialog: AlertDialog
-    private var registeredReceiver: Boolean = false
 
     private var googleMap: GoogleMap? = null
-    private val gpsStatusReceiver by lazy {
-        GpsStatusReceiver { isGpsEnabled ->
-            mapViewModel.gpsStatusChanged(isGpsEnabled)
 
-        }
+    private val gpsDisabledDialog by lazy {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.gps_disabled))
+            .setMessage(getString(R.string.gps_disabled_desc))
+            .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .create()
     }
+
 
     private val mapViewModel: MapViewModel by viewModels()
     override fun init(savedInstanceState: Bundle?) {
@@ -62,43 +67,17 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
         mapViewModel.gpsStatusChanged(isGpsEnabled(requireContext()))
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        initBroadcastReceiver()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        removeBroadcastReceiver()
-    }
-
-
-    private fun removeBroadcastReceiver() {
-        if (registeredReceiver) {
-            requireContext().unregisterReceiver(gpsStatusReceiver)
-            registeredReceiver = false
-        }
-    }
-
-    private fun initBroadcastReceiver() {
-        if (!registeredReceiver) {
-            val filter = IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION)
-            requireContext().registerReceiver(gpsStatusReceiver, filter)
-            registeredReceiver = true
-        }
-    }
-
 
     private fun initMap() {
         val map = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         map.getMapAsync { gMap ->
             googleMap = gMap
+            googleMap?.uiSettings?.isZoomControlsEnabled = true
 
         }
     }
 
-    private fun openBottomSheet(location:Location){
-
+    private fun openBottomSheet(location: Location) {
         location.let {
             findNavController().navigate(
                 MapFragmentDirections.actionMapFragmentToLocationDetailsFragment(
@@ -155,11 +134,6 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
     private fun isGpsEnabled(context: Context): Boolean {
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        requireContext().unregisterReceiver(gpsStatusReceiver)
     }
 
 
@@ -256,19 +230,6 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
         gpsDisabledDialog.dismiss()
     }
 
-
-    private val gpsDisabledDialog by lazy {
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.gps_disabled))
-            .setMessage(getString(R.string.gps_disabled_desc))
-            .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                startActivity(intent)
-                dialog.dismiss()
-            }
-            .setCancelable(false)
-            .create()
-    }
 
     private fun addClusteredMarkers(googleMap: GoogleMap, locations: List<Location>) {
         val clusterManager = ClusterManager<Location>(requireContext(), googleMap)
