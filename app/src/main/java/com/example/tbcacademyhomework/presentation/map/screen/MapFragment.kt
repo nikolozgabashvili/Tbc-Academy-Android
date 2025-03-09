@@ -152,7 +152,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
 
                 else -> {
                     mapViewModel.locationPermissionEnabled(false)
-                    showPermissionRationale {
+                    showPermissionRationale(onPositiveButtonPressed = {
                         val intent =
                             Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                                 data = Uri.fromParts(
@@ -163,6 +163,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
                             }
                         startActivity(intent)
                     }
+                    )
                 }
             }
         }
@@ -204,12 +205,12 @@ class MapFragment : BaseFragment<FragmentMapBinding>(FragmentMapBinding::inflate
     }
 
 
-    private fun showPermissionRationale(onRationaleShown: () -> Unit) {
+    private fun showPermissionRationale(onPositiveButtonPressed: () -> Unit) {
         permissionRationaleDialog = AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.location_permission_needed))
             .setMessage(getString(R.string.location_permission_needed_desc))
             .setPositiveButton(R.string.ok) { _, _ ->
-                onRationaleShown()
+                onPositiveButtonPressed()
             }
             .setCancelable(false)
             .create()
