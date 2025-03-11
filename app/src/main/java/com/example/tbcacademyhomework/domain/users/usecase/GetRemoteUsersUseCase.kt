@@ -10,7 +10,7 @@ interface GetRemoteUsersUseCase {
     suspend operator fun invoke(page: Int): Resource<UsersList, DataError>
 }
 
-class  GetRemoteUsersUseCaseImpl @Inject constructor(
+class GetRemoteUsersUseCaseImpl @Inject constructor(
     private val usersRemoteRepository: UsersRemoteRepository
 ) : GetRemoteUsersUseCase {
     override suspend fun invoke(page: Int): Resource<UsersList, DataError> {

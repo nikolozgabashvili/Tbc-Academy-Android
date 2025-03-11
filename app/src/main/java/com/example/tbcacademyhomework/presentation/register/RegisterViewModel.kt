@@ -94,7 +94,8 @@ class RegisterViewModel @Inject constructor(
             val password = value.password
             val email = value.email
             val repeatPassword = value.repeatPassword
-            val isUserValid = validateEmailUseCase(email) && password.isNotEmpty() && repeatPassword == password
+            val isUserValid =
+                validateEmailUseCase(email) && password.isNotEmpty() && repeatPassword == password
             update { it.copy(isUserValid = isUserValid) }
 
         }

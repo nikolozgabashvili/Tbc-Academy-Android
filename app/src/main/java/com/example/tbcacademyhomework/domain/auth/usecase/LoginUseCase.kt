@@ -12,6 +12,7 @@ interface LoginUseCase {
     suspend operator fun invoke(params: AuthUser): Flow<Resource<LoginResponseDomain, DataError>>
 
 }
+
 class LoginUseCaseImpl @Inject constructor(
     private val loginRepository: LoginRepository
 ) : LoginUseCase {

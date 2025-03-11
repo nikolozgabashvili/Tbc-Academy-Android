@@ -1,7 +1,7 @@
 package com.example.tbcacademyhomework.data.auth.service
 
-import com.example.tbcacademyhomework.data.auth.models.RegisterResponseDTO
 import com.example.tbcacademyhomework.data.auth.models.AuthUserRequest
+import com.example.tbcacademyhomework.data.auth.models.RegisterResponseDTO
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST

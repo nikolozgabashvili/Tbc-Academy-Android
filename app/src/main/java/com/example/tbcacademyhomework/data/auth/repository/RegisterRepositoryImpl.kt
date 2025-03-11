@@ -4,8 +4,8 @@ import com.example.tbcacademyhomework.data.auth.service.RegisterApiService
 import com.example.tbcacademyhomework.data.auth.util.toAuthUserRequest
 import com.example.tbcacademyhomework.data.auth.util.toDomain
 import com.example.tbcacademyhomework.data.util.HttpRequestHelper
-import com.example.tbcacademyhomework.domain.auth.models.RegisterResponseDomain
 import com.example.tbcacademyhomework.domain.auth.models.AuthUser
+import com.example.tbcacademyhomework.domain.auth.models.RegisterResponseDomain
 import com.example.tbcacademyhomework.domain.auth.repository.RegisterRepository
 import com.example.tbcacademyhomework.domain.utils.DataError
 import com.example.tbcacademyhomework.domain.utils.Resource

@@ -8,8 +8,6 @@ sealed interface Resource<out D, out E : NetworkError> {
     data object Loading : Resource<Nothing, Nothing>
 
 
-
-
 }
 
 inline fun <T, E : NetworkError, R> Resource<T, E>.map(transform: (T) -> R): Resource<R, E> {

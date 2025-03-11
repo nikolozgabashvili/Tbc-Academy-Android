@@ -18,12 +18,12 @@ class UsersRemoteRepositoryImpl @Inject constructor(
 ) : UsersRemoteRepository {
     override suspend fun getUsers(page: Int): Resource<UsersList, DataError> {
         return httpRequestHelper.safeCall(enableLoading = false) {
-                usersApiService.fetchUsers(page)
-            }.map {
-                it.map {
-                    it.toDomain()
-                }
-            }.first()
+            usersApiService.fetchUsers(page)
+        }.map {
+            it.map {
+                it.toDomain()
+            }
+        }.first()
 
     }
 
