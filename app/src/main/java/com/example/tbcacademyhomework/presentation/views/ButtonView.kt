@@ -19,7 +19,7 @@ class ButtonView @JvmOverloads constructor(
 
     private val binding = ViewButtonBinding.inflate(LayoutInflater.from(context), this)
 
-    var buttonType: ButtonType = ButtonType.PRIMARY
+    private var buttonType: ButtonType = ButtonType.PRIMARY
         set(value) {
             field = value
             setButtonColors()

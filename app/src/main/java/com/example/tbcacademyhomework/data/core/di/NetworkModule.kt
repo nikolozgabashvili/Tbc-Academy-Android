@@ -11,6 +11,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 
 @Module
@@ -18,6 +19,7 @@ import retrofit2.Retrofit
 object NetworkModule {
 
     @Provides
+    @Singleton
     fun providesRetrofit(
         httpClient: OkHttpClient
     ): Retrofit {
@@ -30,6 +32,7 @@ object NetworkModule {
     }
 
     @Provides
+    @Singleton
     fun providesOkHttpClient(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY

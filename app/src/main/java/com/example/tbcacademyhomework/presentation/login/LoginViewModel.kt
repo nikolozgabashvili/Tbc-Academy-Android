@@ -2,18 +2,21 @@ package com.example.tbcacademyhomework.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tbcacademyhomework.domain.auth.models.AuthResponse
 import com.example.tbcacademyhomework.domain.auth.models.AuthUser
-import com.example.tbcacademyhomework.domain.auth.repository.AuthRepository
-import com.example.tbcacademyhomework.domain.core.repository.UserPrefsRepository
+import com.example.tbcacademyhomework.domain.auth.models.LoginResponseDomain
+import com.example.tbcacademyhomework.domain.auth.usecase.LoginUseCase
+import com.example.tbcacademyhomework.domain.auth.usecase.ValidateEmailUseCase
+import com.example.tbcacademyhomework.domain.datastore.DatastorePreferenceKeys
+import com.example.tbcacademyhomework.domain.datastore.usecase.GetValueUseCase
+import com.example.tbcacademyhomework.domain.datastore.usecase.SetValueUseCase
 import com.example.tbcacademyhomework.domain.utils.DataError
 import com.example.tbcacademyhomework.domain.utils.Resource
-import com.example.tbcacademyhomework.domain.auth.validation.UserDataValidator
 import com.example.tbcacademyhomework.presentation.utils.toGenericString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -21,9 +24,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val authRepository: AuthRepository,
-    private val userPrefsRepository: UserPrefsRepository,
-    private val userDataValidator: UserDataValidator
+    private val loginUseCase: LoginUseCase,
+    private val saveValueUseCase: SetValueUseCase,
+    private val getValueUseCase: GetValueUseCase,
+    private val validateEmailUseCase: ValidateEmailUseCase,
+    private val clearDataUseCase: ClearDataUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(LoginScreenState())
@@ -34,38 +39,42 @@ class LoginViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            userPrefsRepository.getShouldRemember().let { shouldRemember ->
-                if (shouldRemember != true) {
-                    userPrefsRepository.clearData()
-                } else {
-                    if (userPrefsRepository.getUserEmail() != null) {
-                        eventsChannel.send(LoginEvent.Success)
+
+            getValueUseCase(DatastorePreferenceKeys.SHOULD_REMEMBER, false).first()
+                .let { shouldRemember ->
+                    if (shouldRemember != true) {
+                        clearDataUseCase()
+                    } else {
+                        if (getValueUseCase(DatastorePreferenceKeys.EMAIL, null).first() != null) {
+                            eventsChannel.send(LoginEvent.Success)
+                        }
                     }
                 }
-            }
         }
     }
-
 
     fun loginUser() {
         viewModelScope.launch {
             val email = _state.value.userEmail
             val password = _state.value.userPassword
-            authRepository.loginUser(AuthUser(email, password)).collect { resource ->
+            loginUseCase(AuthUser(email, password)).collect { resource ->
                 _state.update { it.copy(authResource = resource) }
                 handleResource(resource)
             }
         }
     }
 
-    private suspend fun handleResource(resource: Resource<AuthResponse, DataError>) {
+    private suspend fun handleResource(resource: Resource<LoginResponseDomain, DataError>) {
         when (resource) {
             is Resource.Success -> {
                 val email = _state.value.userEmail
 
-                userPrefsRepository.saveToken(resource.data.token)
-                userPrefsRepository.savEmail(email)
-                userPrefsRepository.saveShouldRemember(_state.value.checkboxChecked)
+                saveValueUseCase(DatastorePreferenceKeys.TOKEN, resource.data.token)
+                saveValueUseCase(DatastorePreferenceKeys.EMAIL, email)
+                saveValueUseCase(
+                    DatastorePreferenceKeys.SHOULD_REMEMBER,
+                    _state.value.checkboxChecked
+                )
                 eventsChannel.send(LoginEvent.Success)
             }
 
@@ -96,8 +105,7 @@ class LoginViewModel @Inject constructor(
         with(_state) {
             val password = value.userPassword
             val email = value.userEmail
-            val isUserValid =
-                userDataValidator.isUserValid(email, password)
+            val isUserValid = validateEmailUseCase(email) && password.isNotBlank()
             update { it.copy(isUserValid = isUserValid) }
 
         }

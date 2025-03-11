@@ -2,12 +2,12 @@ package com.example.tbcacademyhomework.presentation.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tbcacademyhomework.domain.auth.models.AuthResponse
 import com.example.tbcacademyhomework.domain.auth.models.AuthUser
-import com.example.tbcacademyhomework.domain.auth.repository.AuthRepository
+import com.example.tbcacademyhomework.domain.auth.models.RegisterResponseDomain
+import com.example.tbcacademyhomework.domain.auth.usecase.RegisterUseCase
+import com.example.tbcacademyhomework.domain.auth.usecase.ValidateEmailUseCase
 import com.example.tbcacademyhomework.domain.utils.DataError
 import com.example.tbcacademyhomework.domain.utils.Resource
-import com.example.tbcacademyhomework.domain.auth.validation.UserDataValidator
 import com.example.tbcacademyhomework.presentation.utils.toGenericString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -20,8 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val authRepository: AuthRepository,
-    private val userDataValidator: UserDataValidator,
+    private val registerUseCase: RegisterUseCase,
+    private val validateEmailUseCase: ValidateEmailUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(RegisterScreenState())
@@ -34,7 +34,7 @@ class RegisterViewModel @Inject constructor(
         viewModelScope.launch {
             val email = _state.value.email
             val password = _state.value.password
-            authRepository.registerUser(AuthUser(email = email, password = password))
+            registerUseCase(AuthUser(email = email, password = password))
                 .collect { resource ->
                     _state.update { it.copy(registerResource = resource) }
                     handleResource(resource)
@@ -62,7 +62,7 @@ class RegisterViewModel @Inject constructor(
 
     }
 
-    private fun handleResource(resource: Resource<AuthResponse, DataError>) {
+    private fun handleResource(resource: Resource<RegisterResponseDomain, DataError>) {
         viewModelScope.launch {
             when (resource) {
                 is Resource.Error -> {
@@ -94,8 +94,7 @@ class RegisterViewModel @Inject constructor(
             val password = value.password
             val email = value.email
             val repeatPassword = value.repeatPassword
-            val isUserValid =
-                userDataValidator.isUserValid(email, password) && repeatPassword == password
+            val isUserValid = validateEmailUseCase(email) && password.isNotEmpty() && repeatPassword == password
             update { it.copy(isUserValid = isUserValid) }
 
         }

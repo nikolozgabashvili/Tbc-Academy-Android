@@ -19,11 +19,6 @@ class UsersLocalRepositoryImpl @Inject constructor(
         return users
     }
 
-    override suspend fun getLoadedPageCount(): Int {
-        return usersDao.getLoadedPageNumber()
-    }
-
-
     override suspend fun updateUsers(page: Int, users: List<User>): List<User> {
         return appDatabase.withTransaction {
             usersDao.deleteUsersByPage(page)

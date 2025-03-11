@@ -8,8 +8,8 @@ import com.example.tbcacademyhomework.domain.users.repository.UsersRemoteReposit
 import com.example.tbcacademyhomework.domain.utils.DataError
 import com.example.tbcacademyhomework.domain.utils.Resource
 import com.example.tbcacademyhomework.domain.utils.map
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class UsersRemoteRepositoryImpl @Inject constructor(
@@ -17,13 +17,14 @@ class UsersRemoteRepositoryImpl @Inject constructor(
     private val httpRequestHelper: HttpRequestHelper
 ) : UsersRemoteRepository {
     override suspend fun getUsers(page: Int): Resource<UsersList, DataError> {
-        return withContext(Dispatchers.IO) {
-            httpRequestHelper.safeCall {
+        return httpRequestHelper.safeCall(enableLoading = false) {
                 usersApiService.fetchUsers(page)
             }.map {
-                it.toDomain()
-            }
-        }
+                it.map {
+                    it.toDomain()
+                }
+            }.first()
+
     }
 
 }

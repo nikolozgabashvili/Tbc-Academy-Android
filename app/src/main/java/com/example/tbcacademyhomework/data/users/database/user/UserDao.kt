@@ -16,9 +16,6 @@ interface UserDao {
     @Query("select * from users where page <= :page order by page,id asc")
     suspend fun getUsersBeforePage(page: Int): List<UserEntity>
 
-    @Query("SELECT MAX(page) FROM users")
-    suspend fun getLoadedPageNumber(): Int
-
 
     @Query("DELETE FROM USERS")
     suspend fun clearAll()
