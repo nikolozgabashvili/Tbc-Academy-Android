@@ -35,12 +35,12 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             getValueUseCase(DatastorePreferenceKeys.SHOULD_REMEMBER, false).first()
                 .let { shouldRemember ->
-                    if (shouldRemember != true) {
-                        clearDataUseCase()
-                    } else {
+                    if (shouldRemember == true) {
                         if (getValueUseCase(DatastorePreferenceKeys.EMAIL, null).first() != null) {
                             sendEvent(LoginEvent.Success)
                         }
+                    } else {
+                        clearDataUseCase()
                     }
                 }
         }

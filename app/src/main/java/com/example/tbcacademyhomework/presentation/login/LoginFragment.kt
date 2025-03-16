@@ -28,6 +28,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private lateinit var navController: NavController
 
+
     override fun init(savedInstanceState: Bundle?) {
         navController = findNavController()
         initListeners()
@@ -97,6 +98,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                         LoginFragmentDirections.actionLoginFragmentToUsersFragment()
                     )
                 }
+
                 is LoginEvent.Error -> {
                     binding.root.showSnackBar(event.error.getValue(requireContext()))
                 }
