@@ -66,7 +66,6 @@ class RegisterViewModel @Inject constructor(
 
 
     private fun validateUser(email: String, password: String, repeatPassword: String) {
-
         val isUserValid =
             validateEmailUseCase(email) && validatePasswordUseCase(password) && repeatPassword == password
         updateState { copy(isUserValid = isUserValid) }
