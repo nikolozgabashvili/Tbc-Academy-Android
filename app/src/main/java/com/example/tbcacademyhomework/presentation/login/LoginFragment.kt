@@ -28,7 +28,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private lateinit var navController: NavController
 
-
     override fun init(savedInstanceState: Bundle?) {
         navController = findNavController()
         initListeners()
