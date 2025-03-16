@@ -4,23 +4,21 @@ import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.tbcacademyhomework.BuildConfig
+import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.FragmentLoginBinding
-import com.example.tbcacademyhomework.domain.utils.isLoading
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
 import com.example.tbcacademyhomework.presentation.register.RegisterFragment.Companion.RESULT_KEY
 import com.example.tbcacademyhomework.presentation.register.RegisterFragment.Companion.USER_DATA
 import com.example.tbcacademyhomework.presentation.register.RegisterParams
+import com.example.tbcacademyhomework.presentation.utils.ext.observeEvent
+import com.example.tbcacademyhomework.presentation.utils.ext.observeState
+import com.example.tbcacademyhomework.presentation.utils.ext.showSnackBar
 import com.example.tbcacademyhomework.presentation.utils.getParcelable
 import com.example.tbcacademyhomework.presentation.utils.getValue
-import com.example.tbcacademyhomework.presentation.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -34,29 +32,42 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         navController = findNavController()
         initListeners()
         initObservers()
+        loadDebugData()
 
     }
 
     private fun initListeners() {
         with(binding) {
             btnLogin.setOnClickListener {
-                loginViewModel.loginUser()
+                loginViewModel.onAction(
+                    LoginScreenAction.OnLogin(
+                        etEmail.text.toString(),
+                        etPassword.text.toString(),
+                        rbRememberMe.isChecked
+                    )
+                )
             }
 
             btnRegister.setOnClickListener {
                 navController.navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
             }
 
-            checkRemember.setOnCheckedChangeListener { _, isChecked ->
-                loginViewModel.updateCheckboxState(isChecked)
-            }
-
             etEmail.doAfterTextChanged {
-                loginViewModel.updateEmail(it.toString())
+                loginViewModel.onAction(
+                    LoginScreenAction.OnInputChanged(
+                        it.toString(),
+                        etPassword.text.toString()
+                    )
+                )
             }
 
             etPassword.doAfterTextChanged {
-                loginViewModel.updatePassword(it.toString())
+                loginViewModel.onAction(
+                    LoginScreenAction.OnInputChanged(
+                        etEmail.text.toString(),
+                        it.toString()
+                    )
+                )
             }
 
         }
@@ -73,33 +84,41 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     private fun initObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel.state.collectLatest { state ->
-                    binding.btnLogin.isLoading = state.authResource?.isLoading() == true
-                    binding.btnRegister.isEnabled = state.authResource?.isLoading() != true
-                    binding.btnLogin.btnEnabled = state.isUserValid
+
+        observeState(loginViewModel.state) { state ->
+            handleLoading(state.isLoading)
+            binding.btnLogin.btnEnabled = state.isUserValid
+        }
+
+        observeEvent(loginViewModel.event) { event ->
+            when (event) {
+                is LoginEvent.Success -> {
+                    navController.navigate(
+                        LoginFragmentDirections.actionLoginFragmentToUsersFragment()
+                    )
+                }
+                is LoginEvent.Error -> {
+                    binding.root.showSnackBar(event.error.getValue(requireContext()))
                 }
             }
         }
+    }
 
+    private fun loadDebugData() {
+        if (BuildConfig.DEBUG) {
+            binding.etEmail.setText(getString(R.string.test_dummy_email))
+            binding.etPassword.setText(getString(R.string.test_dummy_password))
+        }
+    }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel.event.collect { event ->
-                    when (event) {
-                        is LoginEvent.Success -> {
-                            navController.navigate(
-                                LoginFragmentDirections.actionLoginFragmentToUsersFragment()
-                            )
-                        }
-
-                        is LoginEvent.Error -> {
-                            showToast(requireContext(), event.error.getValue(requireContext()))
-                        }
-                    }
-                }
-            }
+    private fun handleLoading(loading: Boolean) {
+        with(binding) {
+            btnLogin.isLoading = loading
+            btnLogin.btnEnabled = loading
+            btnRegister.isEnabled = !loading
+            binding.rbRememberMe.isEnabled = !loading
+            etEmail.isEnabled = !loading
+            etPassword.isEnabled = !loading
         }
 
     }

@@ -6,6 +6,8 @@ import com.example.tbcacademyhomework.domain.auth.usecase.RegisterUseCase
 import com.example.tbcacademyhomework.domain.auth.usecase.RegisterUseCaseImpl
 import com.example.tbcacademyhomework.domain.auth.usecase.ValidateEmailUseCase
 import com.example.tbcacademyhomework.domain.auth.usecase.ValidateEmailUseCaseImpl
+import com.example.tbcacademyhomework.domain.auth.usecase.ValidatePasswordUseCase
+import com.example.tbcacademyhomework.domain.auth.usecase.ValidatePasswordUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,6 +29,10 @@ abstract class UseCaseModule {
     @Binds
     @ViewModelScoped
     abstract fun bindMailValidatorUseCase(impl: ValidateEmailUseCaseImpl): ValidateEmailUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindPasswordValidatorUseCase(impl: ValidatePasswordUseCaseImpl): ValidatePasswordUseCase
 
 
 }

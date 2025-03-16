@@ -2,16 +2,13 @@ package com.example.tbcacademyhomework.presentation.profile
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.databinding.FragmentProfileBinding
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
+import com.example.tbcacademyhomework.presentation.utils.ext.observeEvent
+import com.example.tbcacademyhomework.presentation.utils.ext.observeState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -30,28 +27,19 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private fun initListeners() {
         binding.btnLogOut.setOnClickListener {
-            profileViewModel.logOutUser()
+            profileViewModel.onAction(ProfileScreenAction.OnLogout)
         }
 
     }
 
     private fun initObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                profileViewModel.event.collectLatest {
-                    navController.navigate(ProfileFragmentDirections.actionProfileFragmentToLoginFragment())
-                }
-            }
+        observeEvent(profileViewModel.event) {
+            navController.navigate(ProfileFragmentDirections.actionProfileFragmentToLoginFragment())
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                profileViewModel.state.collectLatest {
-                    binding.tvEmail.text = it.email
-                }
-            }
+        observeState(profileViewModel.state) {
+            binding.tvEmail.text = it.email
         }
-
     }
 
 }

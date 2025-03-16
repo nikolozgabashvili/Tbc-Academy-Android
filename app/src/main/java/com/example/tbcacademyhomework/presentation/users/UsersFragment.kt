@@ -3,33 +3,28 @@ package com.example.tbcacademyhomework.presentation.users
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbcacademyhomework.databinding.FragmentUsersBinding
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
 import com.example.tbcacademyhomework.presentation.users.adapters.UsersAdapter
+import com.example.tbcacademyhomework.presentation.users.util.UserScreenAction
+import com.example.tbcacademyhomework.presentation.utils.ext.observeEvent
+import com.example.tbcacademyhomework.presentation.utils.ext.observeState
+import com.example.tbcacademyhomework.presentation.utils.ext.showSnackBar
 import com.example.tbcacademyhomework.presentation.utils.getValue
-import com.example.tbcacademyhomework.presentation.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::inflate) {
 
     private val usersViewModel: UsersViewModel by viewModels()
-    private lateinit var navController: NavController
-
+    private val navController by lazy { findNavController() }
     private val usersAdapter by lazy { UsersAdapter() }
 
 
     override fun init(savedInstanceState: Bundle?) {
-        navController = findNavController()
         setupRecycler()
         initObservers()
         initListeners()
@@ -56,7 +51,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
                 val isLoading = usersViewModel.state.value.loading
                 if (!endReached && totalItemCount <= (lastVisibleItem + 2) && !isLoading) {
 
-                    usersViewModel.fetchUsers()
+                    usersViewModel.onAction(UserScreenAction.OnFetchRequest)
 
                 }
             }
@@ -65,28 +60,19 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(FragmentUsersBinding::i
     }
 
     private fun initObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                usersViewModel.state.collectLatest { state ->
-                    handleState(state)
+        observeState(usersViewModel.state) { state ->
+            handleState(state)
 
 
-                }
-            }
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                usersViewModel.event.collect { event ->
-                    when (event) {
-                        is UserScreenEvent.Error -> showToast(
-                            requireContext(),
-                            event.error.getValue(requireContext())
-                        )
-                    }
-
-                }
+        observeEvent(usersViewModel.event) { event ->
+            when (event) {
+                is UserScreenEvent.Error -> binding.root.showSnackBar(
+                    event.error.getValue(requireContext())
+                )
             }
+
         }
     }
 

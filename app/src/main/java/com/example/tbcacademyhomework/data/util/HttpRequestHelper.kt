@@ -16,7 +16,7 @@ class HttpRequestHelper @Inject constructor() {
 
     private val json = Json {
         ignoreUnknownKeys = true
-        explicitNulls = false
+        explicitNulls = false 
     }
 
     fun <T> safeCall(

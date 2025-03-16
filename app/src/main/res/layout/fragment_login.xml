@@ -37,7 +37,7 @@
 
 
     <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/checkRemember"
+        android:id="@+id/rbRememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size10"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/app_margin"
         android:layout_marginTop="@dimen/size40"
-        app:layout_constraintTop_toBottomOf="@id/checkRemember"
+        app:layout_constraintTop_toBottomOf="@id/rbRememberMe"
         app:text="@string/login" />
 
     <com.example.tbcacademyhomework.presentation.views.ButtonView

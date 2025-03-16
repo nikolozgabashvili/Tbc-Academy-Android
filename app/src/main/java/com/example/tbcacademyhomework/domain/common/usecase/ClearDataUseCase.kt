@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.presentation.login
+package com.example.tbcacademyhomework.domain.common.usecase
 
 import com.example.tbcacademyhomework.domain.datastore.DatastorePreferenceKeys
 import com.example.tbcacademyhomework.domain.datastore.usecase.RemoveByKeyUseCase

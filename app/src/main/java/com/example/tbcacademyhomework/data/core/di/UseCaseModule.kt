@@ -1,7 +1,7 @@
 package com.example.tbcacademyhomework.data.core.di
 
-import com.example.tbcacademyhomework.presentation.login.ClearDataUseCase
-import com.example.tbcacademyhomework.presentation.login.ClearDataUseCaseImpl
+import com.example.tbcacademyhomework.domain.common.usecase.ClearDataUseCase
+import com.example.tbcacademyhomework.domain.common.usecase.ClearDataUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

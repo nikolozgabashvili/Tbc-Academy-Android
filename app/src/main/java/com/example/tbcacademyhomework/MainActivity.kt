@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.presentation
+package com.example.tbcacademyhomework
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

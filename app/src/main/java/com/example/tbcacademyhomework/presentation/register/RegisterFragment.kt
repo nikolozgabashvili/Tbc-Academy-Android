@@ -4,19 +4,15 @@ import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.databinding.FragmentRegisterBinding
-import com.example.tbcacademyhomework.domain.utils.isLoading
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
+import com.example.tbcacademyhomework.presentation.utils.ext.observeEvent
+import com.example.tbcacademyhomework.presentation.utils.ext.observeState
+import com.example.tbcacademyhomework.presentation.utils.ext.showSnackBar
 import com.example.tbcacademyhomework.presentation.utils.getValue
-import com.example.tbcacademyhomework.presentation.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
@@ -36,19 +32,42 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     private fun initListeners() {
         with(binding) {
             etEmail.doAfterTextChanged {
-                registerViewModel.updateEmail(it.toString())
+                registerViewModel.onAction(
+                    RegisterScreenAction.OnUserInput(
+                        email = it.toString(),
+                        password = etPassword.text.toString(),
+                        repeatPassword = etRepeatPassword.text.toString()
+                    )
+                )
             }
 
             etPassword.doAfterTextChanged {
-                registerViewModel.updatePassword(it.toString())
+                registerViewModel.onAction(
+                    RegisterScreenAction.OnUserInput(
+                        email = etEmail.text.toString(),
+                        password = it.toString(),
+                        repeatPassword = etRepeatPassword.text.toString()
+                    )
+                )
             }
 
             etRepeatPassword.doAfterTextChanged {
-                registerViewModel.updateRepeatPassword(it.toString())
+                registerViewModel.onAction(
+                    RegisterScreenAction.OnUserInput(
+                        email = etEmail.text.toString(),
+                        password = etPassword.text.toString(),
+                        repeatPassword = it.toString()
+                    )
+                )
             }
 
             btnRegister.setOnClickListener {
-                registerViewModel.registerUser()
+                registerViewModel.onAction(
+                    RegisterScreenAction.OnRegister(
+                        email = etEmail.text.toString(),
+                        password = etPassword.text.toString()
+                    )
+                )
             }
 
             btnBack.setOnClickListener {
@@ -59,32 +78,35 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun initObservers() {
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                registerViewModel.event.collect { event ->
-                    when (event) {
-                        is RegisterEvent.Error -> showToast(
-                            requireContext(),
-                            event.error.getValue(requireContext())
-                        )
+        observeEvent(registerViewModel.event) { event ->
+            when (event) {
+                is RegisterEvent.Error -> binding.root.showSnackBar(
+                    event.error.getValue(requireContext())
+                )
 
-                        is RegisterEvent.Success -> {
+                is RegisterEvent.Success -> {
 
-                            goToLogin(event.params)
-                        }
-                    }
+                    goToLogin(event.params)
                 }
             }
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                registerViewModel.state.collectLatest { state ->
-                    binding.btnRegister.isLoading = state.registerResource?.isLoading() == true
-                    binding.btnRegister.btnEnabled = state.isUserValid
-                }
-            }
+
+        observeState(registerViewModel.state) { state ->
+            handleLoading(state.isLoading)
+            binding.btnRegister.btnEnabled = state.isUserValid
         }
+    }
+
+    private fun handleLoading(loading: Boolean) {
+        with(binding) {
+            btnRegister.isLoading = loading
+            etEmail.isEnabled = !loading
+            etPassword.isEnabled = !loading
+            etRepeatPassword.isEnabled = !loading
+            btnBack.isEnabled = !loading
+        }
+
 
     }
 
