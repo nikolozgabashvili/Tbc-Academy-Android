@@ -9,7 +9,10 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 interface LoginUseCase {
-    suspend operator fun invoke(params: AuthUser): Flow<Resource<LoginResponseDomain, DataError>>
+    suspend operator fun invoke(
+        params: AuthUser,
+        rememberMe: Boolean
+    ): Flow<Resource<LoginResponseDomain, DataError>>
 
 }
 
@@ -17,7 +20,10 @@ class LoginUseCaseImpl @Inject constructor(
     private val loginRepository: LoginRepository
 ) : LoginUseCase {
 
-    override suspend fun invoke(params: AuthUser): Flow<Resource<LoginResponseDomain, DataError>> {
-        return loginRepository.loginUser(params)
+    override suspend fun invoke(
+        params: AuthUser,
+        rememberMe: Boolean
+    ): Flow<Resource<LoginResponseDomain, DataError>> {
+        return loginRepository.loginUser(params, rememberMe)
     }
 }

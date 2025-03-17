@@ -9,7 +9,6 @@ import com.example.tbcacademyhomework.domain.auth.usecase.ValidatePasswordUseCas
 import com.example.tbcacademyhomework.domain.common.usecase.ClearDataUseCase
 import com.example.tbcacademyhomework.domain.datastore.DatastorePreferenceKeys
 import com.example.tbcacademyhomework.domain.datastore.usecase.GetValueUseCase
-import com.example.tbcacademyhomework.domain.datastore.usecase.SetValueUseCase
 import com.example.tbcacademyhomework.domain.utils.DataError
 import com.example.tbcacademyhomework.domain.utils.Resource
 import com.example.tbcacademyhomework.domain.utils.isLoading
@@ -23,7 +22,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    private val saveValueUseCase: SetValueUseCase,
     private val getValueUseCase: GetValueUseCase,
     private val validateEmailUseCase: ValidateEmailUseCase,
     private val validatePasswordUseCase: ValidatePasswordUseCase,
@@ -62,20 +60,13 @@ class LoginViewModel @Inject constructor(
     }
 
 
-    private suspend fun handleResource(
+    private suspend fun handleLoginResource(
         resource: Resource<LoginResponseDomain, DataError>,
-        email: String,
-        remember: Boolean
     ) {
 
         updateState { copy(isLoading = resource.isLoading()) }
         when (resource) {
             is Resource.Success -> {
-                saveValueUseCase(DatastorePreferenceKeys.TOKEN, resource.data.token)
-                saveValueUseCase(DatastorePreferenceKeys.EMAIL, email)
-                saveValueUseCase(
-                    DatastorePreferenceKeys.SHOULD_REMEMBER, remember
-                )
                 sendEvent(LoginEvent.Success)
             }
 
@@ -96,8 +87,8 @@ class LoginViewModel @Inject constructor(
 
     private fun loginUser(email: String, password: String, remember: Boolean) {
         viewModelScope.launch {
-            loginUseCase(AuthUser(email, password)).collect {
-                handleResource(it, email, remember)
+            loginUseCase(AuthUser(email, password), remember).collect {
+                handleLoginResource(it)
             }
         }
 

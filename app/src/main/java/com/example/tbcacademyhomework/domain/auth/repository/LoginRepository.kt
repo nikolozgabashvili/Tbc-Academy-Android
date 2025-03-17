@@ -7,5 +7,8 @@ import com.example.tbcacademyhomework.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface LoginRepository {
-    suspend fun loginUser(authUser: AuthUser): Flow<Resource<LoginResponseDomain, DataError>>
+    suspend fun loginUser(
+        authUser: AuthUser,
+        rememberMe: Boolean
+    ): Flow<Resource<LoginResponseDomain, DataError>>
 }
