@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_error_layout"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/size20">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size30"
+        android:layout_marginTop="@dimen/size10"
+        android:background="@drawable/bg_button"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:text="@string/retry" />
+
+
+</LinearLayout>
