@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<View xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/size6"
-    android:layout_height="@dimen/size6"
-    android:layout_marginEnd="@dimen/size4"
-    android:background="@drawable/bg_red_circle">
-
-</View>
