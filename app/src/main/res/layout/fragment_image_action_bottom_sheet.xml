@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_background"
+    tools:context=".presentation.image_action_screen.ImageActionBottomSheetFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvImageActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/size20"
+        android:overScrollMode="never" />
+
+</FrameLayout>

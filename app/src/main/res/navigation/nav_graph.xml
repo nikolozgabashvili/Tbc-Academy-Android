@@ -2,6 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/imageSelectorFragment">
 
+    <fragment
+        android:id="@+id/imageSelectorFragment"
+        android:name="com.example.tbcacademyhomework.presentation.image_selector_screen.ImageSelectorFragment"
+        android:label="fragment_image_selector"
+        tools:layout="@layout/fragment_image_selector" >
+        <action
+            android:id="@+id/action_imageSelectorFragment_to_imageActionBottomSheetFragment"
+            app:destination="@id/imageActionBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/imageActionBottomSheetFragment"
+        android:name="com.example.tbcacademyhomework.presentation.image_action_screen.ImageActionBottomSheetFragment"
+        android:label="fragment_image_action_bottom_sheet"
+        tools:layout="@layout/fragment_image_action_bottom_sheet" />
 </navigation>
