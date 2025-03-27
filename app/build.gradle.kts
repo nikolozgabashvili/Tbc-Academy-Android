@@ -30,10 +30,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "BASE_URL", "\"https://run.mocky.io/v3/\"")
-        }
-        debug {
-            buildConfigField("String", "BASE_URL", "\"https://run.mocky.io/v3/\"")
         }
     }
     compileOptions {
@@ -65,10 +61,11 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.dagger.hilt.android)
     implementation(libs.firebase.messaging)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation (libs.androidx.hilt.work)
     implementation(libs.firebase.storage)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.glide)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

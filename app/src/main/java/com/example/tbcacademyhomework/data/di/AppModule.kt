@@ -1,19 +1,21 @@
 package com.example.tbcacademyhomework.data.di
 
-import com.google.firebase.storage.FirebaseStorage
+import android.content.Context
+import androidx.work.WorkManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object FirebaseStorageModule {
+object AppModule {
 
     @Singleton
     @Provides
-    fun providesFirebaseStorage(): FirebaseStorage {
-        return FirebaseStorage.getInstance()
+    fun providesWorkManager(@ApplicationContext context: Context): WorkManager {
+        return WorkManager.getInstance(context)
     }
 }

@@ -1,10 +1,10 @@
 package com.example.tbcacademyhomework.presentation.image_selector_screen
 
-import android.graphics.Bitmap
 import android.net.Uri
+import com.example.tbcacademyhomework.presentation.common.util.ByteArrayHolder
 
 data class ImageSelectorUiState(
     val uploading: Boolean = false,
-    val compressedImage: Bitmap? = null,
-    val tempUri: Uri? = null
+    val compressedByteArray: ByteArrayHolder? = null,
+    val tempUri: Uri? = null,
 )

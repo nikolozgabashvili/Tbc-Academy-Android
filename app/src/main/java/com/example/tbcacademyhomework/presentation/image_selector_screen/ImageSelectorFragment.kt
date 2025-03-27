@@ -36,12 +36,20 @@ class ImageSelectorFragment :
     private val navController by lazy { findNavController() }
     private val viewModel: ImageSelectorViewModel by viewModels()
 
-    private val imageResultListener =
+    private val imageSelectListener =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.data?.let {
                     viewModel.onAction(ImageSelectorAction.OnUriCreated(it))
+                    viewModel.onAction(ImageSelectorAction.ProcessImage)
                 }
+
+            }
+        }
+
+    private val cameraResultListener =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
                 viewModel.onAction(ImageSelectorAction.ProcessImage)
             }
         }
@@ -82,7 +90,7 @@ class ImageSelectorFragment :
             ImageAction.SELECT_FROM_LOCALE -> {
                 val intent = Intent(Intent.ACTION_PICK)
                 intent.type = "image/*"
-                imageResultListener.launch(intent)
+                imageSelectListener.launch(intent)
             }
 
             ImageAction.TAKE_PHOTO -> {
@@ -98,8 +106,8 @@ class ImageSelectorFragment :
                 viewModel.state.collectLatest {
 
                     handleLoading(it.uploading)
-                    it.compressedImage?.let {
-                        binding.ivSelectedImage.loadImage(it)
+                    it.compressedByteArray?.let {
+                        binding.ivSelectedImage.loadImage(it.byteArray)
                     }
                 }
 
@@ -157,7 +165,7 @@ class ImageSelectorFragment :
             putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
         }
         viewModel.onAction(ImageSelectorAction.OnUriCreated(photoUri))
-        imageResultListener.launch(cameraIntent)
+        cameraResultListener.launch(cameraIntent)
     }
 
 }

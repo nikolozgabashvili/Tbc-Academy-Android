@@ -2,9 +2,10 @@ package com.example.tbcacademyhomework.presentation.image_selector_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tbcacademyhomework.domain.usecase.CompressImageUseCase
 import com.example.tbcacademyhomework.domain.usecase.UploadImageUseCase
 import com.example.tbcacademyhomework.domain.util.Resource
-import com.example.tbcacademyhomework.presentation.util.Compressor
+import com.example.tbcacademyhomework.presentation.common.util.ByteArrayHolder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -17,13 +18,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ImageSelectorViewModel @Inject constructor(
-    private val compressor: Compressor,
-    private val uploadImageUseCase: UploadImageUseCase
+    private val uploadImageUseCase: UploadImageUseCase,
+    private val compressImageUseCase: CompressImageUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(ImageSelectorUiState())
     val state = _state.asStateFlow()
-
+    val a = "".toByteArray()
     private val eventChannel = Channel<ImageSelectorScreenEvent>()
     val event = eventChannel.receiveAsFlow()
 
@@ -47,10 +48,9 @@ class ImageSelectorViewModel @Inject constructor(
 
     private fun uploadImage() {
         viewModelScope.launch {
-            val bitmap = state.value.compressedImage
-            bitmap?.let {
-                val byteArr = compressor.compressToByteArray(it)
-                uploadImageUseCase(byteArr).collect { resource ->
+            val byteArr = state.value.compressedByteArray?.byteArray
+            byteArr?.let {
+                uploadImageUseCase(it).collect { resource ->
                     _state.update { it.copy(uploading = resource is Resource.Loading) }
 
                     if (resource is Resource.Success) {
@@ -62,7 +62,7 @@ class ImageSelectorViewModel @Inject constructor(
                     }
 
                 }
-            }?:run {
+            } ?: run {
                 eventChannel.send(ImageSelectorScreenEvent.NoImageError)
             }
         }
@@ -70,10 +70,10 @@ class ImageSelectorViewModel @Inject constructor(
 
     private fun compressImage() {
         viewModelScope.launch(Dispatchers.IO) {
-            val uri = state.value.tempUri
-            uri?.let {
-                val compressedBitmap = compressor.compressImage(uri)
-                _state.update { it.copy(compressedImage = compressedBitmap, tempUri = null) }
+            val uriString = state.value.tempUri.toString()
+            compressImageUseCase(uriString,80)?.let { btArray ->
+                _state.update { it.copy(compressedByteArray = ByteArrayHolder(btArray)) }
+
             }
 
         }

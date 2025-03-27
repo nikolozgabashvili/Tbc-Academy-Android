@@ -1,6 +1,7 @@
 [versions]
 agp = "8.6.1"
-kotlin = "2.1.20"
+hiltWork = "1.2.0"
+kotlin = "2.1.10"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -21,13 +22,16 @@ retrofit2KotlinxSerializationConverter = "1.0.0"
 lottie = "6.4.1"
 datastore = "1.1.3"
 pagingRuntimeKtx = "3.3.6"
-daggerHilt = "2.56"
+daggerHilt = "2.55"
 googleGmsGoogleServices = "4.4.2"
 firebaseMessaging = "24.1.1"
 firebaseStorage = "21.0.1"
+workRuntimeKtx = "2.10.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWork" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "safeArgs" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

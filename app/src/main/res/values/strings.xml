@@ -6,10 +6,10 @@
     <string name="uploaded_success">Image Uploaded successfully</string>
     <string name="image_not_selected">Image is Not Selected</string>
     <string name="default_notification_channel_id">channel_id</string>
-    <string name="default_notification_channel_id_2">channel_id_2</string>
     <string name="notification_disabled">Notifications Disabled</string>
     <string name="notification_disabled_message">You won\'t receive notifications from this app. You can enable them in app settings.</string>
     <string name="cancel">Cancel</string>
     <string name="notification_disabled_open_settings">Open Settings</string>
+    <string name="uploading_in_progress">Uploading Image</string>
 
 </resources>
