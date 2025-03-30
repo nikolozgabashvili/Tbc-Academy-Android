@@ -19,4 +19,5 @@
     <string name="not_enough_money">You do not have enough money</string>
     <string name="transfer_success">Transfer Completed</string>
     <string name="exchange_tooltip">1 %1$s = %2$s %3$s</string>
+    <string name="transfer_failed">Transfer Failed</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.tbcacademyhomework.presentation.screen.transaction
 
 import androidx.lifecycle.viewModelScope
 import com.example.tbcacademyhomework.R
+import com.example.tbcacademyhomework.domain.model.transaction.StatusType
 import com.example.tbcacademyhomework.domain.model.transaction.TransferMoneyParamDomain
 import com.example.tbcacademyhomework.domain.usecase.GetAccountsUseCase
 import com.example.tbcacademyhomework.domain.usecase.GetExchangeRateUseCase
@@ -112,7 +113,13 @@ class TransactionViewModel @Inject constructor(
                 updateState { copy(processing = resource.isLoading()) }
                 when (resource) {
                     is Resource.Error -> sendEvent(TransactionScreenEvent.Error(resource.error.toGenericString()))
-                    is Resource.Success -> sendEvent(TransactionScreenEvent.Success)
+                    is Resource.Success -> {
+                        if (resource.data.status== StatusType.Success){
+                            sendEvent(TransactionScreenEvent.Success)
+                        }else{
+                            sendEvent(TransactionScreenEvent.Error(GenericString.Resource(R.string.transfer_failed)))
+                        }
+                    }
                     Resource.Loading -> Unit
                 }
 
