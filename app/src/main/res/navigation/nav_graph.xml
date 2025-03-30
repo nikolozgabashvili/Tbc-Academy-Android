@@ -2,6 +2,29 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/transactionFragment">
 
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.example.tbcacademyhomework.presentation.screen.transaction.TransactionFragment"
+        android:label="fragment_transaction"
+        tools:layout="@layout/fragment_transaction" >
+        <action
+            android:id="@+id/action_transactionFragment_to_accountBottomSheetFragment"
+            app:destination="@id/accountBottomSheetFragment" />
+        <action
+            android:id="@+id/action_transactionFragment_to_receivingAccountBottomSheetFragment"
+            app:destination="@id/receivingAccountBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/accountBottomSheetFragment"
+        android:name="com.example.tbcacademyhomework.presentation.screen.account.AccountBottomSheetFragment"
+        android:label="fragment_account_bottom_sheet"
+        tools:layout="@layout/fragment_account_bottom_sheet" />
+    <dialog
+        android:id="@+id/receivingAccountBottomSheetFragment"
+        android:name="com.example.tbcacademyhomework.presentation.screen.receiving_account.ReceivingAccountBottomSheetFragment"
+        android:label="fragment_receiving_account_bottom_sheet"
+        tools:layout="@layout/fragment_receiving_account_bottom_sheet" />
 </navigation>

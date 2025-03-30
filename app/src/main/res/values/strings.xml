@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">TbcAcademyHomework</string>
+    <string name="transfer_internally">Transfer internally</string>
+    <string name="continue_transaction">Continue</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="sell">Sell</string>
+    <string name="description">Description</string>
+    <string name="formatted_balance">%1$s %2$s</string>
+    <string name="formatted_card_number">**** %1$s</string>
+    <string name="network_error">Network Error</string>
+    <string name="serialization_error">Serialization Error</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="select_account">Click To Select Account</string>
+    <string name="confirm">Confirm</string>
+    <string name="to_account">To Account</string>
+    <string name="account_was_not_found">Account was not found</string>
+    <string name="invalid_input">Please Enter Valid Account</string>
+    <string name="not_enough_money">You do not have enough money</string>
+    <string name="transfer_success">Transfer Completed</string>
+    <string name="exchange_tooltip">1 %1$s = %2$s %3$s</string>
 </resources>

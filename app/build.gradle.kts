@@ -64,7 +64,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
-
+    implementation(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

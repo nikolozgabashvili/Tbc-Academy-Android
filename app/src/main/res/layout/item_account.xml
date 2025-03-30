@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/size10"
+    app:cardBackgroundColor="#00000000"
+    app:cardCornerRadius="@dimen/size16"
+    app:strokeColor="@color/gray"
+    tools:cardBackgroundColor="#000019">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:minHeight="@dimen/size60"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivAccount"
+            android:layout_width="@dimen/size40"
+            android:layout_height="@dimen/size40"
+            android:layout_marginVertical="@dimen/size16"
+            android:layout_marginStart="@dimen/size16"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/round_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAccountName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size10"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintBottom_toTopOf="@id/tvAccountBalance"
+            app:layout_constraintStart_toEndOf="@id/ivAccount"
+            app:layout_constraintTop_toTopOf="@id/ivAccount"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:text="\@cash" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+
+            android:id="@+id/tvAccountBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/textSize12"
+            app:layout_constraintBottom_toBottomOf="@id/ivAccount"
+            app:layout_constraintStart_toStartOf="@id/tvAccountName"
+            app:layout_constraintTop_toBottomOf="@id/tvAccountName"
+
+            tools:text="20L" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAccountCardNum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size16"
+            android:gravity="end"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvAccountName"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="**** 2345" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmptyItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size20"
+            android:text="@string/select_account"
+            android:textColor="@color/gray"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,23 +1,22 @@
-package com.example.tbcacademyhomework.base
+package com.example.tbcacademyhomework.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class BaseFragment<VB : ViewBinding>(
+abstract class BaseBottomSheetFragment<VB : ViewBinding>(
     private val inflate: (inflater: LayoutInflater, viewGroup: ViewGroup?, attachToRoot: Boolean) -> VB
-) : Fragment() {
+) : BottomSheetDialogFragment() {
+
     private var _binding: VB? = null
-    protected val binding  get() = _binding!!
+    protected val binding get() = _binding!!
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = inflate(inflater, container, false)
         return binding.root
@@ -25,10 +24,10 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        init(savedInstanceState)
+        init()
     }
 
-    abstract fun init(savedInstanceState: Bundle? = null)
+    abstract fun init()
 
     override fun onDestroyView() {
         super.onDestroyView()
