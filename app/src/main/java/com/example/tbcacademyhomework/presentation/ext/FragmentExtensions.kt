@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.presentation.utils.ext
+package com.example.tbcacademyhomework.presentation.ext
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle

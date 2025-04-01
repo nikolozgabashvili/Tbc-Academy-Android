@@ -1,4 +1,4 @@
-package com.example.tbcacademyhomework.presentation.utils.ext
+package com.example.tbcacademyhomework.presentation.ext
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

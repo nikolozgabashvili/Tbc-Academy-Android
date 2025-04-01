@@ -8,9 +8,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.tbcacademyhomework.databinding.FragmentRegisterBinding
 import com.example.tbcacademyhomework.presentation.base.BaseFragment
-import com.example.tbcacademyhomework.presentation.utils.ext.observeEvent
-import com.example.tbcacademyhomework.presentation.utils.ext.observeState
-import com.example.tbcacademyhomework.presentation.utils.ext.showSnackBar
+import com.example.tbcacademyhomework.presentation.ext.observeEvent
+import com.example.tbcacademyhomework.presentation.ext.observeState
+import com.example.tbcacademyhomework.presentation.ext.showSnackBar
 import com.example.tbcacademyhomework.presentation.utils.getValue
 import dagger.hilt.android.AndroidEntryPoint
 

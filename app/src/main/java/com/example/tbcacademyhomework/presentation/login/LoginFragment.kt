@@ -1,128 +1,88 @@
 package com.example.tbcacademyhomework.presentation.login
 
 import android.os.Bundle
-import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.setFragmentResultListener
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupPositionProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.tbcacademyhomework.BuildConfig
-import com.example.tbcacademyhomework.R
-import com.example.tbcacademyhomework.databinding.FragmentLoginBinding
-import com.example.tbcacademyhomework.presentation.base.BaseFragment
-import com.example.tbcacademyhomework.presentation.register.RegisterFragment.Companion.RESULT_KEY
-import com.example.tbcacademyhomework.presentation.register.RegisterFragment.Companion.USER_DATA
-import com.example.tbcacademyhomework.presentation.register.RegisterParams
-import com.example.tbcacademyhomework.presentation.utils.ext.observeEvent
-import com.example.tbcacademyhomework.presentation.utils.ext.observeState
-import com.example.tbcacademyhomework.presentation.utils.ext.showSnackBar
-import com.example.tbcacademyhomework.presentation.utils.getParcelable
+import com.example.tbcacademyhomework.presentation.ext.observeEvent
 import com.example.tbcacademyhomework.presentation.utils.getValue
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
+class LoginFragment : Fragment() {
 
     private val loginViewModel: LoginViewModel by viewModels()
+    private val navController by lazy { findNavController() }
 
-    private lateinit var navController: NavController
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                MaterialTheme {
+                    val snackBarHostState = remember { SnackbarHostState() }
 
-    override fun init(savedInstanceState: Bundle?) {
-        navController = findNavController()
-        initListeners()
-        initObservers()
-        loadDebugData()
+                    val context = LocalContext.current
+                    val scope = rememberCoroutineScope()
+                    val state by loginViewModel.state.collectAsStateWithLifecycle()
 
-    }
+                    observeEvent(loginViewModel.event) { event ->
+                        when (event) {
+                            is LoginEvent.Error -> {
+                                event.error.getValue(context)?.let {
+                                    scope.launch {
+                                        snackBarHostState.showSnackbar(message = it)
+                                    }
+                                }
+                            }
 
-    private fun initListeners() {
-        with(binding) {
-            btnLogin.setOnClickListener {
-                loginViewModel.onAction(
-                    LoginScreenAction.OnLogin(
-                        etEmail.text.toString(),
-                        etPassword.text.toString(),
-                        rbRememberMe.isChecked
-                    )
-                )
-            }
+                            LoginEvent.Success -> {
+                                navController.navigate(LoginFragmentDirections.actionLoginFragmentToUsersFragment())
+                            }
+                        }
+                    }
 
-            btnRegister.setOnClickListener {
-                navController.navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
-            }
+                    Column {
+                        LoginScreen(
+                            state,
+                            snackBarHostState,
+                            navigateToRegister = { navController.navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment()) },
+                            onAction = loginViewModel::onAction
+                        )
 
-            etEmail.doAfterTextChanged {
-                loginViewModel.onAction(
-                    LoginScreenAction.OnInputChanged(
-                        it.toString(),
-                        etPassword.text.toString()
-                    )
-                )
-            }
 
-            etPassword.doAfterTextChanged {
-                loginViewModel.onAction(
-                    LoginScreenAction.OnInputChanged(
-                        etEmail.text.toString(),
-                        it.toString()
-                    )
-                )
-            }
+                    }
 
-        }
 
-        setFragmentResultListener(RESULT_KEY) { _, bundle ->
-            val registerParams = getParcelable(bundle, USER_DATA, RegisterParams::class.java)
-            registerParams?.let { params ->
-                binding.etPassword.setText(params.password)
-                binding.etEmail.setText(params.email)
-            }
 
-        }
-
-    }
-
-    private fun initObservers() {
-
-        observeState(loginViewModel.state) { state ->
-            handleLoading(state.isLoading)
-            binding.btnLogin.btnEnabled = state.isUserValid
-        }
-
-        observeEvent(loginViewModel.event) { event ->
-            when (event) {
-                is LoginEvent.Success -> {
-                    navController.navigate(
-                        LoginFragmentDirections.actionLoginFragmentToUsersFragment()
-                    )
                 }
 
-                is LoginEvent.Error -> {
-                    binding.root.showSnackBar(event.error.getValue(requireContext()))
-                }
+
             }
         }
-    }
-
-    private fun loadDebugData() {
-        if (BuildConfig.DEBUG) {
-            binding.etEmail.setText(getString(R.string.test_dummy_email))
-            binding.etPassword.setText(getString(R.string.test_dummy_password))
-        }
-    }
-
-    private fun handleLoading(loading: Boolean) {
-        with(binding) {
-            btnLogin.isLoading = loading
-            btnLogin.btnEnabled = loading
-            btnRegister.isEnabled = !loading
-            binding.rbRememberMe.isEnabled = !loading
-            etEmail.isEnabled = !loading
-            etPassword.isEnabled = !loading
-        }
 
     }
-
 
 }

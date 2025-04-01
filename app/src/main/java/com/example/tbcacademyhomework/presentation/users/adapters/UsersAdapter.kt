@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tbcacademyhomework.R
 import com.example.tbcacademyhomework.databinding.ItemUserBinding
 import com.example.tbcacademyhomework.presentation.users.models.UserUi
-import com.example.tbcacademyhomework.presentation.utils.ext.loadImage
+import com.example.tbcacademyhomework.presentation.ext.loadImage
 
 class UsersAdapter : ListAdapter<UserUi, UsersAdapter.UserViewHolder>(UserDiffUtil()) {
 

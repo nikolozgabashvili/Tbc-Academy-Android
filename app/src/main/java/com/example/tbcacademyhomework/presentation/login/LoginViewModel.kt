@@ -46,17 +46,22 @@ class LoginViewModel @Inject constructor(
 
     override fun onAction(action: LoginScreenAction) {
         when (action) {
-            is LoginScreenAction.OnInputChanged -> {
-                validateUser(action.email, action.password)
-            }
-
-            is LoginScreenAction.OnLogin -> {
-                loginUser(action.email, action.password, action.remember)
-
-
-            }
+            is LoginScreenAction.OnEmailChanged -> setEmail(action.email)
+            is LoginScreenAction.OnPasswordChanged -> setPassword(action.password)
+            LoginScreenAction.OnRememberClicked -> updateState { copy(remember = !remember) }
+            LoginScreenAction.OnLogin -> loginUser()
         }
 
+    }
+
+    private fun setPassword(password: String) {
+        val isValidPassword = validatePasswordUseCase(password)
+        updateState { copy(passwordText = password, isPasswordValid = isValidPassword) }
+    }
+
+    private fun setEmail(email: String) {
+        val isValidEmail = validateEmailUseCase(email)
+        updateState { copy(emailText = email, isEmailValid = isValidEmail) }
     }
 
 
@@ -79,13 +84,10 @@ class LoginViewModel @Inject constructor(
 
     }
 
-    private fun validateUser(email: String, password: String) {
-        val isUserValid = validateEmailUseCase(email) && validatePasswordUseCase(password)
-        updateState { copy(isUserValid = isUserValid) }
-    }
-
-
-    private fun loginUser(email: String, password: String, remember: Boolean) {
+    private fun loginUser() {
+        val email = state.value.emailText
+        val password = state.value.passwordText
+        val remember = state.value.remember
         viewModelScope.launch {
             loginUseCase(AuthUser(email, password), remember).collect {
                 handleLoginResource(it)

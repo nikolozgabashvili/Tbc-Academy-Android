@@ -1,6 +1,6 @@
 [versions]
 agp = "8.6.1"
-kotlin = "2.1.10"
+kotlin = "2.1.20"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -14,14 +14,17 @@ serialization = "2.1.10"
 navVersion = "2.8.9"
 kotlinxSerializationJson = "1.8.0"
 glide = "4.16.0"
-ksp = "2.1.10-1.0.29"
+ksp = "2.1.20-1.0.31"
+activityCompose = "1.10.1"
+composeBom = "2025.03.01"
 roomRuntime = "2.6.1"
 okhttp = "4.12.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
-lottie = "6.4.1"
-datastore = "1.1.3"
-daggerHilt = "2.55"
+lottie = "6.6.0"
+datastore = "1.1.4"
+daggerHilt = "2.56"
 lifecycleProcess = "2.8.7"
+uiTooling = "1.7.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,6 +47,7 @@ glide = {group = "com.github.bumptech.glide",name = "glide",version.ref = "glide
 
 #lotte
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+compose-lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 
 #retrofit
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
@@ -59,9 +63,21 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRunti
 dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android",version.ref = "daggerHilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler",version.ref = "daggerHilt" }
 
+#compose
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
 #datastore
 preferences-datastore = {group = "androidx.datastore",name ="datastore-preferences",version.ref = "datastore"}
 androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycleProcess" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
 
 
 [plugins]
@@ -74,4 +90,6 @@ ksp = {id = "com.google.devtools.ksp",version.ref = "ksp"}
 room-plugin = {id = "androidx.room" , version.ref = "roomRuntime"}
 dagger-hilt = {id = "com.google.dagger.hilt.android",version.ref = "daggerHilt"}
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
 
