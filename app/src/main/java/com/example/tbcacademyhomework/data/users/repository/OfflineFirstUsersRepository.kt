@@ -1,6 +1,6 @@
 package com.example.tbcacademyhomework.data.users.repository
 
-import com.example.tbcacademyhomework.data.core.connectivity_observer.NetworkConnectivityObserver
+import com.example.tbcacademyhomework.domain.connectivity_observer.ConnectivityObserver
 import com.example.tbcacademyhomework.domain.users.models.PagedUsers
 import com.example.tbcacademyhomework.domain.users.usecase.GetLocalUsersUseCase
 import com.example.tbcacademyhomework.domain.users.usecase.GetRemoteUsersUseCase
@@ -28,7 +28,7 @@ class GetPagedUsersUseCaseImpl @Inject constructor(
     private val getLocalUsersUseCase: GetLocalUsersUseCase,
     private val updateLocalUsersUseCase: UpdateLocalUsersUseCase,
     private val getRemoteUsersUseCase: GetRemoteUsersUseCase,
-    private val connectivityObserver: NetworkConnectivityObserver
+    private val connectivityObserver: ConnectivityObserver
 ) : GetPagedUsersUseCase, CoroutineScope {
 
 

@@ -1,18 +1,18 @@
 package com.example.tbcacademyhomework.presentation.base
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.update
 
 abstract class BaseViewModel<STATE, ACTION, EVENT>(
-    initialState: STATE,
+    initialState: STATE
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(initialState)
-    val state = _state.asStateFlow()
+    var state by mutableStateOf(initialState)
+        private set
 
     private val _event = Channel<EVENT>()
     val event = _event.receiveAsFlow()
@@ -26,7 +26,7 @@ abstract class BaseViewModel<STATE, ACTION, EVENT>(
 
 
     fun updateState(reducer: STATE.() -> STATE) {
-        _state.update(reducer)
+        state = reducer(state)
     }
 
 

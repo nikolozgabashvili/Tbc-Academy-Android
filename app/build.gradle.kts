@@ -1,8 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.parcelize)
-    id(libs.plugins.safeArgs.get().pluginId)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room.plugin)
@@ -48,9 +46,8 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         buildConfig = true
-        compose=true
+        compose = true
     }
     room {
         schemaDirectory("$projectDir/schemas")
@@ -63,36 +60,36 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.navigation.ui)
-    implementation(libs.navigation.fragment)
-    implementation(libs.lottie)
-    implementation(libs.compose.lottie)
-    implementation(libs.glide)
-    implementation(libs.retrofit.serialization)
-    implementation(libs.okhttp)
-    implementation(libs.preferences.datastore)
-    implementation(libs.logging.interceptor)
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    debugImplementation(libs.ui.tooling)
-    ksp(libs.room.compiler)
-    kapt(libs.dagger.hilt.compiler)
-    implementation(libs.dagger.hilt.android)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    implementation(libs.serialization.json)
+    implementation(libs.androidx.material.icons.extended.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    implementation(libs.logging.interceptor)
+    implementation(libs.okhttp)
+    implementation(libs.compose.lottie)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.serialization.json)
+    implementation(libs.retrofit.serialization)
+    kapt(libs.dagger.hilt.compiler)
+    ksp(libs.room.compiler)
+    implementation(libs.preferences.datastore)
+    implementation(libs.androidx.lifecycle.process)
+
 
 }

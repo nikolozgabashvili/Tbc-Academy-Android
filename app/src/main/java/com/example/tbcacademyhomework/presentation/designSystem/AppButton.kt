@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,14 +21,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
-import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.airbnb.lottie.compose.rememberLottieDynamicProperties
-import com.airbnb.lottie.compose.rememberLottieDynamicProperty
 import com.example.tbcacademyhomework.R
+import com.example.tbcacademyhomework.presentation.theme.AppColor
+import com.example.tbcacademyhomework.presentation.theme.AppTheme
 
 @Composable
 fun AppButton(
@@ -38,8 +36,8 @@ fun AppButton(
     enabled: Boolean = true,
     loading: Boolean = false,
     border: BorderStroke? = null,
-    buttonColor: Color = Color.Black,
-    textColor: Color = Color.White,
+    buttonColor: Color = AppColor.primary,
+    textColor: Color = AppColor.textLight,
     textSize: TextUnit = 12.sp,
     onclick: () -> Unit
 ) {
@@ -111,7 +109,7 @@ fun AppButton(
 @Preview(showBackground = true, device = Devices.NEXUS_5)
 @Composable
 private fun AppButtonPrev() {
-    MaterialTheme {
+    AppTheme {
         Box(modifier = Modifier.fillMaxSize()) {
             AppButton(
                 modifier = Modifier.fillMaxWidth(),

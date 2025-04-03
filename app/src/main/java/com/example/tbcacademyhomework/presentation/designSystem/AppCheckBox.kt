@@ -13,15 +13,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tbcacademyhomework.R
+import com.example.tbcacademyhomework.presentation.theme.AppColor
 
 @Composable
 fun AppCheckBox(
     modifier: Modifier = Modifier,
     checked: Boolean,
     enabled: Boolean = true,
-    enabledColor: Color = Color.Black,
-    disabledColor: Color = Color.Gray,
-    checkMarkColor: Color = Color.White,
+    enabledColor: Color = AppColor.primary,
+    disabledColor: Color = AppColor.primaryLight,
+    checkMarkColor: Color = AppColor.secondary,
     onCheckBoxClick: () -> Unit
 ) {
 

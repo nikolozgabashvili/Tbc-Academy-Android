@@ -1,40 +1,53 @@
 package com.example.tbcacademyhomework
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
-import com.example.tbcacademyhomework.databinding.ActivityMainBinding
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import com.example.tbcacademyhomework.presentation.navigation.AppNavigation
+import com.example.tbcacademyhomework.presentation.theme.AppColor
+import com.example.tbcacademyhomework.presentation.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        handleEdgeToEdge()
-
-
-    }
-
-    private fun handleEdgeToEdge() {
         enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
-            val bottomPadding = if (imeInsets.bottom == 0) systemBars.bottom else imeInsets.bottom
-            view.updatePadding(
-                left = systemBars.left,
-                top = systemBars.top,
-                right = systemBars.right,
-                bottom = bottomPadding
-            )
-            insets
+
+        setContent {
+            val snackBarHost = remember { SnackbarHostState() }
+            val navController = rememberNavController()
+            AppTheme {
+                Scaffold(
+                    snackbarHost = { SnackbarHost(snackBarHost) },
+                    containerColor = AppColor.canvas,
+                ) { padding ->
+                    Column(
+                        modifier = Modifier
+                            .padding(padding)
+                            .consumeWindowInsets(padding)
+                            .imePadding(),
+                    ) {
+                        AppNavigation(navController,snackBarHost)
+                    }
+                }
+            }
         }
+
+
     }
+
 }
