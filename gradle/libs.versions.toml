@@ -33,8 +33,8 @@ serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-jso
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-
-
+coroutines-test = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test",version = "1.10.1"}
+mockito = {group = "org.mockito",name = "mockito-core",version="3.11.2"}
 
 #lotte
 compose-lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }

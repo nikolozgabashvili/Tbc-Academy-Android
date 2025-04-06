@@ -30,7 +30,6 @@ fun ProfileScreenRoot(
         }
     }
 
-
     ProfileScreen(
         state = viewmodel.state,
         onAction = viewmodel::onAction,
@@ -44,7 +43,6 @@ private fun ProfileScreen(
     state: ProfileScreenState,
     onAction: (ProfileScreenAction) -> Unit,
 ) {
-
 
     Column(modifier = Modifier.padding(horizontal = 20.dp)) {
         state.email?.let {

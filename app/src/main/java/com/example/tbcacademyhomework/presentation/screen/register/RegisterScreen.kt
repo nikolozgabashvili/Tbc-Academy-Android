@@ -1,5 +1,6 @@
 package com.example.tbcacademyhomework.presentation.screen.register
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -30,19 +32,25 @@ import com.example.tbcacademyhomework.presentation.designSystem.PasswordTextFiel
 import com.example.tbcacademyhomework.presentation.theme.AppColor
 import com.example.tbcacademyhomework.presentation.theme.AppTheme
 import com.example.tbcacademyhomework.presentation.utils.CollectEvent
-import com.example.tbcacademyhomework.presentation.utils.GenericString
+import com.example.tbcacademyhomework.presentation.utils.getValue
 
 @Composable
 fun RegisterScreenRoot(
     viewmodel: RegisterViewModel = hiltViewModel(),
-    showError: suspend (GenericString) -> Unit,
+    showError: suspend (String) -> Unit,
     navigateBack: (UserParams?) -> Unit
 ) {
+
+    val context = LocalContext.current
+    val scrollState = rememberScrollState()
 
     CollectEvent(viewmodel.event) {
         when (it) {
             is RegisterEvent.Error -> {
-                showError(it.error)
+                val message = it.error.getValue(context)
+                message?.let {
+                    showError(it)
+                }
             }
 
             is RegisterEvent.Success -> {
@@ -50,17 +58,20 @@ fun RegisterScreenRoot(
 
 
             }
+
+            RegisterEvent.NavigateBack -> {
+                navigateBack(null)
+            }
         }
     }
 
 
     RegisterScreen(
         state = viewmodel.state,
+        scrollState = scrollState,
         onAction = viewmodel::onAction,
-        navigateBack = {
-            navigateBack(null)
-        }
-    )
+
+        )
 
 }
 
@@ -68,10 +79,9 @@ fun RegisterScreenRoot(
 @Composable
 private fun RegisterScreen(
     state: RegisterScreenState,
+    scrollState: ScrollState,
     onAction: (RegisterScreenAction) -> Unit,
-    navigateBack: () -> Unit,
 ) {
-    val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,8 +90,13 @@ private fun RegisterScreen(
             .padding(20.dp)
     ) {
 
-        IconButton(onClick = navigateBack, enabled = !state.isLoading) {
-            AppIcon(icon = Icons.AutoMirrored.Rounded.ArrowBackIos, onClick = navigateBack)
+        IconButton(
+            onClick = { onAction(RegisterScreenAction.NavigateBack) },
+            enabled = !state.isLoading
+        ) {
+            AppIcon(
+                icon = Icons.AutoMirrored.Rounded.ArrowBackIos,
+                onClick = { onAction(RegisterScreenAction.NavigateBack) })
         }
 
         AppTextField(
@@ -147,7 +162,7 @@ private fun LoginScreenPrev() {
         RegisterScreen(
             state = RegisterScreenState(),
             onAction = {},
-            navigateBack = {}
+            scrollState = rememberScrollState()
         )
     }
 }

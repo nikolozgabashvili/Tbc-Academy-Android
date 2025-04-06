@@ -1,6 +1,7 @@
 package com.example.tbcacademyhomework.presentation.screen.login
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -30,7 +32,7 @@ import com.example.tbcacademyhomework.presentation.designSystem.PasswordTextFiel
 import com.example.tbcacademyhomework.presentation.theme.AppColor
 import com.example.tbcacademyhomework.presentation.theme.AppTheme
 import com.example.tbcacademyhomework.presentation.utils.CollectEvent
-import com.example.tbcacademyhomework.presentation.utils.GenericString
+import com.example.tbcacademyhomework.presentation.utils.getValue
 
 
 @Composable
@@ -38,34 +40,45 @@ fun LoginScreenRoot(
     viewmodel: LoginViewModel = hiltViewModel(),
     userEmail: String,
     userPassword: String,
-    showError: suspend (GenericString) -> Unit,
+    showError: suspend (String) -> Unit,
     navigateToRegister: () -> Unit,
     navigateToUsers: () -> Unit
 ) {
 
-
+    val context = LocalContext.current
+    val scrollState = rememberScrollState()
     LaunchedEffect(Unit) {
         viewmodel.onAction(LoginScreenAction.OnEmailChanged(userEmail))
         viewmodel.onAction(LoginScreenAction.OnPasswordChanged(userPassword))
     }
 
+
     CollectEvent(viewmodel.event) {
         when (it) {
             is LoginEvent.Error -> {
-                showError(it.error)
+                val message = it.error.getValue(context)
+                message?.let {
+                    showError(it)
+                }
             }
 
             LoginEvent.Success -> {
                 navigateToUsers()
             }
+
+            LoginEvent.NavigateToRegister -> {
+                navigateToRegister()
+            }
         }
     }
 
 
+
+
     LoginScreen(
         state = viewmodel.state,
-        onAction = viewmodel::onAction,
-        navigateToRegister = navigateToRegister
+        scrollState = scrollState,
+        onAction = viewmodel::onAction
     )
 
 }
@@ -74,13 +87,13 @@ fun LoginScreenRoot(
 @Composable
 private fun LoginScreen(
     state: LoginScreenState,
+    scrollState: ScrollState,
     onAction: (LoginScreenAction) -> Unit,
-    navigateToRegister: () -> Unit,
 ) {
 
     if (!state.showScreen) return
 
-    val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -139,7 +152,7 @@ private fun LoginScreen(
             buttonColor = AppColor.secondary,
             textColor = AppColor.primary,
             border = BorderStroke(width = 0.5.dp, color = AppColor.primary),
-            onclick = navigateToRegister
+            onclick = { onAction(LoginScreenAction.NavigateToRegister) }
         )
 
     }
@@ -153,8 +166,8 @@ private fun LoginScreenPrev() {
     AppTheme {
         LoginScreen(
             state = LoginScreenState(),
+            scrollState = rememberScrollState(),
             onAction = {},
-            navigateToRegister = {}
         )
     }
 }

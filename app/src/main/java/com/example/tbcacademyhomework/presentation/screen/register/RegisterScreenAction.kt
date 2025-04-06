@@ -6,4 +6,5 @@ sealed interface RegisterScreenAction {
     data class EnterRepeatPassword(val password: String) : RegisterScreenAction
 
     data object Register : RegisterScreenAction
+    data object NavigateBack : RegisterScreenAction
 }

@@ -30,7 +30,6 @@ class UsersViewModel @Inject constructor(
         viewModelScope.launch {
             updateState { copy(loading = true) }
             getPagedUsersUseCase(currentPage++).collect { resource ->
-                println(resource.isLoading())
                 updateState { copy(loading = resource.isLoading()) }
 
                 if (resource is Resource.Success) {

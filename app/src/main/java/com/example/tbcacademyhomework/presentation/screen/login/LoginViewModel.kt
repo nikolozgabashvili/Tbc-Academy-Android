@@ -51,8 +51,15 @@ class LoginViewModel @Inject constructor(
             is LoginScreenAction.OnPasswordChanged -> setPassword(action.password)
             LoginScreenAction.OnRememberClicked -> updateState { copy(remember = !remember) }
             LoginScreenAction.OnLogin -> loginUser()
+            LoginScreenAction.NavigateToRegister -> navigateToRegister()
         }
 
+    }
+
+    private fun navigateToRegister() {
+        viewModelScope.launch {
+            sendEvent(LoginEvent.NavigateToRegister)
+        }
     }
 
     private fun setPassword(password: String) {

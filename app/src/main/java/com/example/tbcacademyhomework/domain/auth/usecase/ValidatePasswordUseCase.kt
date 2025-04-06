@@ -10,7 +10,7 @@ interface ValidatePasswordUseCase {
 
 class ValidatePasswordUseCaseImpl @Inject constructor() : ValidatePasswordUseCase {
     override fun invoke(password: String): Boolean {
-        return password.length >= MIN_PASSWORD_LENGTH
+        return password.length >= MIN_PASSWORD_LENGTH && password.isNotBlank()
     }
     companion object{
         const val MIN_PASSWORD_LENGTH = 3

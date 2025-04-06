@@ -8,6 +8,8 @@ interface ValidateEmailUseCase {
 
 class ValidateEmailUseCaseImpl @Inject constructor() : ValidateEmailUseCase {
     override fun invoke(email: String): Boolean {
-        return email.matches(Regex("^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$"))
+        return email.matches(Regex(
+            ("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")
+        ))
     }
 }

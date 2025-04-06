@@ -70,8 +70,15 @@ class RegisterViewModel @Inject constructor(
             is RegisterScreenAction.EnterPassword -> enterPassword(action.password)
             is RegisterScreenAction.EnterRepeatPassword -> enterRepeatPassword(action.password)
             RegisterScreenAction.Register -> registerUser()
+            RegisterScreenAction.NavigateBack -> navigateBack()
         }
 
+    }
+
+    private fun navigateBack() {
+        viewModelScope.launch {
+            sendEvent(RegisterEvent.NavigateBack)
+        }
     }
 
     private fun enterEmail(email: String) {

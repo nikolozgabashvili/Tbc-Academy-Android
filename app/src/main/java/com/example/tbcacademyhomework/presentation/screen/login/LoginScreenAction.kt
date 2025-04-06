@@ -5,5 +5,6 @@ sealed interface LoginScreenAction {
     data class OnPasswordChanged(val password: String) : LoginScreenAction
     data object OnRememberClicked : LoginScreenAction
     data object OnLogin : LoginScreenAction
+    data object NavigateToRegister : LoginScreenAction
 
 }
